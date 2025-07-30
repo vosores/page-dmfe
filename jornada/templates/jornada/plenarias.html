@@ -1,0 +1,554 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Plenaristas Confirmados - XXXVII Jornada de Matemática{% endblock %}
+
+{% block content %}
+<section id="plenaristas" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row mb-4">
+            <div class="col-md-12 text-center">
+                <h2>Plenaristas confirmados</h2>
+                <p class="lead">
+                    Conoce a los académicos que participarán como plenaristas en la XXXVII Jornada de Matemática de la Zona Sur 2025.
+                </p>
+            </div>
+        </div>
+
+        <!-- Lista de Plenaristas -->
+        <div class="row d-flex flex-column align-items-center">
+            <!-- Plenarista 1: Eric Goles -->
+            <section id="eric_goles">
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-sm">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-12 text-center p-0">
+                            <h5 class="text-center">Plenaria 1: <strong>Del Loa al Sena: indiscreciones de un matemático (discreto)</strong></h5>
+                        </div>
+                        <div class="col-12 col-md-4 text-center p-3">
+                            <div style="
+                            position: relative; 
+                            display: inline-block; 
+                            width: 100%; 
+                            /* max-width: 390px;  */
+                            height: auto; 
+                            aspect-ratio: 1; 
+                            border: 2px solid #d3d3d3; 
+                            border-radius: 15px; 
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+                            overflow: hidden; 
+                            background-color: #fdfdfd;">
+                                <img src="{% static 'images/eric_goles.jpeg' %}" 
+                                     alt="Nombre del Plenarista" 
+                                     style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="mt-3">
+                                <h5 class="card-title"><strong>Dr. Eric Goles</strong></h5>
+                                <p class="card-text">Universidad Adolfo Ibañez</p>
+                                <p class="card-text">
+                                    Fecha: 23 de abril 2025<br>
+                                    Horario: 16:30 - 17:30 hrs<br>
+                                    Lugar: Por definir
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <strong>Líneas de investigación:</strong><br>
+                                    <ul style="text-align: justify;">
+                                        <li>Matemáticas Discretas.</li>
+                                        <li>Informática Teórica.</li>
+                                        <li>Autómatas Celulares.</li>
+                                        <li>Redes de autómatas y modelos matemáticos de sistemas complejos.</li>
+                                        <li>Aplicaciones matemáticas en Biología, Física y otros campos.</li>
+                                        <li>Sistemas complejos y su estudio interdisciplinario.</li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text">
+                                    <strong>Logros destacados:</strong><br>
+                                    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: justify;">
+                                        <li style="margin-bottom: 10px;">
+                                            - Premio Nacional de Ciencias Exactas en 1993.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Presidente de la Comisión Nacional de Investigación Científica y Tecnológica (CONICYT) entre 2000 y 2006.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Primer director del Centro de Modelamiento Matemático.
+                                        </li>
+                                        <!-- <li style="margin-bottom: 10px;">
+                                            - Socio fundador y presidente del Instituto de Sistemas Complejos de Valparaíso (2007-2009).
+                                        </li> -->
+                                        <li style="margin-bottom: 10px;">
+                                            - Doctor Honoris Causa por la Universidad de Orleans.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Profesor Emérito Universidad Adolfo Ibáñez.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Premio Manuel Montt por la obra “Neural and Autómata Naturales” (1991) y “Una especie de zumbido en la cabeza” (2022).
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Miembro de diversas academias y comités científicos internacionales, como la Academia de Ciencias y la École Polytechnique Fédérale de Lausanne.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Reconocimientos internacionales, incluyendo la Orden Nacional del Mérito de Francia (grado de Caballero) y la Ordem do Rio Branco (grado de Comendador) en Brasil.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Ha participado en al rededor de 250 publicaciones científicas.
+                                        </li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    <strong>Intereses actuales:</strong><br>
+                                    En la actualidad, trabajo en modelos de autómatas celulares compartimentados en cuanto a su complejidad computacional y dinámica. También en el modelamiento de fenómenos sociales mediante autómatas de mayoría y el modelo de Sakoda. Por otra parte, estudio problemas extremales de grafos asociados a reglas de autómatas totalísticos: clases de grafos con un número máximo (o mínimo) de puntos fijos.
+                                    Finalmente, escribo, y en las próximas semanas aparecerá mi último libro de divulgación: VIDA ARTIFICIAL; un viaje personal al corazón de las máquinas (Planeta, 2025).
+                                </p>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlenarista1">Información de la plenaria</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+            
+
+            <!-- Modal Plenarista 1 -->
+            <div class="modal fade" id="modalPlenarista1" tabindex="-1" aria-labelledby="modalPlenarista1Label" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1100px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Del Loa al Sena: indiscreciones de un matemático (discreto)</h3>
+                            <p class="text-center text-muted"><strong>Dr. Eric Goles</strong></p>
+                            <p class="text-center text-muted">Universidad Adolfo Ibáñez</p>
+
+                            <h5 class="mt-4"><strong>Resumen</strong></h5>
+                            <p style="text-align: justify;">
+                                En preparación.
+                            </p>
+
+                            <h5 class="mt-4"><strong>Referencias</strong></h5>
+                            <ol>
+                                <li>Autor 1, <em>Título del Trabajo</em>, Año.</li>
+                                <li>Autor 2, <em>Título del Trabajo</em>, Año.</li>
+                            </ol>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <!-- Plenarista 2: Paola Comparin -->
+            <section id="paola_comparin">
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-sm">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-12 text-center p-0">
+                            <h5 class="text-center">Plenaria 2: <strong>Por definir</strong></h5>
+                        </div>
+                        <div class="col-12 col-md-4 text-center p-3">
+                            <div style="
+                            position: relative; 
+                            display: inline-block; 
+                            width: 100%; 
+                            /* max-width: 310px;  */
+                            height: auto; 
+                            aspect-ratio: 1; 
+                            border: 2px solid #d3d3d3; 
+                            border-radius: 15px; 
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+                            overflow: hidden; 
+                            background-color: #fdfdfd;">
+                                <img src="{% static 'images/paola_comparin.webp' %}" 
+                                     alt="Nombre del Plenarista" 
+                                     style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="mt-3">
+                                <h5 class="card-title"><strong>Dra. Paola Comparin</strong></h5>
+                                <p class="card-text">Universidad de la Frontera</p>
+                                <p class="card-text">
+                                    Fecha: 24 de abril de 2025<br>
+                                    Horario: 12:00 - 13:00 hrs<br>
+                                    Lugar: Por definir
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <strong>Líneas de investigación:</strong><br>
+                                    <ul style="text-align: justify;">
+                                        <li>Geometría algebraica.</li>
+                                        <li>Automorfismos simplécticos y no simplécticos en superficies K3.</li>
+                                        <li>Fibraciones elípticas.</li>
+                                        <li>Construcción espejo de Berglund-Hübsch-Chiodo-Ruan y simetría espejo para superficies K3.</li>
+                                        <li>Geometría tórica y construcciones espejo.</li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text">
+                                    <strong>Logros destacados:</strong><br>
+                                    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: justify;">
+                                        <li style="margin-bottom: 10px;">
+                                            - Premio a la Excelencia Académica "Adelina Gutiérrez" 2024.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Adjudicación proyecto Fondecyt iniciación y regular.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Proyecto de Mujeres en Ciencia.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Otros.
+                                        </li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    <strong>Intereses actuales:</strong><br>
+                                    En preparación.
+                                    <!-- Mi investigación se centra ... Actualmente me dedico a ... -->
+                                </p>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlenarista2">Información de la plenaria</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+            
+
+            <!-- Modal Plenarista 2 -->
+            <div class="modal fade" id="modalPlenarista2" tabindex="-1" aria-labelledby="modalPlenarista2Label" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1100px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Por definir</h3>
+                            <p class="text-center text-muted"><strong>Dra. Paola Comparin</strong></p>
+                            <p class="text-center text-muted">Universidad de la Frontera</p>
+
+                            <h5 class="mt-4"><strong>Resumen</strong></h5>
+                            <p style="text-align: justify;">
+                                En preparación.
+                            </p>
+
+                            <h5 class="mt-4"><strong>Referencias</strong></h5>
+                            <ol>
+                                <li>Autor 1, <em>Título del Trabajo</em>, Año.</li>
+                                <li>Autor 2, <em>Título del Trabajo</em>, Año.</li>
+                            </ol>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <!-- Plenarista 3: Raimund Burger -->
+            <section id="raimund_burger">
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-sm">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-12 text-center p-0">
+                            <h5 class="text-center">Plenaria 3: <strong>Models and numerical methods for unit operations in mineral processing and wastewater treatment</strong></h5>
+                        </div>
+                        <div class="col-12 col-md-4 text-center p-3">
+                            <div style="
+                            position: relative; 
+                            display: inline-block; 
+                            width: 100%; 
+                            /* max-width: 310px;  */
+                            height: auto; 
+                            aspect-ratio: 1; 
+                            border: 2px solid #d3d3d3; 
+                            border-radius: 15px; 
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+                            overflow: hidden; 
+                            background-color: #fdfdfd;">
+                                <img src="{% static 'images/raimund_burger.jpg' %}" 
+                                     alt="Nombre del Plenarista" 
+                                     style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="mt-3">
+                                <h5 class="card-title"><strong>Dr. Raimund Bürger</strong></h5>
+                                <p class="card-text">Universidad de Concepción</p>
+                                <p class="card-text">
+                                    Fecha: 24 de abril de 2025<br>
+                                    Horario: 16:00 - 17:00 hrs<br>
+                                    Lugar: Por definir
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <strong>Líneas de investigación:</strong><br>
+                                    <ul style="text-align: justify;">
+                                        <li>Modelos matemáticos para la separación sólido-líquido de suspensiones.</li>
+                                        <li>Procesos de sedimentación y consolidación.</li>
+                                        <li>Asentamiento de lodos.</li>
+                                        <li>Centrifugación y filtración por presión.</li>
+                                        <li>Asentamiento y fluidización de suspensiones polidispersas.</li>
+                                        <li>Ecuaciones parabólicas fuertemente degeneradas.</li>
+                                        <li>Leyes constitutivas para suspensiones floculadas.</li>
+                                        <li>Sistemas de leyes de conservación.</li>
+                                        <li>Leyes de conservación con flujo discontinuo.</li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text">
+                                    <strong>Logros destacados:</strong><br>
+                                    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: justify;">
+                                        <li style="margin-bottom: 10px;">
+                                            - Reconocido en la lista de los "Top 2% de Científicos del Mundo", un ranking elaborado anualmente por la Universidad de Stanford (California, Estados Unidos).
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Conferencista invitado en el International Congress of Mathematicians, el evento más importante a nivel mundial en matemáticas, Río de Janeiro, Brasil.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Premio Municipal de Ciencias de Concepción.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Ha participado en al rededor de 200 publicaciones científicas.
+                                        </li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    <strong>Intereses actuales:</strong><br>
+                                    Mi investigación se centra en el buen planteamiento y el análisis numérico de las leyes de conservación y ecuaciones relacionadas, 
+                                    como los sistemas de convección-reacción-difusión. Estoy especialmente interesado en las EDPs con elementos no estándar, 
+                                    como flujos discontinuos y no locales, y difusión no lineal fuertemente degenerada, que están motivados por una variedad de 
+                                    aplicaciones, incluida la separación sólido-líquido en la industria minera, el flujo de tráfico, la electrocardiología y la 
+                                    biología matemática.
+                                </p>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlenarista3">Información de la plenaria</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            
+            
+
+            <!-- Modal Plenarista 3 -->
+            <div class="modal fade" id="modalPlenarista3" tabindex="-1" aria-labelledby="modalPlenarista3Label" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1100px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <!-- <h5 class="modal-title" id="modalPlenarista1Label">Detalles de la plenaria</h5> -->
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Models and numerical methods for unit operations in mineral processing and wastewater treatment</h3>
+                            <p class="text-center text-muted"><strong>Dr. Raimund Bürger</strong></p>
+                            <p class="text-center text-muted">Universidad de Concepción</p>
+
+                            <h5 class="mt-4"><strong>Resumen</strong></h5>
+                            <p style="text-align: justify;">
+                                This presentation provides an overview and some recent developments and mathematical problems related to 
+                                models that describe unit operations in mineral processing and wastewater treatment. The applications 
+                                reviewed give rise to multiphase flows with one or more disperse phases of small solid particles or gas 
+                                bubbles dispersed in a viscous fluid (continuous phase). The phases usually segregate under the application 
+                                of a body force, and may be composed of several components that undergo chemical reactions. In one space 
+                                dimension the governing models are convection-diffusion-reaction partial differential equations partly with 
+                                discontinuous coefficients and strong hyperbolic-parabolic type degeneracy.<br>
+                                After an introduction to the background of models and applications, we first review the theory and 
+                                applications of models of polydisperse solid-liquid suspensions that involve particles differing in size or 
+                                density. These models give rise to first-order systems of nonlinear conservation laws of arbitrary size whose 
+                                velocity functions, and therefore fluxes, are constructed in a certain systematic way. By appealing to the 
+                                so-called secular equation, a theorem on the separation of poles of rational functions, it is possible to 
+                                prove that these models are strictly hyperbolic, and the interlacing of (known) velocity functions 
+                                with (unknown) eigenvalues of the Jacobian matrix makes spectral weighted essentially non-oscillatory (WENO) 
+                                high-order schemes feasible. In recent work versions of WENO schemes have been equipped with suitable 
+                                limiters so that they provably satisfy an invariant region principle, i.e., species volume fractions are 
+                                nonnegative and sum up to one.<br>
+                                A second part of the talk will review some recent developments for models of flotation columns, which are 
+                                widely used equipment for the separation of (hydrophobic) valuable ores from (hydrophilic) gangue particles, 
+                                where the former attach to the surface of injected air bubbles, which float and eventually form the desired 
+                                product, namely foam (froth) that is collected for further processing. The operation of such a column, 
+                                including the effect of liquid drainage through the froth, can be described by a triangular system of 
+                                convection-diffusion-reaction equations with spatially discontinuous flux. The well-posedness analysis, 
+                                invariant-region-preserving schemes, and applications such as the construction of operating charts for this 
+                                kind of models are addressed.<br>
+                                Finally, we review some recent models that describe reactive settling in wastewater treatment. These models 
+                                describe the formation of biomass (bacteria), as well as the principal biokinetic reactions present in the 
+                                so-called Activated Sludge Process (ASP), which is the basic process taking place in wastewater treatment 
+                                plants found worldwide. The reactions are specified in one of the Activated Sludge Models (ASM). Within 
+                                sanitary engineering these are standardized systems of ordinary differential equations involving the 
+                                concentrations of solid and liquid (substrate) components. These equations are coupled with a model for the 
+                                settling of biomass to eventually provide a spatio-temporal model of a secondary settling tank (SST) or 
+                                sequencing batch reactor (SBR). We mainly focus on the latter setup that gives rise to a model with a moving 
+                                boundary and discuss appropriate numerical methods.<br>
+                                The applications mentioned so far are formulated in one space dimension. The presentation concludes with 
+                                some applications that have been modeled in two or three space dimensions, and where the mathematical 
+                                framework are coupled flow-transport systems.<br>
+                            </p>
+
+                            <h5 class="mt-4"><strong>Referencias</strong></h5>
+                            <ol>
+                                <li>Autor 1, <em>Título del Trabajo</em>, Año.</li>
+                                <li>Autor 2, <em>Título del Trabajo</em>, Año.</li>
+                            </ol>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <!-- Plenarista 4: María Aravena -->
+            <!-- <section id="maria_aravena">
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-sm">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-12 text-center p-0">
+                            <h5 class="text-center">Plenaria 4: <strong>Por definir</strong></h5>
+                        </div>
+                        <div class="col-12 col-md-4 text-center p-3">
+                            <div style="
+                            position: relative; 
+                            display: inline-block; 
+                            width: 100%; 
+                            /* max-width: 310px;  */
+                            height: auto; 
+                            aspect-ratio: 1; 
+                            border: 2px solid #d3d3d3; 
+                            border-radius: 15px; 
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+                            overflow: hidden; 
+                            background-color: #fdfdfd;">
+                                <img src="{% static 'images/maria_aravena.png' %}" 
+                                     alt="Nombre del Plenarista" 
+                                     style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="mt-3">
+                                <h5 class="card-title"><strong>Dra. María Aravena</strong></h5>
+                                <p class="card-text">Universidad Católica del Maule</p>
+                                <p class="card-text">
+                                    Fecha: 25 de abril de 2025<br>
+                                    Horario: 12:00 - 13:00 hrs<br>
+                                    Lugar: Por definir
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <strong>Líneas de investigación:</strong><br>
+                                    <ul style="text-align: justify;">
+                                        <li>Resolución de problemas y modelamiento matemático.</li>
+                                        <li>Didáctica de la geometría.</li>
+                                        <li>Formación de profesores.</li>
+                                        <li>Género en educación STEM.</li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text">
+                                    <strong>Logros destacados:</strong><br>
+                                    <ul style="list-style-type: none; padding: 0; margin: 0; text-align: justify;">
+                                        <li style="margin-bottom: 10px;">
+                                            - Profesora Titular en la Universidad Católica del Maule.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Directora del Centro de Investigación en Educación Matemática y Estadística (CIEMAE).
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Miembro permanente del Claustro de Doctores de la Universidad de Barcelona, Catalunya, España.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Destacadas publicaciones en modelado matemático y STEM para reducir brechas de género y estrategias metacognitivas en procesos de modelado en la formación de ingenieros y estudiantes del sistema escolar.
+                                        </li>
+                                        <li style="margin-bottom: 10px;">
+                                            - Evaluadora en diversas revistas científicas, en organismos gubernamentales (ANID, CNED, CNA) e internacionales (OEI).
+                                        <li style="margin-bottom: 10px;">
+                                            - Miembro de la Sociedad Chilena de Educación Matemática
+                                        </li>
+                                    </ul>                                    
+                                </p>
+                                <p class="card-text" style="text-align: justify;">
+                                    <strong>Intereses actuales:</strong><br>
+                                    Participo en diversos proyectos de investigación y contribuyo significativamente al campo de la educación matemática. 
+                                    Recientemente, participé en un congreso mundial importante sobre educación matemática (15th International Congress for Mathematical Education), representando a la Universidad 
+                                    Católica del Maule  y compartiendo mis hallazgos con la comunidad académica internacional.<br>
+                                    Colaboro en iniciativas que buscan mejorar la formación profesional y fortalecer el vínculo con el entorno, trabajando en 
+                                    consorcio con otras instituciones de educación superior en Chile.
+                                </p>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPlenarista4">Información de la plenaria</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            
+
+            <!-- Modal Plenarista 4 -->
+            <!-- <div class="modal fade" id="modalPlenarista4" tabindex="-1" aria-labelledby="modalPlenarista4Label" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1100px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Por definir</h3>
+                            <p class="text-center text-muted"><strong>Dra. María Aravena</strong></p>
+                            <p class="text-center text-muted">Universidad Católica del Maule</p>
+
+                            <h5 class="mt-4"><strong>Resumen</strong></h5>
+                            <p style="text-align: justify;">
+                                En preparación.
+                            </p>
+
+                            <h5 class="mt-4"><strong>Referencias</strong></h5>
+                            <ol>
+                                <li>Autor 1, <em>Título del Trabajo</em>, Año.</li>
+                                <li>Autor 2, <em>Título del Trabajo</em>, Año.</li>
+                            </ol>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section> -->
+            <!-- Repite el bloque anterior para cada plenarista -->
+        </div>
+    </div>
+</section>
+{% endblock %}
+

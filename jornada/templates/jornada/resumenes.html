@@ -1,0 +1,120 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Resumen - XXXVII Jornada de Matemática{% endblock %}
+
+{% block content %}
+
+<section id="abstracts" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row mb-4">
+            <div class="col-md-12 text-center">
+                <h2>Envío de Resúmenes</h2>
+                <p class="lead">
+                    Sigue las instrucciones y utiliza los formatos disponibles para preparar tu resumen.
+                </p>
+            </div>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="alert alert-info shadow-sm" role="alert" style="background-color: #d9ecf9; color: #0c5460; border-left: 4px solid #0c5460;">
+            <ul class="mb-0">
+                <li>Los resúmenes deben ser enviados directamente al <a href="{% url 'sesiones' %}">organizador de sesión</a> (por definir) para la evaluación de su aceptación.</li>
+                <li>La fecha límite para enviar los resúmenes es el <strong>4 de abril de 2025</strong>.</li>
+                <li>La extensión máxima para el resumen es de una página, permitiendo las referencias en una segunda página.</li>
+                <li>Los formatos oficiales para los resúmenes en LaTeX o MS Word están disponibles en los siguientes enlaces.</li>
+                <!-- <li>Envío de cartas de aceptación de resúmenes entre el <strong>1 y 4 de abril de 2025</strong> (poner en linea de tiempo).</li> -->
+            </ul>
+        </div>
+
+        <!-- Opciones de descarga -->
+        <div class="row text-center">
+            <!-- Formato LaTeX Español -->
+            <div class="col-md-6 mb-4">
+                <a href="{% static 'docs/JMZS-2025-es.zip' %}" download class="text-decoration-none">
+                    <div id="blue-pastel-card" class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="circle-icon text-white mb-3">
+                                <i class="bi-file-code"></i>
+                            </div>
+                            <h5 class="card-title">Formato LaTeX</h5>
+                            <p class="card-text">Español</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Formato LaTeX Inglés -->
+            <div class="col-md-6 mb-4">
+                <a href="{% static 'docs/JMZS-2025-eng.zip' %}" download class="text-decoration-none">
+                    <div id="blue-pastel-card" class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="circle-icon text-white mb-3">
+                                <i class="bi-file-code"></i>
+                            </div>
+                            <h5 class="card-title">Formato LaTeX</h5>
+                            <p class="card-text">Inglés</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Formato MS Word Español -->
+            <div class="col-md-6 mb-4">
+                <a href="{% static 'docs/JMZS-2024-es.docx' %}" download class="text-decoration-none">
+                    <div id="red-pastel-card" class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="circle-icon bg-danger text-white mb-3">
+                                <i class="bi bi-file-earmark-word"></i>
+                            </div>
+                            <h5 class="card-title">Formato MS Word</h5>
+                            <p class="card-text">Español</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Formato MS Word Inglés -->
+            <div class="col-md-6 mb-4">
+                <a href="{% static 'docs/JMZS-2024-eng.docx' %}" download class="text-decoration-none">
+                    <div id="red-pastel-card" class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="circle-icon bg-danger text-white mb-3">
+                                <i class="bi bi-file-earmark-word"></i>
+                            </div>
+                            <h5 class="card-title">Formato MS Word</h5>
+                            <p class="card-text">Inglés</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-12 mb-4">
+                <a href="{% static 'docs/formato_poster.zip' %}" download class="text-decoration-none">
+                    <div id="green-pastel-card" class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="circle-icon bg-success text-white mb-3">
+                                <i class="bi bi-file-earmark-check"></i>
+                            </div>
+                            <h5 class="card-title">Formato Póster LaTex</h5>
+                            <p class="card-text">Use el formato LaTeX propuesto para pósteres (o similares), manteniendo tamaños y formas. 
+                                En caso de usar este formato, no olvides compilar con LuaLaTeX.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Mensaje de preferencia por LaTeX -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="alert alert-warning text-center">
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+                <strong>Se recomienda utilizar el formato LaTeX</strong> para garantizar la consistencia y correcta visualización del resumen, ya que el formato MS Word puede desconfigurarse dependiendo del sistema operativo y la versión del software utilizada.
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

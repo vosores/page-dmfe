@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load text_extras %}
+    <!-- Google tag (gtag.js) -->
+    {% if not debug %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R1451XW16W"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-R1451XW16W');
+        </script>
+    {% endif %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ingeniería Matemática 2025{% endblock %} – Ingeniería Matemática UCM</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light">
+        <div class="container-fluid">
+          <!-- Botón toggler para dispositivos móviles -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDirectos" aria-controls="navbarDirectos" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Menú colapsable -->
+          <div class="collapse navbar-collapse" id="navbarDirectos">
+            <ul class="navbar-nav w-100 justify-content-around">
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://anid.cl/concursos/">Concursos ANID</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://somachi.cl/">SOMACHI</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://jmzs2025.ucm.cl/">JMZS 2025 UCM</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://lms.ucm.cl/login/index.php">UCM Virtual</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://portalalumnos.ucm.cl/v2/index.php/login">Portal del estudiante</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://intranet.ucm.cl/#/inicio">Intranet UCM</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://sapprd.ucm.cl/">SAP UCM</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://portal.ucm.cl/facultades/facultad-ciencias-basicas">Facultad de Ciencias Básicas</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://sibib.ucm.cl/">SIBIB UCM</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://www.dm2a.org/">DM2A</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="https://www.refninja.org/">RefNinja</a>
+              </li>
+              <li class="nav-item">
+                <a class="custom-nav-link" href="{% url 'calendario' %}">Reservas FCB</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>      
+      
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #00a0dd;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'portada_ima' %}">
+                <img src="{% static 'images/logo_IMA.png' %}" alt="Logo Ingeniería Matemática UCM" class="navbar-logo me-2">
+                <strong>Ingeniería<br> Matemática <br> UCM</strong>
+            </a>            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="portadaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-house"></i> Portada
+                            <!-- <i class="icon bi-chevron-down"></i> -->
+                        </a>                        
+                        <ul class="dropdown-menu" aria-labelledby="portadaDropdown">
+                            <li><a class="dropdown-item" href="{% url 'portada_ima' %}">Bienvenida</a></li>
+                            <li><a class="dropdown-item" href="{% url 'portada_ima' %}#destacados">Actividades Destacadas</a></li>
+                            <!-- <li><a class="dropdown-item" href="{% url 'portada' %}#fechas-importantes">Fechas Importantes</a></li> -->
+                            <li><a class="dropdown-item" href="{% url 'portada_ima' %}#ubicacion">Ubicación y Contacto</a></li>
+                            <!-- <li><a class="dropdown-item" href="{% url 'portada' %}#patrocinadores">Patrocinadores</a></li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="comiteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Comités
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="comiteDropdown">
+                            <li><a class="dropdown-item" href="{% url 'comites' %}">Comités</a></li>
+                            <li><a class="dropdown-item" href="{% url 'comites' %}#comite-cientifico">Comité Curricular</a></li>
+                            <li><a class="dropdown-item" href="{% url 'comites' %}#comite-organizador">Comité de Calidad</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="comiteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Estudiantes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="comiteDropdown">
+                            <li><a class="dropdown-item" href="{% url 'malla_ima' %}">Matriz Curricular</a></li>
+                            <li><a class="dropdown-item" href="{% url 'representantes_estudiantiles' %}">Representantes Estudiantiles</a></li>
+                            <li><a class="dropdown-item" href="{% url 'ima' %}">Ingeniería Matemática</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_academicos' %}">Académicos</a>
+                    </li> -->
+
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPregrado" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pregrado
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPregrado">
+                            {% for escuela in escuelas_mate %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'academicos_por_escuela' escuela.slug %}">
+                                        {{ escuela.nombre }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li> -->
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEscuelas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Académicos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownEscuelas">
+                            {% for escuela in escuelas %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'academicos_por_escuela' escuela.slug %}">
+                                        {{ escuela.nombre }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li> -->
+
+
+
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPostgrados" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Postgrados
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPostgrados">
+                            {% for programa in programas %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'academicos_por_postgrado' programa.slug %}">
+                                        {{ programa.nombre }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li> -->
+
+                    <li class="nav-item">
+                        <a class="btn btn-warning text-uppercase" href="{% url 'material' %}">MATERIAL Y APUNTES</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-outline-light dropdown-toggle ms-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Mi Cuenta
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                {% if user.academico %}
+                                    <li><a class="dropdown-item text-white" href="{% url 'detalle_academico' slug=user.academico.slug %}">Ver perfil</a></li>
+                                    <li><a class="dropdown-item text-white" href="{% url 'editar_academico' %}">Editar perfil</a></li>
+                                {% endif %}
+                                {% if user.academico %}
+                                    <li><a class="dropdown-item text-white" href="{% url 'crear_aviso' slug=user.academico.slug %}">Crear aviso</a></li>
+                                    {% if user.academico|tiene_cargo:"Director(a) de Departamento" %}
+                                        <li><a class="dropdown-item text-white" href="{% url 'lista_avisos' %}">Ver todos los avisos</a></li>
+                                    {% endif %}
+                                {% endif %}
+                                <li><a class="dropdown-item text-white" href="{% url 'password_change' %}">Cambiar contraseña</a></li>
+                                {% if user.academico %}    
+                                    <li><a class="dropdown-item text-white" href="{% url 'material_apuntes' %}">Subir material</a></li>
+                                {% endif %}
+                                {% if user.is_superuser %}
+                                    <li><a class="dropdown-item text-white" href="/admin/">Administrar</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item text-white" href="{% url 'logout' %}">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light dropdown-toggle ms-0" href="{% url 'login' %}">Iniciar sesión</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% if request.resolver_match.url_name == "pagina_escuela" %}
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Imagen 1 -->
+                <div class="carousel-item active">
+                    <img src="{% static 'images/facultad.jpeg' %}" class="d-block w-100" alt="Imagen 1">
+                </div>
+                <!-- Imagen 2 -->
+                <div class="carousel-item">
+                    <img src="{% static 'images/ucm.jpg' %}" class="d-block w-100" alt="Imagen 2">
+                </div>
+                <!-- Imagen 3 -->
+                <div class="carousel-item">
+                    <img src="{% static 'images/ucm.jpg' %}" class="d-block w-100" alt="Imagen 3">
+                </div>
+            </div>
+        
+            <!-- Botón Anterior -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            
+            <!-- Botón Siguiente -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        
+            <!-- Jumbotron superpuesto -->
+            <div class="jumbotron-overlay">
+                <div class="container text-center">
+                    <h1 class="display-4 text-white">Escuela de Ingeniería Matemática (IMA)</h1>
+                    <p class="lead text-white">Facultad de Ciencias Básicas, Departamento de Matemática, Física y Estadística, Universidad Católica del Maule</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+
+    <!-- <div style="background-color: #ffc107; color: #000; padding: 15px; text-align: center; font-size: 16px;">
+        <strong>Nota importante:</strong> Estamos en proceso de migración para mejorar la experiencia. Es posible que experimentes interrupciones temporales. ¡Gracias por tu comprensión!
+    </div> -->
+
+    <!-- Main Content -->
+    {% if messages %}
+    <div class="container mt-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="container mt-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="share-section">
+        <!-- Pestaña visible -->
+        <div class="share-tab">
+            <i class="bi bi-facebook mb-3" style="color: #3b5998;"></i> <!-- Facebook -->
+            <i class="bi bi-twitter mb-3" style="color: #1da1f2;"></i> <!-- Twitter -->
+            <i class="bi bi-linkedin mb-3" style="color: #0077b5;"></i> <!-- LinkedIn -->
+            <!-- <i class="bi bi-instagram mb-3" style="color: #e4405f;"></i> -->
+        </div>
+
+    
+        <!-- Contenido de la barra de compartir -->
+        <div class="share-content">
+            <h2 class="text-center"><strong>Comparte IMA <span style="color: red;">❤</span></strong></h2>
+            <p class="text-center">
+                Invita a tus compañeros y a la comunidad a conocer la página de la carrera de Ingeniería Matemática. ¡Comparte y difunde!
+            </p>
+            <div class="share-options">
+                <!-- Facebook -->
+                <div class="share-item">
+                    <i class="bi bi-facebook" style="color: #3b5998; font-size: 24px; margin-right: 10px;"></i>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://imaucm.pythonanywhere.com/&quote=¡Comparte%20la%20página%20de%20la%20Carrera%20de%20Ingeniería%20Matemática!"
+                        target="_blank" 
+                        style="text-decoration: none; font-weight: bold; color: #3b5998;">
+                        Compartir en Facebook
+                    </a>                 
+                </div>
+            
+                <!-- Twitter -->
+                <div class="share-item">
+                    <i class="bi bi-twitter" style="color: #1da1f2; font-size: 24px; margin-right: 10px;"></i>
+                    <a href="https://x.com/intent/tweet?url=https://imaucm.pythonanywhere.com/&text=%C2%A1Comparte%20la%20p%C3%A1gina%20de%20la%20Carrera%20de%20Ingenier%C3%ADa%20Matem%C3%A1tica!"
+                    target="_blank" 
+                    style="text-decoration: none; font-weight: bold; color: #1da1f2;">
+                     Compartir en X
+                    </a>                 
+                </div>
+            
+                <!-- LinkedIn -->
+                <div class="share-item">
+                    <i class="bi bi-linkedin" style="color: #0077b5; font-size: 24px; margin-right: 10px;"></i>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://imaucm.pythonanywhere.com/&title=Carrera%20de%20Ingenier%C3%ADa%20Matem%C3%A1tica&summary=%C2%A1Comparte%20la%20p%C3%A1gina%20de%20la%20Carrera%20de%20Ingenier%C3%ADa%20Matem%C3%A1tica!&source=https://imaucm.pythonanywhere.com/"
+                        target="_blank" 
+                        style="text-decoration: none; font-weight: bold; color: #0077b5;">
+                        Compartir en LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>                  
+    </div>
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Logo de la Universidad -->
+                    <div class="col-md-4 text-center">
+                        <img src="{% static 'images/UCM-Vertical.png' %}" alt="Logo UCM" style="max-width: 50%; height: auto;">
+                    </div>
+    
+                    <!-- Direcciones -->
+                    <div class="col-md-4 text-center">
+                        <p><strong>Campus San Miguel</strong><br>
+                        Avenida San Miguel 3605, Talca<br>
+                        Teléfono: +56 71 298 6000</p>
+                    </div>
+    
+                    <!-- Información del evento -->
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="{% static 'images/logo_IMA.png' %}" alt="Logo del Evento" class="navbar-logo me-3">
+                            <div style="text-align: left;">
+                                <strong>INGENIERÍA</strong><br>
+                                <strong>MATEMÁTICA</strong><br>
+                                <strong>UCM</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                Con ❤️ por <a href="mailto:vosores@ucm.cl" class="text-decoration-none">vosores</a> © 2025 🚀.
+            </div>
+        </div>
+    </footer>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.nav-item.dropdown').forEach(function (dropdown) {
+            dropdown.addEventListener('mouseenter', function () {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                const bootstrapDropdown = new bootstrap.Dropdown(dropdownMenu);
+                bootstrapDropdown.show();
+            });
+    
+            dropdown.addEventListener('mouseleave', function () {
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                const bootstrapDropdown = new bootstrap.Dropdown(dropdownMenu);
+                bootstrapDropdown.hide();
+            });
+        });
+    </script> 
+    {% block extra_scripts %}{% endblock %}   
+</body>
+<!-- <script src="{% static 'js/search.js' %}"></script> -->
+</html>
+
+

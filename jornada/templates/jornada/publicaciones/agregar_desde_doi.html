@@ -1,0 +1,18 @@
+{% extends 'jornada/base.html' %}
+{% block title %}Agregar publicación{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2>Agregar publicación mediante DOI</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="doi" class="form-label">DOI:</label>
+      <input type="text" name="doi" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+  {% if error %}
+    <div class="alert alert-danger mt-3">{{ error }}</div>
+  {% endif %}
+</div>
+{% endblock %}

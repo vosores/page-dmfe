@@ -1,0 +1,15 @@
+{% extends 'jornada/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h3>Agregar publicación desde DOI</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="doi" class="form-label">DOI:</label>
+            <input type="text" name="doi" id="doi" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar y agregar</button>
+        <a href="{% url 'detalle_academico' academico.slug %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

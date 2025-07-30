@@ -1,0 +1,43 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Publicar Material{% endblock %}
+
+{% block content %}
+
+<!-- Encabezado -->
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Publicar Archivo</h2>
+                <p class="lead">
+                    Selecciona la asignatura donde quieres publicar el archivo.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección del formulario -->
+<section id="publicar-material" class="py-4">
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>{{ archivo.titulo }}</h5>
+                <p>Subido por <strong>{{ archivo.academico.nombre }}</strong></p>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-success">Publicar</button>
+                    <a href="{% url 'material_apuntes' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

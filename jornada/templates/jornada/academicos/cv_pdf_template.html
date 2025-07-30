@@ -1,0 +1,163 @@
+{% load text_extras %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Currículum Vitae de {{ academico.nombre }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+            @bottom-center {
+                content: "Página " counter(page) " de " counter(pages);
+                font-size: 9pt;
+                color: #888;
+            }
+        }
+
+        body {
+            font-family: 'DejaVu Serif', serif;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 11pt;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 20pt;
+            margin-bottom: 0;
+        }
+
+        h4 {
+            font-size: 14pt;
+            margin-top: 6mm;
+            margin-bottom: 3mm;
+            color: #0d3b66;
+        }
+
+        h5 {
+            font-size: 12pt;
+            margin-top: 4mm;
+            margin-bottom: 2mm;
+            color: #144b84;
+        }
+
+        .section {
+            margin-top: 12mm;
+            margin-bottom: 10mm;
+        }
+
+        ul {
+            padding-left: 5mm;
+            margin-top: 2mm;
+        }
+
+        li {
+            margin-bottom: 2mm;
+        }
+
+        .small-muted {
+            color: #666;
+            font-size: 10pt;
+        }
+
+        a {
+            color: #0d47a1;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            border-bottom: 1px solid #aaa;
+            margin-bottom: 10mm;
+            padding-bottom: 5mm;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>{{ academico.nombre }}</h2>
+        <p style="margin: 0; font-size: 10pt;">{{ academico.especialidad }}</p>
+    </header>
+
+    <div class="section">
+        <h4>Información Personal</h4>
+        <ul>
+            <li><strong>Email:</strong> {{ academico.email }}</li>
+            {% if academico.sitio_web %}<li><strong>Sitio web:</strong> {{ academico.sitio_web }}</li>{% endif %}
+        </ul>
+    </div>
+
+    {% if academico.biografia %}
+    <div class="section">
+        <h4>Biografía</h4>
+        <p>{{ academico.biografia }}</p>
+    </div>
+    {% endif %}
+
+    {% if academico.lineas_investigacion %}
+    <div class="section">
+        <h4>Líneas de Investigación</h4>
+        {{ academico.lineas_investigacion|ulify|safe }}
+    </div>
+    {% endif %}
+
+    <div class="section">
+        <h4>Trabajos Científicos</h4>
+        {% for grupo, publicaciones in publicaciones_agrupadas %}
+            {% if publicaciones %}
+            <h5>{{ grupo }}</h5>
+            <ul>
+                {% for pub in publicaciones %}
+                <li>
+                    <strong>{{ pub.titulo }}</strong><br>
+                    <small><em>
+                        {% with academico.nombre as nombre_actual %}
+                        {% for autor in pub.autores|split:"," %}
+                            {% if nombre_actual in autor %}<strong>{{ autor|strip }}</strong>{% else %}{{ autor|strip }}{% endif %}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                    </em></small><br>
+                    {% if pub.revista %}<span class="small-muted">{{ pub.revista }}, {{ pub.anio }}</span>{% else %}<span class="small-muted">{{ pub.anio }}</span>{% endif %}
+                    {% if pub.doi %} – <a href="https://doi.org/{{ pub.doi }}">DOI</a>{% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if academico.proyectos_investigacion_actuales or academico.proyectos_investigacion_pasados %}
+    <div class="section">
+        <h4>Proyectos de Investigación</h4>
+        {% if academico.proyectos_investigacion_actuales %}
+        <h5>Actuales</h5>
+        {{ academico.proyectos_investigacion_actuales|olify_reversed|safe }}
+        {% endif %}
+        {% if academico.proyectos_investigacion_pasados %}
+        <h5>Pasados</h5>
+        {{ academico.proyectos_investigacion_pasados|olify_reversed|safe }}
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if academico.actividades_curriculares %}
+    <div class="section">
+        <h4>Actividades Curriculares</h4>
+        <p>Ha dictado cátedra de las siguientes actividades:</p>
+        {{ academico.actividades_curriculares|ulify|safe }}
+    </div>
+    {% endif %}
+
+    {% if academico.otros_interes %}
+    <div class="section">
+        <h4>Otros de Interés</h4>
+        {{ academico.otros_interes|safe }}
+    </div>
+    {% endif %}
+</body>
+</html>

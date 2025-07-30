@@ -1,0 +1,121 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Subir Material{% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Subir material y apuntes (IMA)</h2>
+                <p class="lead">Puedes subir un archivo o proporcionar un enlace.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="subir-material" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <!-- SECCIÓN (Opcional) -->
+                            <div class="mb-3 row">
+                                <label for="{{ form.seccion.id_for_label }}" class="col-sm-3 col-form-label">
+                                    Nombre de sección:
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ form.seccion }}
+                                    {% if form.seccion.help_text %}
+                                        <small class="text-muted d-block">{{ form.seccion.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in form.seccion.errors %}
+                                        <small class="text-danger d-block">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- TÍTULO -->
+                            <div class="mb-3 row">
+                                <label for="{{ form.titulo.id_for_label }}" class="col-sm-3 col-form-label">
+                                    Título:
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ form.titulo }}
+                                    {% if form.titulo.help_text %}
+                                        <small class="text-muted d-block">{{ form.titulo.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in form.titulo.errors %}
+                                        <small class="text-danger d-block">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- ARCHIVO (Opcional) -->
+                            <div class="mb-3 row">
+                                <label for="{{ form.archivo.id_for_label }}" class="col-sm-3 col-form-label">
+                                    Archivo:
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ form.archivo }}
+                                    {% if form.archivo.help_text %}
+                                        <small class="text-muted d-block">{{ form.archivo.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in form.archivo.errors %}
+                                        <small class="text-danger d-block">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- ENLACE (Opcional) -->
+                            <div class="mb-3 row">
+                                <label for="{{ form.link.id_for_label }}" class="col-sm-3 col-form-label">
+                                    Enlace:
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ form.link }}
+                                    {% if form.link.help_text %}
+                                        <small class="text-muted d-block">{{ form.link.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in form.link.errors %}
+                                        <small class="text-danger d-block">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            
+                            <!-- DESCRIPCIÓN (Opcional) -->
+                            <div class="mb-3 row">
+                                <label for="{{ form.descripcion.id_for_label }}" class="col-sm-3 col-form-label">
+                                    Descripción:
+                                </label>
+                                <div class="col-sm-9">
+                                    {{ form.descripcion }}
+                                    {% if form.descripcion.help_text %}
+                                        <small class="text-muted d-block">{{ form.descripcion.help_text }}</small>
+                                    {% endif %}
+                                    {% for error in form.descripcion.errors %}
+                                        <small class="text-danger d-block">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <!-- BOTONES -->
+                            <div class="d-flex justify-content-center gap-3 mt-3">
+                                <button type="submit" class="btn btn-primary">Subir</button>
+                                <a href="{% url 'material_apuntes' %}" class="btn btn-secondary">Volver</a>
+                            </div>
+
+                        </form>
+                    </div><!-- card-body -->
+                </div><!-- card -->
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section>
+{% endblock %}

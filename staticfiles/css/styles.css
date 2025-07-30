@@ -1,0 +1,1069 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e7f0fa;
+    color: #333;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+  }
+
+.text-justify {
+    text-align: justify;
+    hyphens: auto; /* Permite dividir palabras si es necesario */
+}
+
+/* Header General */
+header {
+    background-color: #253e85; /* Azul llamativo */
+    color: #fff;
+    padding: 15px 20px;
+}
+
+header a.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+header .nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1rem;
+}
+
+
+/* Navbar específica para el diseño de la Jornada */
+.navbar-light.bg-light {
+    background-color: #253e85 !important; /* Azul profundo */
+    color: white;
+}
+
+.navbar-light .navbar-brand {
+    color: #ffffff !important; /* Blanco */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff !important; /* Blanco */
+    font-size: 0.9rem;
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: 500;
+}
+
+
+.navbar-light .dropdown-menu {
+    background-color: #253e85; /* Fondo azul oscuro */
+    border: none; /* Sin bordes */
+}
+
+.navbar-light .dropdown-item {
+    color: #ffffff; /* Texto blanco */
+}
+
+
+.navbar-light .navbar-toggler {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Elimina el borde */
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 40px; /* Ajusta el ancho */
+    height: 40px; /* Ajusta el alto */
+    background-size: contain; /* Asegura que la imagen encaje */
+    background-repeat: no-repeat; /* Evita repeticiones */
+    background-position: center; /* Centra la imagen */
+}
+
+
+/* Estilo para el logo en la navbar */
+.navbar-logo {
+    height: 78px; /* Ajusta la altura del logo */
+    width: auto; /* Mantiene la proporción */
+    border-radius: 5px; /* Bordes redondeados opcionales */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s ease-in-out; /* Efecto al pasar el mouse */
+}
+
+.navbar-logo:hover {
+    transform: scale(1.1); /* Aumenta ligeramente al pasar el mouse */
+}
+
+
+/* estilo barras*/
+
+/* Footer */
+footer {
+    background-color: #253e85;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+} */
+
+.card:hover {
+    background-color: #e7f0fa; /* Cambia el fondo al color deseado al pasar el cursor */
+    transition: background-color 0.3s ease; /* Suaviza la transición */
+}
+
+.card h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: #253e85; /* Azul llamativo */
+}
+
+.card-danger {
+    color: #d9534f; /* Rojo */
+}
+
+.card-danger:hover i {
+    color: #c9302c;
+}
+
+/* Rows */
+.row {
+    margin-top: 40px;
+}
+
+.row .col-md-4 {
+    margin-bottom: 20px;
+}
+
+/* Button Links */
+.navbar-toggler {
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/*drop boton*/
+.dropdown-menu {
+    background-color: #253e85; /* Fondo azul */
+    color: #fff; /* Texto blanco */
+    border: none;
+    border-radius: 5px;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #fff; /* Texto blanco */
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #253e85; /* Fondo más oscuro al pasar el mouse */
+    /*color: #ffe600; /* Texto amarillo */
+}
+
+.nav-link i {
+    margin-left: 5px;
+    font-size: 0.8rem;
+}
+
+/* Abrir el menú desplegable al pasar el mouse */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block; /* Hace visible el menú */
+    margin-top: 0; /* Asegura que el menú esté alineado correctamente */
+}
+
+/* Transición suave para la apertura del menú */
+.dropdown-menu {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+section {
+    padding: 60px 20px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+section h2 {
+    color: #253e85;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+/*Fin boton drop*/
+
+/*Figura encabezado*/
+#home {
+    background-color: #e7f0fa; /* Color de fondo opcional */
+    padding: 0 0; /* Espaciado superior e inferior */
+}
+.jumbotron-bg {
+    position: relative;
+    background: url('../images/facultad.jpeg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 150px 20px; /* Aumentado el padding superior e inferior */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: 500px; /* Establece una altura mínima */
+}
+
+
+
+.jumbotron-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Negro semitransparente */
+    z-index: 1;
+    border-radius: 8px; /* Igual que la Jumbotron */
+}
+
+.jumbotron-bg h1, .jumbotron-bg p {
+    position: relative;
+    z-index: 2; /* Asegura que el texto esté encima de la superposición */
+}
+
+/*fin*/
+
+/*Patrocinadores*/
+#patrocinadores {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 50px 0;
+}
+
+#patrocinadores h2 {
+    color: #253e85; /* Color llamativo para el título */
+    font-weight: bold;
+}
+
+.patrocinador-logo {
+    max-width: 100%; /* Asegura que las imágenes no se desborden */
+    max-height: 100px; /* Establece una altura máxima uniforme */
+    width: auto; /* Mantiene las proporciones originales */
+    height: auto; /* Asegura que no se deforme */
+    margin: 0 auto; /* Centra las imágenes horizontalmente */
+    display: block; /* Garantiza el centrado */
+    filter: grayscale(100%); /* Imágenes en blanco y negro inicialmente */
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out; /* Animación */
+    object-fit: contain; /* Asegura que las imágenes no se recorten ni deformen */
+}
+
+.patrocinador-logo:hover {
+    filter: grayscale(0); /* Color al pasar el mouse */
+    transform: scale(1.1); /* Efecto de zoom */
+}
+
+/*fin patrocinadores*/
+
+
+/*Bienvenida*/
+#bienvenida {
+    background-color: #f8f9fa; /* Fondo suave para la sección */
+    padding: 50px 10;
+}
+
+#bienvenida .container {
+    background-color: #f8f9fa; /* Fondo blanco para el bloque interno */
+    border-radius: 10px; /* Bordes ligeramente redondeados */
+    overflow: hidden; /* Para que la imagen se ajuste al contenedor */
+}
+
+#bienvenida h2 {
+    font-size: 1.8rem; /* Tamaño del título */
+    font-weight: bold;
+    color: #333; /* Color oscuro elegante */
+}
+
+#bienvenida p {
+    font-size: 1rem; /* Tamaño legible */
+    line-height: 1.6; /* Espaciado entre líneas */
+    color: #555; /* Color gris oscuro */
+}
+
+#bienvenida img {
+    height: 100%; /* Asegura que la imagen ocupe toda la altura */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+}
+
+/*Fin bienvenida*/
+
+/* Sección de Timeline */
+#fechas-importantes {
+    background-color: #f8f9fa; /* Fondo gris claro */
+    padding: 50px 0;
+}
+
+#fechas-importantes h2 {
+    font-weight: bold;
+    color: #253e85; /* Azul llamativo */
+    margin-bottom: 30px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: #253e85;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Timeline Item */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0px;
+}
+
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
+    /* transform: translateY(-40%); */
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #253e85;
+    border: 3px solid #fff;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.timeline-item.left::before {
+    left: 100%;
+}
+
+.timeline-item.right::before {
+    left: 0;
+}
+
+/* Timeline Content */
+.timeline-content {
+    position: relative;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.timeline-item.left .timeline-content {
+    margin-right: 20px;
+}
+
+.timeline-item.right .timeline-content {
+    margin-left: 20px;
+}
+
+.timeline-content h4 {
+    margin: 0 0 5px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.timeline-content h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.timeline-content p {
+    margin: 0 0 10px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.timeline-content a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.timeline-content a:hover {
+    text-decoration: underline;
+}
+
+
+/* Sección de Ubicación */
+#ubicacion {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 50px 0;
+}
+
+#ubicacion h2 {
+    font-weight: bold;
+    color: #253e85; /* Azul llamativo */
+    margin-bottom: 30px;
+}
+
+/* Contenedor del Mapa */
+.map-container {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Contenedor de Información */
+.info-container {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.info-container h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.info-container p {
+    color: #555;
+    font-size: 1rem;
+}
+
+.info-container ul {
+    padding: 0;
+    list-style: none;
+}
+
+.info-container ul li {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #555;
+}
+
+.info-container ul li i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.info-container a.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+/* Contenedor General de las etiquetas*/
+#event-highlights {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 0px 0;
+}
+
+#event-highlights h2 {
+    font-weight: bold;
+    color: #253e85; /* Azul llamativo */
+    margin-bottom: 30px;
+}
+
+#destacados {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 0px 0;
+}
+
+#destacados h2 {
+    font-weight: bold;
+    color: #253e85; /* Azul llamativo */
+    margin-bottom: 30px;
+}
+
+
+
+/* Tarjetas Destacadas */
+/* Tarjetas Destacadas */
+.highlight-card {
+    background: #ffffff; /* Fondo blanco */
+    border-radius: 12px; /* Bordes redondeados */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Animaciones */
+    cursor: pointer; /* Cambia el cursor a pointer */
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta ligeramente */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Agrega una sombra más marcada */
+    border-color: #007bff; /* Cambia el color del borde al pasar el mouse */
+}
+
+.highlight-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem; /* Tamaño del ícono más grande */
+    margin: 0 auto;
+    background-color: #17a2b8; /* Azul claro (Bootstrap info) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.highlight-card:hover .highlight-icon {
+    background-color: #00A0DF; /* Azul más oscuro al pasar el mouse */
+    transform: scale(1.1); /* Efecto de zoom en el ícono */
+}
+
+/* Títulos */
+.highlight-card h4 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Texto */
+.highlight-card p {
+    color: #6c757d; /* Gris tenue */
+    font-size: 1rem;
+}
+
+
+/* Colores */
+.bg-primary {
+    background-color: #253e85; /* Azul */
+}
+
+.bg-success {
+    background-color: #28a745; /* Verde */
+}
+
+.bg-warning {
+    background-color: #ffc107; /* Amarillo */
+}
+
+.bg-danger {
+    background-color: #dc3545; /* Rojo */
+}
+
+.bg-info {
+    background-color: #17a2b8; /* Azul claro */
+}
+
+.bg-dark {
+    background-color: #343a40; /* Negro */
+}
+
+.bg-institucional {
+    background-color: #00A0DF; /* celestes inst */
+}
+
+.border-successinst {
+    border-color: #00A0DF !important;
+}
+
+.text-successinst {
+    color: #00A0DF;
+}
+
+
+
+/* Contenedor principal de la barra */
+.donation-section {
+    position: fixed;
+    top: 50%;
+    right: -200px; /* Oculta la barra fuera del borde derecho */
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px 0 0 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    z-index: 1000;
+    text-align: center;
+    transition: right 0.3s ease; /* Animación de desplazamiento */
+}
+
+/* Sección de Compartir */
+.share-section {
+    position: fixed;
+    top: 50%; /* Centrado verticalmente */
+    right: 0; /* Posicionado en la derecha */
+    transform: translateY(-50%);
+    width: 300px; /* Ancho total cuando se expande */
+    height: auto;
+    background-color: #f9f9f9; /* Fondo claro */
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Animación al mostrar/ocultar */
+    transform: translateX(100%); /* Ocultar por completo fuera de la pantalla */
+    z-index: 1000;
+}
+
+.share-section:hover {
+    transform: translateX(0); /* Muestra la pestaña al pasar el mouse */
+}
+
+/* Contenido de compartir */
+.share-content {
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.share-section:hover .share-content {
+    opacity: 1; /* Muestra el contenido al pasar el mouse */
+}
+
+.share-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Pestaña visible */
+.share-tab {
+    position: absolute;
+    top: 50%;
+    left: -50px; /* Posiciona la pestaña fuera del contenedor */
+    transform: translateY(-50%);
+    width: 50px;
+    background-color: #e7f0fa; /* Azul institucional */
+    color: white;
+    text-align: center;
+    padding: 10px 5px; /* Espaciado interno */
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Alinea los íconos en vertical */
+    align-items: center; /* Centra los íconos horizontalmente */
+    gap: 10px; /* Espacio entre los íconos */
+}
+
+.share-tab:hover {
+    background-color: #003a8c; /* Cambia el color al pasar el mouse */
+}
+
+.share-tab i {
+    font-size: 20px; /* Tamaño de los íconos */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Efecto de animación */
+}
+
+.share-tab i:hover {
+    transform: scale(1.2); /* Aumenta ligeramente el tamaño del ícono al pasar el mouse */
+    color: #fff; /* Cambia el color al pasar el mouse */
+}
+
+.share-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Espacio entre cada opción */
+}
+
+.share-item i {
+    font-size: 24px; /* Tamaño del ícono */
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out; /* Animaciones */
+}
+
+.share-item a {
+    font-weight: bold;
+    font-size: 16px; /* Tamaño del texto */
+    text-decoration: none;
+    color: #3b5998; /* Color de Facebook */
+    transition: color 0.2s ease-in-out; /* Animación de color */
+}
+
+.share-item i:hover,
+.share-item a:hover {
+    color: #003a8c; /* Cambia el color al pasar el mouse */
+    transform: scale(1.1); /* Efecto de zoom */
+}
+
+.intro-section {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.card-body p, .card-body ul, .card-body ol {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+}
+
+#search-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+#blue-pastel-card {
+    background-color: #d6e9f5; /* Azul pastel */
+    border: none; /* Elimina el borde */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+#blue-pastel-card .circle-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    margin: 0 auto 15px auto;
+    font-size: 1.5rem;
+}
+
+#red-pastel-card {
+    background-color: #f8d7da; /* Rojo pastel */
+    border: none; /* Elimina el borde */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+#red-pastel-card .circle-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dc3545; /* Rojo principal */
+    color: white;
+    margin: 0 auto 15px auto;
+    font-size: 1.5rem;
+}
+
+#green-pastel-card {
+    background-color: #d4edda; /* Verde pastel */
+    border: none;
+}
+#green-pastel-card .circle-icon {
+    background-color: #28a745; /* Verde fuerte */
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.modal-body h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.modal-body p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.modal-body ol {
+    padding-left: 20px;
+}
+
+.modal-body ol li {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* Corrige el problema del ícono sobre el select */
+
+
+/* Quitar el ícono del select */
+.dataTables_length select {
+    appearance: none; /* Para navegadores modernos */
+    -webkit-appearance: none; /* Para navegadores basados en WebKit */
+    -moz-appearance: none; /* Para Firefox */
+    background: none; /* Elimina cualquier fondo predeterminado */
+    padding-right: 10px; /* Ajusta el padding si es necesario */
+}
+
+.custom-list {
+    list-style-type: none; /* Elimina la numeración predeterminada */
+    padding: 0;
+    margin: 0;
+}
+
+.custom-list > li {
+    position: relative; /* Permite posicionar el pseudo-elemento */
+    padding-left: 30px; /* Espacio para el número personalizado */
+}
+
+.custom-list > li::before {
+    content: "[" counter(custom-counter) "]"; /* Formato personalizado */
+    counter-increment: custom-counter; /* Incrementa el contador */
+    position: absolute;
+    left: 0;
+    color: #333; /* Color de los números */
+    /* font-weight: bold; */
+}
+
+/* Inicializa el contador */
+.custom-list {
+    counter-reset: custom-counter; /* Reinicia el contador */
+}
+
+/* reverse list*/
+.reverse-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin: 0;
+  }
+  .reverse-list li {
+    background-color: #f2f2f2;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+.card-img-top {
+width: 100%;
+height: 350px; /* Ajusta la altura según lo que necesites */
+object-fit: cover;
+}
+
+.malla {
+    width: 95vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+.subject-box {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    background-color: #00a0dd !important;
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem !important;
+    min-width: 100px; /* Por ejemplo, para que tenga al menos 100px de alto */
+    min-height: 130px;
+  }
+
+.subject-box.bg-white {
+    background-color: #f8f9fa !important;
+  }
+  
+
+.year-header {
+    background-color: #00a0dd !important;
+    color: #fff;
+    font-size: 0.9rem !important;
+}
+  
+/*nav inicial*/
+/* Estilos personalizados para la navegación */
+.custom-nav-link {
+    text-decoration: none !important;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    display: flex; /* Permite centrar verticalmente */
+    align-items: center; /* Centra el texto dentro del recuadro */
+    height: 100%; /* Ocupa toda la altura de la barra de navegación */
+    color: inherit !important; /* Mantiene el color original del texto */
+}
+
+/* Estilo al pasar el mouse */
+.custom-nav-link:hover {
+    background-color: #00a0dd; /* Fondo naranja */
+    color: inherit !important; /* Mantiene el color original del texto */
+}
+
+/*Carousel*/
+/* Ajuste global para todas las imágenes */
+#carouselExample .carousel-item img {
+    width: 100%;
+    max-height: 400px; /* Ajusta la altura según lo necesites */
+    object-fit: cover; /* Mantiene la proporción y recorta lo necesario */
+}
+
+/* Ajustes específicos para cada imagen */
+
+/* Imagen 1 - Mostrar la parte superior */
+#carouselExample .carousel-item:nth-child(1) img {
+    object-position: center 25%;
+}
+
+/* Imagen 2 - Mostrar el centro */
+#carouselExample .carousel-item:nth-child(2) img {
+    object-position: center 0%;
+}
+
+/* Imagen 3 - Mostrar la parte inferior */
+#carouselExample .carousel-item:nth-child(3) img {
+    object-position: center 65%;
+}
+
+/* Ajuste del carrusel */
+#carouselExample {
+    position: relative;
+}
+
+/* Jumbotron superpuesto */
+.jumbotron-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Oscurece la imagen para mejorar la visibilidad del texto */
+}
+
+/* Texto del jumbotron */
+.jumbotron-overlay h1, .jumbotron-overlay p {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mayor contraste */
+}
+
+
+/* #titulos_ac {
+    background-color: #f8f8f8;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='86' viewBox='0 0 100 86' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25,1 L75,1 L100,43 L75,85 L25,85 L0,43 Z' fill='%23dddddd' stroke='%23000000' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 40px 35px;
+} */
+
+#titulos_ac {
+    position: relative;
+}
+
+/* Fondo con opacidad */
+#titulos_ac::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/titulos-bgb.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+    z-index: 1;
+}
+
+/* Mantener el contenido en primer plano */
+#titulos_ac > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Icono en la esquina superior izquierda */
+#titulos_ac::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;  /* Ajusta el tamaño del icono */
+    height: 80px;
+    background-image: url("../images/logo_IMA_circ.png"); /* Reemplaza con la ruta correcta */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 3; /* Asegura que esté por encima */
+}
+
+
+
+
+
+
+

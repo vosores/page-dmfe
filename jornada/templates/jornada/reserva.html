@@ -1,0 +1,173 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Reserva de salas de la FCB - Ingeniería Matemática{% endblock %}
+{% block content %}
+
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Reserva de salas de la FCB - Ingeniería Matemática</h2>
+                <p class="lead">
+                    Aquí puedes realizar reservas para las salas de la FCB directamente desde esta página.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="formulario-reserva" class="py-5">
+    <div class="container">
+        <form id="reservaForm" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título de la reserva">
+            </div>
+            <div class="mb-3">
+                <label for="sala" class="form-label">Sala</label>
+                <select class="form-select" id="sala" name="sala">
+                    {% for sala in salas %}
+                        <option value="{{ sala.id }}">{{ sala.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="hora_inicio" class="form-label">Hora de inicio</label>
+                <input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
+            </div>
+            <div class="mb-3">
+                <label for="hora_fin" class="form-label">Hora de fin</label>
+                <input type="time" class="form-control" id="hora_fin" name="hora_fin">
+            </div>
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha" name="fecha">
+            </div>
+            <div class="mb-3">
+                <label for="frecuencia" class="form-label">Frecuencia</label>
+                <select class="form-select" id="frecuencia" name="frecuencia">
+                    <option value="ninguna">Ninguna</option>
+                    <option value="diaria">Cada día</option>
+                    <option value="semanal">Cada semana el mismo día</option>
+                    <option value="mensual_cuarto">Cada mes el cuarto día de la semana</option>
+                    <option value="mensual_ultimo">Cada mes el último día de la semana</option>
+                    <option value="anual">Anualmente en la misma fecha</option>
+                    <option value="laboral">Todos los días laborables</option>
+                </select>
+            </div>
+
+            <!-- Campos adicionales para fechas recurrentes -->
+            <div id="rango-fechas" style="display: none;">
+                <div class="mb-3">
+                    <label for="fecha_inicio" class="form-label">Fecha de inicio (si es recurrente)</label>
+                    <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
+                </div>
+                <div class="mb-3">
+                    <label for="fecha_fin" class="form-label">Fecha de fin (si es recurrente)</label>
+                    <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Reservar</button>
+            <div id="disponibilidad" class="alert" style="display: none;"></div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Verificar disponibilidad de la sala en tiempo real
+        function verificarDisponibilidad() {
+            var salaId = $('#sala').val();
+            var fecha = $('#fecha').val();
+            var horaInicio = $('#hora_inicio').val();
+            var horaFin = $('#hora_fin').val();
+
+            if (salaId && fecha && horaInicio && horaFin) {
+                $.ajax({
+                    url: "{% url 'verificar_disponibilidad' %}",
+                    type: 'GET',
+                    data: {
+                        'sala': salaId,
+                        'fecha': fecha,
+                        'hora_inicio': horaInicio,
+                        'hora_fin': horaFin
+                    },
+                    success: function(response) {
+                        var disponibilidad = $('#disponibilidad');
+                        if (response.disponible) {
+                            disponibilidad.removeClass('alert-danger').addClass('alert-success');
+                            disponibilidad.text(response.mensaje);
+                        } else {
+                            disponibilidad.removeClass('alert-success').addClass('alert-danger');
+                            disponibilidad.text(response.mensaje);
+                        }
+                        disponibilidad.show();
+                    },
+                    error: function() {
+                        $('#disponibilidad').removeClass('alert-success').addClass('alert-danger');
+                        $('#disponibilidad').text('Error al verificar disponibilidad');
+                        $('#disponibilidad').show();
+                    }
+                });
+            }
+        }
+
+        // Mostrar u ocultar el rango de fechas según la frecuencia seleccionada
+        $('#frecuencia').on('change', function () {
+            var rangoFechas = $('#rango-fechas');
+            if ($(this).val() !== "ninguna") {
+                rangoFechas.show();
+            } else {
+                rangoFechas.hide();
+            }
+        });
+
+        // Enviar el formulario vía AJAX
+        $('#reservaForm').on('submit', function(e) {
+            e.preventDefault();
+            var titulo = $('#titulo').val();
+            var salaId = $('#sala').val();
+            var horaInicio = $('#hora_inicio').val();
+            var horaFin = $('#hora_fin').val();
+            var fecha = $('#fecha').val();
+            var frecuencia = $('#frecuencia').val();
+            var fechaInicio = $('#fecha_inicio').val();
+            var fechaFin = $('#fecha_fin').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/reservas/',
+                headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+                data: {
+                    'titulo': titulo,
+                    'sala': salaId,
+                    'hora_inicio': horaInicio,
+                    'hora_fin': horaFin,
+                    'start': fecha + 'T' + horaInicio,
+                    'frecuencia': frecuencia,
+                    'fecha_inicio': fechaInicio,
+                    'fecha_fin': fechaFin,
+                },
+                success: function() {
+                    alert('Reserva creada exitosamente.');
+                    window.location.href = "{% url 'calendario' %}";
+                },
+                error: function(response) {
+                    alert('Error: ' + response.responseJSON?.error);
+                }
+            });
+        });
+
+        // Verificar disponibilidad en tiempo real
+        $('#sala, #fecha, #hora_inicio, #hora_fin').on('change', verificarDisponibilidad);
+    });
+</script>
+{% endblock %}

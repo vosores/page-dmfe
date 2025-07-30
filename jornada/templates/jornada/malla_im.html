@@ -1,0 +1,135 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Malla Curricular - Ingeniería Matemática{% endblock %}
+
+{% block extra_styles %}
+<style>
+    /* Encabezado del año */
+    .year-header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+    /* Título de los semestres */
+    .semester-title {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    /* Caja para cada asignatura */
+    .subject-box {
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    /* Contenedor con fondo claro para cada año */
+    .year-container {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
+    /* Cambio de color al pasar el mouse */
+    .subject-box:hover {
+      background-color: #0056b3 !important;
+      transition: background-color 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Malla Curricular - Ingeniería Matemática</h2>
+                <p class="lead">
+                    Explora nuestra malla curricular, donde se integran las actividades curriculares, hitos evaluativos, certificaciones y optativos de profundización, elementos fundamentales para una formación rigurosa y completa en Ingeniería Matemática.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="malla" class="malla py-2">
+    <div class="container-fluid">
+        <div class="row g-0">
+            {% for año, semestres in malla.items %}
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">{{ año }}° AÑO</div>
+                    <div class="row g-1">
+                        {% for semestre, asignaturas in semestres.items %}
+                        <div class="col-6">
+                            <h5 class="semester-title"> {{ semestre }}</h5>
+                            {% for asignatura in asignaturas %}
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-{{ asignatura.Código }}">
+                                    {{ asignatura.Nombre }} <br> ({{ asignatura.Código }})
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+        <ul class="mb-0" style="text-align: justify;">
+          <li>Este itinerario formativo es referencial de las Actividades Curriculares de la carrera y no contiene los créditos SCT-Chile y requisitos.</li>
+          <li>Producto de las políticas de innovación curricular de la UCM y lo exigido por el Sistema de Educación Superior chileno, este itinerario formativo puede encontrarse sujeto a modificaciones.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Modales -->
+{% for año, semestres in malla.items %}
+    {% for semestre, asignaturas in semestres.items %}
+        {% for asignatura in asignaturas %}
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-{{ asignatura.Código }}" tabindex="-1" aria-labelledby="modalLabel-{{ asignatura.Código }}" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="{% static 'images/logo_IMA_circ.png' %}" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> {{ asignatura.Nombre }}</p>
+                        <p><strong>Código:</strong> {{ asignatura.Código }}</p>
+                        <p><strong>Créditos:</strong> {{ asignatura.Créditos|default:"-" }}</p>
+                        <p><strong>Requisitos:</strong> 
+                            {{ asignatura.Requisito|default:"Sin requisito" }}
+                            {% if asignatura.Rec_cod %} ({{ asignatura.Rec_cod }}){% endif %}
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        {{ asignatura.Bibliografía|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

@@ -1,0 +1,612 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Sesiones Temáticas - XXXVII Jornada de Matemática{% endblock %}
+
+{% block content %}
+<section id="sesiones-tematicas" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row mb-4">
+            <div class="col-md-12 text-center">
+                <h2>Sesiones Temáticas</h2>
+                <p class="lead">
+                    A continuación encontrarás las sesiones temáticas junto a sus respectivos facilitadores y organizadores.
+                    <!-- A continuación encontrarás las sesiones temáticas junto a los facilitadores y coordinadores de sesión de la XXXVII Jornada de Matemática. -->
+                </p>
+            </div>
+        </div>
+
+        <div class="alert alert-info shadow-sm" role="alert" style="background-color: #d9ecf9; color: #0c5460; border-left: 4px solid #0c5460;">
+            <ul class="mb-0">
+                <li>Los resúmenes deben ser enviados directamente al organizador de sesión para la evaluación de su aceptación.</li>
+                <li>La fecha límite para enviar los resúmenes es el <strong>4 de abril de 2025</strong>.</li>
+                <li>Los formatos para los resúmenes se pueden descargar desde <a href="{% url 'resumenes' %}" class="text-primary">aquí</a>.</li>
+            </ul>
+        </div>        
+
+        <!-- Lista de Sesiones -->
+        <!-- Sesión 1 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 1 » Álgebra y geometría</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Rolando Suárez Quevedo</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:rsuarez@ucm.cl">rsuarez@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. David Plaza Muñoz</p>
+                                    <p><strong>Institución:</strong> Universidad de Talca</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:davidricardoplaza@gmail.com">davidricardoplaza@gmail.com</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Maximiliano Leyton Álvarez</p>
+                                    <p><strong>Institución:</strong> Universidad de Talca</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:mleyton@utalca.cl">mleyton@utalca.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sesión 2 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 2 » Matemáticas discretas, algoritmos y combinatoria</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Diego Maldonado Montiel</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:dmaldonado@ucm.cl">dmaldonado@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. Martín Ríos-Wilson</p>
+                                    <p><strong>Institución:</strong> Universidad Adolfo Ibáñez</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:martin.rios@uai.cl">martin.rios@uai.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Luis Medina Caamaño</p>
+                                    <p><strong>Institución:</strong> Universidad de Antofagasta</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:luis.medina@uantof.cl">luis.medina@uantof.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sesión 3 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 3 » Ecuaciones funcionales y sistemas dinámicos</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Alejandro Rojas Palma</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:amrojas@ucm.cl">amrojas@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. Jaime Andrade Bustos</p>
+                                    <p><strong>Institución:</strong> Universidad del Bío-Bío</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:jandrade@ubiobio.cl">jandrade@ubiobio.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Ricardo Torres Naranjo</p>
+                                    <p><strong>Institución:</strong> Universidad Austral de Chile</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:ricardo.torres@uach.cl">ricardo.torres@uach.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sesión 4 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 4 » Probabilidad y estadística</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dra. Carolina Marchant Fuentes</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:cmarchant@ucm.cl">cmarchant@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. Diego Gallardo Mateluna</p>
+                                    <p><strong>Institución:</strong> Universidad del Bío-Bío</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:dgallardo@ubiobio.cl">dgallardo@ubiobio.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Luis Sanchez Melo</p>
+                                    <p><strong>Institución:</strong> Universidad Austral de Chile</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:luis.sanchez@uach.cl">luis.sanchez@uach.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sesión 5 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 5 » Control, problemas inversos y optimización</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dra. Leidy Lara Díaz</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:lelara@ucm.cl">lelara@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dra. Diana Narváez Naspirán</p>
+                                    <p><strong>Institución:</strong> Universidad de O’Higgins</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:diana.narvaez@uoh.cl">diana.narvaez@uoh.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Ariel Pérez Contreras</p>
+                                    <p><strong>Institución:</strong> Universidad del Bío-Bío</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:aaperez@ubiobio.cl">aaperez@ubiobio.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión 6 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 6 » Modelización y aplicaciones de la matemática</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Mg. Rodrigo Del Valle Salamanca</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:rvalle@ucm.cl">rvalle@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. Gerard Olivar-Tost</p>
+                                    <p><strong>Institución:</strong> Centro de Investigación en Ecosistemas de la Patagónia</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:gerard.olivar@ciep.cl">gerard.olivar@ciep.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Daniel Sepúlveda Oehninger</p>
+                                    <p><strong>Institución:</strong> Universidad Tecnológica Metropolitana</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:daniel.sepulveda@utem.cl">daniel.sepulveda@utem.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión 7 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 7 » Educación y didáctica de la matemática</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Danilo Díaz Levicoy</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:ddiazl@ucm.cl">ddiazl@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dra. Paula Verdugo-Hernández</p>
+                                    <p><strong>Institución:</strong> Universidad de Talca</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:pauverdugo@utalca.cl">pauverdugo@utalca.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Francisco Rodríguez-Alveal</p>
+                                    <p><strong>Institución:</strong> Universidad del Bío-Bío</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:frodriguez@ubiobio.cl">frodriguez@ubiobio.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión 8 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 8 » Matemática y sociedad</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dra. Ledyz Cuesta Herrera</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:lcuesta@ucm.cl">lcuesta@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. José Gonzalez Campos</p>
+                                    <p><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:jgonzalezc@ucm.cl">jgonzalezc@ucm.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p style="opacity: 0;"><strong>Organizador 2:</strong> Organizador 2 Sesión 1</p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Z</p>
+                                    <p style="opacity: 0;"><strong>Correo:</strong> <a href="mailto:coord2_sesion1@universidadz.cl">coord2_sesion1@universidadz.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión 9 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 9 » Métodos, análisis y simulación numérica</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Víctor Osores Escalona</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:vosores@ucm.cl">vosores@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dra. Jessika Camaño Valenzuela</p>
+                                    <p><strong>Institución:</strong> Universidad Católica de la Santísima Concepción</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:jecamano@ucsc.cl">jecamano@ucsc.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Ramiro Rebolledo Cormack</p>
+                                    <p><strong>Institución:</strong> Universidad de Concepción</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:ramirorebolledo@udec.cl">ramirorebolledo@udec.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión 10 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 10 » Física matemática</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Moisés Bravo Gaete</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:mbravo@ucm.cl">mbravo@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dr. Luis Guajardo Rui-Pérez</p>
+                                    <p><strong>Institución:</strong> Universidad de Talca</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:luis.guajardo.r@gmail.com">luis.guajardo.r@gmail.com</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Dr. Daniel Parra Vogel</p>
+                                    <p><strong>Institución:</strong> Universidad de la Frontera</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:daniel.parra@ufrontera.cl">daniel.parra@ufrontera.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión 11 -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>Sesión 11 » Pósteres</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Facilitador -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Víctor Osores Escalona</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:vosores@ucm.cl">vosores@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+                            <!-- Organizador 1 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dra. Ledyz Cuesta Herrera</p>
+                                    <p><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:lcuesta@ucm.cl">lcuesta@ucm.cl</a></p>
+                                </div>
+                            </div>
+                            <!-- Organizador 2 -->
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Mg. Héctor Rojas Castro</p>
+                                    <p><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:hrojas@ucm.cl">hrojas@ucm.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesión de prueba -->
+        <!-- <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+
+                    <div class="card-header" style="background-color: #00A0DF; color: white;">
+                        <strong>
+                            <a href="#session-details" class="text-white text-decoration-none" data-bs-toggle="collapse">
+                                Sesión 4 » Probabilidad y estadística
+                            </a>
+                        </strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Facilitador :</strong> Dr. Víctor Osores Escalona</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:vosores@ucm.cl">vosores@ucm.cl</a></p>
+                                    <p style="opacity: 0;"><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 1:</strong> Dra. Ledyz Cuesta Herrera</p>
+                                    <p><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:lcuesta@ucm.cl">lcuesta@ucm.cl</a></p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="p-3 mb-3 border rounded bg-light">
+                                    <p><strong>Organizador 2:</strong> Mg. Héctor Rojas Castro</p>
+                                    <p><strong>Institución:</strong> Universidad Católica del Maule</p>
+                                    <p><strong>Correo:</strong> <a href="mailto:hrojas@ucm.cl">hrojas@ucm.cl</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="session-details">
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #EAEAEA; color: #333;">
+                                        <strong>Día 1: Álgebra</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <div class="p-3 border rounded bg-light">
+                                                    <p><strong>Facilitador :</strong> Dr. Francisco Morales Pérez</p>
+                                                    <p><strong>Correo:</strong> <a href="mailto:fmorales@uc.cl">fmorales@uc.cl</a></p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <div class="p-3 border rounded bg-light">
+                                                    <p><strong>Organizador 1:</strong> Dra. Elena Rivera Sánchez</p>
+                                                    <p><strong>Institución:</strong> Universidad de Chile</p>
+                                                    <p><strong>Correo:</strong> <a href="mailto:erivera@uchile.cl">erivera@uchile.cl</a></p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <div class="p-3 border rounded bg-light">
+                                                    <p><strong>Organizador 2:</strong> Dr. Andrés Lara Soto</p>
+                                                    <p><strong>Institución:</strong> Universidad de Concepción</p>
+                                                    <p><strong>Correo:</strong> <a href="mailto:alara@udec.cl">alara@udec.cl</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <h5><strong>Charlas</strong></h5>
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <strong>09:00 - 10:00:</strong> Introducción a Estructuras Algebraicas <br>
+                                                    <em>Charlista:</em> Dr. Pedro Fuentes González
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>10:15 - 11:15:</strong> Álgebra Lineal Avanzada <br>
+                                                    <em>Charlista:</em> Dra. Ana López Martínez
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>11:30 - 12:30:</strong> Anillos y Cuerpos <br>
+                                                    <em>Charlista:</em> Dr. Javier Torres Vidal
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div>
+                                <div class="card">
+                                    <div class="card-header" style="background-color: #EAEAEA; color: #333;">
+                                        <strong>Día 2: Estadística</strong>
+                                    </div>
+                                    <div class="card-body">                    
+                                        <div class="mt-3">
+                                            <h5><strong>Charlas</strong></h5>
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <strong>09:00 - 10:00:</strong> Introducción a la Geometría Euclidiana <br>
+                                                    <em>Charlista:</em> Dr. Luis Martínez Peña
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>10:15 - 11:15:</strong> Teoría de Grupos y Geometría <br>
+                                                    <em>Charlista:</em> Dra. Camila Rojas Fernández
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>11:30 - 12:30:</strong> Superficies y Curvatura <br>
+                                                    <em>Charlista:</em> Dr. Alejandro Vega Núñez
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        
+    </div>
+</section>
+
+<style>
+    .card-header {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card-body .border {
+        border-color: #ddd !important;
+    }
+
+    .card-body p {
+        margin: 0.2rem 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,356 @@
+    {% extends 'jornada/base.html' %}
+    {% load static %}
+    {% block title %}Reserva de salas de la FCB - Ingeniería Matemática{% endblock %}
+    {% block extra_styles %}
+    <!-- jQuery (necesario para AJAX con $.ajax) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <!-- Idioma Español -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.js"></script>
+    {% endblock %}
+    {% block content %}
+    <section id="titulos_ac" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Reserva de salas de la FCB - Ingeniería Matemática</h2>
+                    <p class="lead">
+                        Aquí puedes consultar la disponibilidad de las salas de la FCB y realizar reservas para tus actividades académicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calendario" class="py-5">
+        <div class="container">
+            <div id="calendar"></div>
+        </div>
+    </section>
+    
+    <!-- Modal para crear reserva -->
+    <div class="modal fade" id="reservaModal" tabindex="-1" aria-labelledby="reservaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reservaModalLabel">Crear Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reservaForm">
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="titulo" placeholder="Título de la reserva">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sala" class="form-label">Sala</label>
+                            <select class="form-select" id="sala">
+                                {% for sala in salas %}
+                                    <option value="{{ sala.id }}">{{ sala.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora_inicio" class="form-label">Hora de inicio</label>
+                            <input type="time" class="form-control" id="hora_inicio">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hora_fin" class="form-label">Hora de fin</label>
+                            <input type="time" class="form-control" id="hora_fin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="frecuencia" class="form-label">Frecuencia</label>
+                            <select class="form-select" id="frecuencia">
+                                <option value="ninguna">Ninguna</option>
+                                <option value="diaria">Cada día</option>
+                                <option value="semanal">Cada semana el mismo día</option>
+                                <option value="mensual_cuarto">Cada mes el cuarto día de la semana</option>
+                                <option value="mensual_ultimo">Cada mes el último día de la semana</option>
+                                <option value="anual">Anualmente en la misma fecha</option>
+                                <option value="laboral">Todos los días laborables</option>
+                            </select>
+                        </div>
+
+                        <!-- Campos adicionales para fechas recurrentes -->
+                        <div id="rango-fechas" style="display: none;">
+                            <div class="mb-3">
+                                <label for="fecha_inicio" class="form-label">Fecha de inicio (si es recurrente)</label>
+                                <input type="date" class="form-control" id="fecha_inicio">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fecha_fin" class="form-label">Fecha de fin (si es recurrente)</label>
+                                <input type="date" class="form-control" id="fecha_fin">
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="start">
+                        <input type="hidden" id="end">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <div id="disponibilidad" class="alert" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="disponibilidad" class="alert" style="display: none;"></div>
+
+    <!-- Modal para ver detalles de la reserva -->
+    <div class="modal fade" id="detalleReservaModal" tabindex="-1" aria-labelledby="detalleReservaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleReservaLabel">Detalles de la Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Título:</strong> <span id="detalleTitulo"></span></p>
+                    <p><strong>Sala:</strong> <span id="detalleSala"></span></p>
+                    <p><strong>Fecha:</strong> <span id="detalleFecha"></span></p>
+                    <p><strong>Hora de Inicio:</strong> <span id="detalleInicio"></span></p>
+                    <p><strong>Hora de Fin:</strong> <span id="detalleFin"></span></p>
+                    <p><strong>Usuario:</strong> <span id="detalleUsuario"></span></p>             
+                </div>
+                
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-danger" id="eliminarRepetidasBtn">Eliminar todas las repetidas</button> -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="alert alert-warning mt-3" role="alert">
+        <strong>Nota:</strong> La frecuencia de reserva se aplicará de la siguiente manera:
+        <ul>
+            <li><strong>Ninguna:</strong> Reserva única en la fecha seleccionada.</li>
+            <li><strong>Diaria:</strong> Reserva todos los días desde la <strong>fecha de inicio</strong> hasta la <strong>fecha de fin</strong>, creando una reserva para cada día dentro del rango especificado.</li>
+            <li><strong>Semanal:</strong> Reserva cada semana el mismo día, desde la <strong>fecha de inicio</strong> hasta la <strong>fecha de fin</strong>.</li>
+            <li><strong>Mensual (cuarto día de la semana):</strong> Reserva cada mes el <strong>cuarto día de la semana</strong> (por ejemplo, el cuarto jueves), desde la <strong>fecha de inicio</strong> hasta la <strong>fecha de fin</strong>.</li>
+            <li><strong>Mensual (último día de la semana):</strong> Reserva cada mes el <strong>último día de la semana</strong> (por ejemplo, el último jueves), desde la <strong>fecha de inicio</strong> hasta la <strong>fecha de fin</strong>.</li>
+            <li><strong>Anual:</strong> Reserva cada año en la misma fecha, desde la <strong>fecha de inicio</strong> hasta la <strong>fecha de fin</strong>.</li>
+            <li><strong>Laboral:</strong> Reserva solo en días laborables (lunes a viernes) desde la <strong>fecha de inicio</strong> hasta la <strong>fecha de fin</strong>.</li>
+        </ul>
+        <p>Para reservas recurrentes, asegúrate de definir la <strong>fecha de inicio</strong> y la <strong>fecha de fin</strong> en el formulario.</p>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function verificarDisponibilidad() {
+        var salaId = $('#sala').val();
+        var fecha = $('#fecha_inicio').val();
+        var horaInicio = $('#hora_inicio').val();
+        var horaFin = $('#hora_fin').val();
+
+        if (salaId && fecha && horaInicio && horaFin) {
+            $.ajax({
+                url: "{% url 'verificar_disponibilidad' %}",
+                type: 'GET',
+                data: {
+                    'sala': salaId,
+                    'fecha': fecha,
+                    'hora_inicio': horaInicio,
+                    'hora_fin': horaFin
+                },
+                success: function(response) {
+                    var disponibilidad = $('#disponibilidad');
+                    if (response.disponible) {
+                        disponibilidad.removeClass('alert-danger').addClass('alert-success');
+                        disponibilidad.text(response.mensaje);
+                    } else {
+                        disponibilidad.removeClass('alert-success').addClass('alert-danger');
+                        disponibilidad.text(response.mensaje);
+                    }
+                    disponibilidad.show();
+                },
+                error: function(response) {
+                    $('#disponibilidad').removeClass('alert-success').addClass('alert-danger');
+                    $('#disponibilidad').text('Error al verificar disponibilidad');
+                    $('#disponibilidad').show();
+                }
+            });
+        }
+    }
+
+    // Asignar el evento de verificación en tiempo real al cambiar sala, fecha, hora de inicio o fin
+    $(document).on('change', '#sala, #fecha_inicio, #hora_inicio, #hora_fin', verificarDisponibilidad);
+</script>
+
+
+<script>
+    // Mostrar u ocultar el rango de fechas según la frecuencia seleccionada
+    document.addEventListener("DOMContentLoaded", function () {
+        const frecuenciaSelect = document.getElementById("frecuencia");
+        const rangoFechas = document.getElementById("rango-fechas");
+
+        frecuenciaSelect.addEventListener("change", function () {
+            if (frecuenciaSelect.value !== "ninguna") {
+                rangoFechas.style.display = "block";
+            } else {
+                rangoFechas.style.display = "none";
+            }
+        });
+    });
+</script>
+
+
+<script>
+    // Obtener el token CSRF
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            locale: 'es',
+            events: '/api/reservas/',
+            selectable: true,
+            editable: true,
+            eventColor: '#378006',
+
+            // Seleccionar rango para crear nueva reserva
+            select: function(info) {
+                document.getElementById('start').value = info.startStr;
+                document.getElementById('end').value = info.endStr;
+                var reservaModal = new bootstrap.Modal(document.getElementById('reservaModal'));
+                reservaModal.show();
+            },
+
+            // Clic en un evento para ver detalles
+            eventClick: function(info) {
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/reservas/${info.event.id}/`,
+                    headers: { 'X-CSRFToken': csrftoken },
+                    success: function(response) {
+                        $('#detalleTitulo').text(response.titulo);
+                        $('#detalleSala').text(response.sala);
+                        $('#detalleFecha').text(response.fecha);
+                        $('#detalleInicio').text(response.hora_inicio);
+                        $('#detalleFin').text(response.hora_fin);
+                        $('#detalleUsuario').text(response.usuario);
+                        $('#frecuencia').val(response.frecuencia); // Mostrar frecuencia en detalles
+                        $('#reserva_id').val(response.id);
+
+                        var detalleModal = new bootstrap.Modal(document.getElementById('detalleReservaModal'));
+                        detalleModal.show();
+                    },
+                    error: function() {
+                        alert('Error al cargar los detalles de la reserva');
+                    }
+                });
+            },
+
+            // Eliminar reserva con clic derecho
+            eventDidMount: function(info) {
+                info.el.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    if (confirm('¿Deseas eliminar esta reserva?')) {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: `/api/reservas/${info.event.id}/`,
+                            headers: { 'X-CSRFToken': csrftoken },
+                            success: function() {
+                                calendar.refetchEvents();
+                                alert('Reserva eliminada exitosamente.');
+                            },
+                            error: function(response) {
+                                alert('Error: ' + response.responseJSON?.error);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        // Eliminar reserva desde el modal de detalles
+        $(document).on('click', '#eliminarRepetidasBtn', function() {
+            const reservaId = $('#reserva_id').val();
+            if (confirm('¿Estás seguro de que deseas eliminar todas las reservas repetidas?')) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: `/api/reservas/${reservaId}/`,
+                    headers: { 'X-CSRFToken': csrftoken },
+                    success: function() {
+                        $('#detalleReservaModal').modal('hide');
+                        calendar.refetchEvents();
+                        alert('Todas las reservas repetidas fueron eliminadas exitosamente.');
+                    },
+                    error: function(response) {
+                        alert('Error al eliminar las reservas: ' + response.responseJSON?.error);
+                    }
+                });
+            }
+        });
+
+
+        calendar.render();
+
+        // Guardar o actualizar la reserva vía AJAX
+        $('#reservaForm').on('submit', function(e) {
+        e.preventDefault();
+        var titulo = $('#titulo').val();
+        var salaId = $('#sala').val();
+        var horaInicio = $('#hora_inicio').val();
+        var horaFin = $('#hora_fin').val();
+        var start = $('#start').val();
+        var frecuencia = $('#frecuencia').val();
+        var fechaInicio = $('#fecha_inicio').val();
+        var fechaFin = $('#fecha_fin').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/reservas/',
+            headers: { 'X-CSRFToken': csrftoken },
+            data: {
+                'titulo': titulo,
+                'sala': salaId,
+                'hora_inicio': horaInicio,
+                'hora_fin': horaFin,
+                'start': start,
+                'frecuencia': frecuencia,
+                'fecha_inicio': fechaInicio,
+                'fecha_fin': fechaFin,
+            },
+            success: function(response) {
+                calendar.refetchEvents();
+                $('#reservaModal').modal('hide');
+                alert('Reserva creada exitosamente.');
+            },
+            error: function(response) {
+                alert('Error: ' + response.responseJSON?.error);
+            }
+        });
+    });
+
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Repositorio de material y apuntes (IMA){% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Repositorio de material y apuntes (IMA)</h2>
+                <p class="lead">En este apartado encontrarás material y apuntes subido por todos los académicos IMA. Estos no estarán disponibles para el estudiante hasta que lo publiques.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="inscripciones" class="py-2">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <div class="text-center mt-4 d-flex justify-content-center gap-3">
+            <a href="{% url 'subir_archivo' %}" class="btn btn-success">Subir Nuevo Material</a>
+            <a href="{% url 'material' %}" class="btn btn-info">Ver Material Público</a>
+        </div>
+        {% endif %}
+
+        {% for archivo in archivos %}
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <strong>{{ archivo.titulo }}</strong> - Subido por {{ archivo.academico.nombre }}, 📅 Fecha de subida: {{ archivo.fecha_subida|date:"d M Y, H:i" }}
+                    </div>
+                    <div class="card-body">
+                        {% if archivo.seccion %}
+                            <p><strong>Sección:</strong> <em>{{ archivo.seccion }}</em></p>
+                        {% endif %}
+
+                        {% if archivo.descripcion %}
+                            <p><em>{{ archivo.descripcion }}</em></p>
+                        {% endif %}
+
+                        {% if archivo.archivo %}
+                        <!-- Si hay un archivo, mostrar botón de descarga -->
+                        <div class="input-group mb-2">
+                            <input type="text" id="archivo-link-{{ archivo.id }}" class="form-control" value="{{ request.scheme }}://{{ request.get_host }}{{ archivo.archivo.url }}" readonly>
+                            <button class="btn btn-outline-secondary" onclick="copiarLink('{{ archivo.id }}')">Copiar</button>
+                        </div>
+                        <a href="{{ archivo.archivo.url }}" target="_blank" class="btn btn-primary btn-sm">Descargar</a>
+                        {% endif %}
+
+                        {% if archivo.link %}
+                        <!-- Si hay un enlace, mostrar botón de acceso -->
+                        <p><strong>Enlace:</strong> <a href="{{ archivo.link }}" target="_blank">{{ archivo.link }}</a></p>
+                        {% endif %}
+
+                        {% if request.user == archivo.academico.user %}
+                        <form method="POST" action="{% url 'eliminar_archivo' archivo.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este archivo?')">Eliminar</button>
+                        </form>
+                        <a href="{% url 'publicar_material' archivo.id %}" class="btn btn-warning btn-sm">Publicar en Página Pública</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay archivos subidos.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+function copiarLink(id) {
+    var link = document.getElementById("archivo-link-" + id);
+    link.select();
+    document.execCommand("copy");
+    alert("Enlace copiado: " + link.value);
+}
+</script>
+{% endblock %}

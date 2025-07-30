@@ -1,0 +1,47 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Eliminar Publicación{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <div class="card-header text-center">
+      <h2 class="mb-0">
+        <span class="btn btn-warning text-uppercase">{{ publicacion.academico.nombre }}</span> quieres eliminar publicación? ⚠️
+      </h2>
+    </div>
+
+
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+
+
+        <div class="border rounded p-3 bg-light">
+                    <p class="fs-5 mb-4 text-center text-danger">
+        ¿Estás seguro de que deseas eliminar la siguiente publicación?
+        </p>
+        <h5 class="fw-bold mb-1 text-primary">{{ publicacion.titulo }}</h5>
+        <p class="text-muted mb-0">Año: {{ publicacion.anio }}</p>
+        {% if publicacion.revista %}
+            <p class="text-muted mb-0">Revista / Editorial: {{ publicacion.revista }}</p>
+        {% endif %}
+        </div>
+
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+          <a href="{% url 'detalle_academico' publicacion.academico.slug %}" class="btn btn-secondary me-2">
+            ↩️ Cancelar
+          </a>
+          <form action="{% url 'eliminar_publicacion' publicacion.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">🗑️ Sí, eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

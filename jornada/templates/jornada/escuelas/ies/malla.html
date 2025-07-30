@@ -1,0 +1,2095 @@
+{% extends 'jornada/escuelas/ima/base_ima.html' %}
+{% load static %}
+
+{% block title %}Matriz Curricular - {{ escuela.nombre }} {% endblock %}
+
+{% block extra_styles %}
+<style>
+    /* Encabezado del año */
+    .year-header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+    /* Título de los semestres */
+    .semester-title {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    /* Caja para cada asignatura */
+    .subject-box {
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    /* Contenedor con fondo claro para cada año */
+    .year-container {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
+    /* Cambio de color al pasar el mouse */
+    .subject-box:hover {
+      background-color: #0056b3 !important;
+      transition: background-color 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content -->
+    <div class="container mt-5">
+        
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Matriz Curricular - {{ escuela.nombre }}</h2>
+                <p class="lead">
+                    Explora nuestra malla curricular, donde se integran las actividades curriculares, hitos evaluativos, certificaciones y optativos de profundización, elementos fundamentales para una formación rigurosa y completa en {{ escuela.nombre }}.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="malla" class="malla py-2">
+    <div class="container-fluid">
+        <div class="row g-0">
+            
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">1° AÑO</div>
+                    <div class="row g-1">
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> I</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-111">
+                                    Introducción al Cálculo <br> (IMA-111)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-112">
+                                    Introducción al Álgebra <br> (IMA-112)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-113">
+                                    Geometría <br> (IMA-113)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-114">
+                                    Introducción a la {{ escuela.nombre }} <br> (IMA-114)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-115">
+                                    Comunicación Oral y Escrita en la {{ escuela.nombre }} <br> (IMA-115)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IFG-100">
+                                    Inglés I <br> (IFG-100)
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> II</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-121">
+                                    Cálculo I <br> (IMA-121)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-122">
+                                    Álgebra I <br> (IMA-122)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-123">
+                                    Física I <br> (IMA-123)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-124">
+                                    Fundamentos de Economía I <br> (IMA-124)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-125">
+                                    Computación I <br> (IMA-125)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IFG-200">
+                                    Inglés II <br> (IFG-200)
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">2° AÑO</div>
+                    <div class="row g-1">
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> III</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-211">
+                                    Cálculo II <br> (IMA-211)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-212">
+                                    Álgebra II <br> (IMA-212)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-213">
+                                    Física II <br> (IMA-213)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-214">
+                                    Fundamentos de la Economía II <br> (IMA-214)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-215">
+                                    Computación II <br> (IMA-215)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IFG-300">
+                                    Inglés III <br> (IFG-300)
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> IV</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-221">
+                                    Ecuaciones Diferenciales Ordinarias (HITO I) <br> (IMA-221)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-222">
+                                    Álgebra III <br> (IMA-222)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-223">
+                                    Física III <br> (IMA-223)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-224">
+                                    Química <br> (IMA-224)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-225">
+                                    Computación III <br> (IMA-225)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IFG-400">
+                                    Inglés IV <br> (IFG-400)
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">3° AÑO</div>
+                    <div class="row g-1">
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> V</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-311">
+                                    Análisis Matemático <br> (IMA-311)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-312">
+                                    Matemáticas Discretas y Combinatoria <br> (IMA-312)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-313">
+                                    Termodinámica <br> (IMA-313)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-314">
+                                    Probabilidades y Estadística <br> (IMA-314)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-315">
+                                    Cálculo Numérico <br> (IMA-315)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-MFG-114">
+                                    Introducción a la Fe <br> (MFG-114)
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> VI</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-321">
+                                    Topología <br> (IMA-321)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-322">
+                                    Estadística Inferencial <br> (IMA-322)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-323">
+                                    Gestión Estratégica <br> (IMA-323)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-324">
+                                    Modelos Matemáticos Computacionales <br> (IMA-324)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-MFG-216">
+                                    Ética Cristiana <br> (MFG-216)
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">4° AÑO</div>
+                    <div class="row g-1">
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> VII</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-411">
+                                    Análisis Funcional <br> (IMA-411)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-412">
+                                    Teoría de la Medida <br> (IMA-412)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-413">
+                                    Ciencia de Datos <br> (IMA-413)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-414">
+                                    Marketing e Inteligencia de Negocios <br> (IMA-414)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-415">
+                                    Pre-Práctica <br> (IMA-415)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-CFG">
+                                    Certificación I <br> (CFG)
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> VIII</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-421">
+                                    Ecuaciones en Derivadas Parciales <br> (IMA-421)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-422">
+                                    Análisis Numérico <br> (IMA-422)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-423">
+                                    Optimización Lineal (Hito II) <br> (IMA-423)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-424">
+                                    Procesos Estocásticos <br> (IMA-424)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-CFG">
+                                    Certificación II <br> (CFG)
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">5° AÑO</div>
+                    <div class="row g-1">
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> IX</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-511">
+                                    Optativo de Profundización I <br> (IMA-511)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-512">
+                                    Laboratorio de Modelación I <br> (IMA-512)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-513">
+                                    Optimización no Lineal <br> (IMA-513)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-514">
+                                    Gestión Financiera <br> (IMA-514)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-515">
+                                    Metodología de la Investigación <br> (IMA-515)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-CFG">
+                                    Certificación III <br> (CFG)
+                                </div>
+                            
+                        </div>
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> X</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-521">
+                                    Optativo de Profundización II <br> (IMA-521)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-522">
+                                    Laboratorio de Modelación II <br> (IMA-522)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-523">
+                                    Evaluación de Proyectos <br> (IMA-523)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-524">
+                                    Seminario de Título I <br> (IMA-524)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-525">
+                                    Práctica Profesional I <br> (IMA-525)
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-2">
+                <div class="year-container">
+                    <div class="year-header">6° AÑO</div>
+                    <div class="row g-1">
+                        
+                        <div class="col-6">
+                            <h5 class="semester-title"> XI</h5>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-611">
+                                    Optativo de Profundización III <br> (IMA-611)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-612">
+                                    Seminario de Título II <br> (IMA-612)
+                                </div>
+                            
+                                <!-- Botón que abre el modal -->
+                                <div class="subject-box" data-bs-toggle="modal" data-bs-target="#modal-IMA-613">
+                                    Práctica Profesional II (Hito III) <br> (IMA-613)
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+        <ul class="mb-0" style="text-align: justify;">
+          <li>Este itinerario formativo es referencial de las Actividades Curriculares de la carrera y no contiene los créditos SCT-Chile y requisitos.</li>
+          <li>Producto de las políticas de innovación curricular de la UCM y lo exigido por el Sistema de Educación Superior chileno, este itinerario formativo puede encontrarse sujeto a modificaciones.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Modales -->
+
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-111" tabindex="-1" aria-labelledby="modalLabel-IMA-111" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Introducción al Cálculo</p>
+                        <p><strong>Código:</strong> IMA-111</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Ingreso
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Dennis G. Zill and Jacqueline M. Dewar. (2012) Álgebra, trigonometría y geometría analítica, México: McGrawHill.</li><li>Apostol T. (1986) Análisis matemático, Barcelona: Reverté.</li><li>Bartle, R. G. and Sherbert, D. R. (2003) Introducción al análisis matemático de una variable, México: Limusa.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-112" tabindex="-1" aria-labelledby="modalLabel-IMA-112" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Introducción al Álgebra</p>
+                        <p><strong>Código:</strong> IMA-112</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Ingreso
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Zill, D. Dewar, J (2012) Álgebra, trigonometría y geometría analítica, México: McGrawHill.</li><li>Suppes, P. Hill, S. (2013) Introducción a la lógica matemática, México, MX.: Reverte.</li><li>Lipschutz, S. (1964) Teoría y problemas de teoría de conjuntos y temas afines, Madrid : McGraw-Hill.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-113" tabindex="-1" aria-labelledby="modalLabel-IMA-113" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Geometría</p>
+                        <p><strong>Código:</strong> IMA-113</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Ingreso
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Aboughantous C. H. (2010) A High School First Course in Euclidean Plane Geometry, Boca Ratón: Universal.</li><li>Guerrero, A. (2006) Geometría axiomática, Bogotá: Ecoe Ediciones.</li><li>Lehmann, C. H. (1986) Geometría Analítica, México: Limusa.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-114" tabindex="-1" aria-labelledby="modalLabel-IMA-114" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Introducción a la {{ escuela.nombre }}</p>
+                        <p><strong>Código:</strong> IMA-114</p>
+                        <p><strong>Créditos:</strong> 4 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Ingreso
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>González O., and Villamil M. (2013) Introducción a la ingeniería, Colombia: ECOE ediciones.</li><li>Wright, P. (2004) Introducción a la ingeniería, México, D.F.: Limusa Wiley.</li><li>Hagen, K. (2009) Introducción a la Ingeniería Enfoque en la resolución de problemas, México: Ed.Person.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-115" tabindex="-1" aria-labelledby="modalLabel-IMA-115" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Comunicación Oral y Escrita en la {{ escuela.nombre }}</p>
+                        <p><strong>Código:</strong> IMA-115</p>
+                        <p><strong>Créditos:</strong> 3 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Ingreso
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Díaz Barriga, R. (2001) Redacción técnica, México: Instituto Politécnico Nacional.</li><li>Fonseca, M. (2011) Comunicación oral y escrita, Naucalpan de Juárez: Pearson Educación.</li><li>Verderber, R., Fernández, P. J. A., Lama, N. M. A., Soto, J. A., Verderber, K. S., and Sellnow, D. D. (2016) Comunicación oral efectiva en la era digital, México: Cengage Learning.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IFG-100" tabindex="-1" aria-labelledby="modalLabel-IFG-100" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Inglés I</p>
+                        <p><strong>Código:</strong> IFG-100</p>
+                        <p><strong>Créditos:</strong> 3 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Ingreso
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-121" tabindex="-1" aria-labelledby="modalLabel-IMA-121" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Cálculo I</p>
+                        <p><strong>Código:</strong> IMA-121</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-111)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Piskunov N. (2004) Cálculo diferencial e integral, México: Limusa‐Noriega Editores.</li><li>Bradley G.L., Smith K.J. (1998) Cálculo de una variable, España: Prentice‐Hall.</li><li>Apostol TM. (1972) Análisis matemático, España: Editorial Reverté.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-122" tabindex="-1" aria-labelledby="modalLabel-IMA-122" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Álgebra I</p>
+                        <p><strong>Código:</strong> IMA-122</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-112)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Sullivan, M. (2014) Algebra y trigonometría, México: Pearson Education.</li><li>Sigler, L.E. (1981) Algebra, New York: Springer-Verlag.</li><li>Lay, D. and Mcdonald, J. (2017) Linear Algebra and Its Applications, Harlow: Pearson Education.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-123" tabindex="-1" aria-labelledby="modalLabel-IMA-123" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Física I</p>
+                        <p><strong>Código:</strong> IMA-123</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-112)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Serway, R. A., and Jewett, J. W. (2015) Física para ciencias e ingeniería, volumen I, 9a ed, Colombia: Cengage Learning.</li><li>Resnick R., and Halliday D. (2013) Fundamentals of Physics 10a ed,, EE.UU: John Wiley & Sons Inc.</li><li>Tipler, M. (2010) Física para la ciencia y la tecnología volumen I, 6a ed., México: Editorial Reverté.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-124" tabindex="-1" aria-labelledby="modalLabel-IMA-124" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Fundamentos de Economía I</p>
+                        <p><strong>Código:</strong> IMA-124</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Nicholson, W., Mercado, G. E. C., and Snyder, C. (2015) Teoría microeconómica: principios básicos y ampliaciones, México, D.F: Cengage Learning.</li><li>Varian, H. R. (1998) Análisis microeconómico, Barcelona : Antoni Bosch Editor.</li><li>Pindyck, R. S., Rubinfeld, D. L., Rabasco, E. (2013) Microeconomía, Italia: Pearson Italia.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-125" tabindex="-1" aria-labelledby="modalLabel-IMA-125" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Computación I</p>
+                        <p><strong>Código:</strong> IMA-125</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Joyane, L. (2017) Fundamentos de Programación. Algoritmos, estructura de datos y objetos, Cuarta edición, Madrid: McGraw Hill.</li><li>Kong, Q. Siauw, T. Bayen, A. (2020) Python Programming And Numerical Methods: A Guide For Engineers And Scientists, México: Academic Press.</li><li>Chazallet, S. (2016) Python 3 - Los fundamentos del lenguaje, Barcelona: Ediciones ENI.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IFG-200" tabindex="-1" aria-labelledby="modalLabel-IFG-200" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Inglés II</p>
+                        <p><strong>Código:</strong> IFG-200</p>
+                        <p><strong>Créditos:</strong> 3 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IFG-100)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-211" tabindex="-1" aria-labelledby="modalLabel-IMA-211" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Cálculo II</p>
+                        <p><strong>Código:</strong> IMA-211</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-121,IMA-122)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Thomas G. (2010) Cálculo Varias Variables, México: Pearson Education.</li><li>Besada Moráis, M., García Cutrín, F., Mirás Calvo, M., Vázquez Pampín, C., (2012) Cálculo Diferencial en varias Variables, México: Alfaomega.</li><li>Smith Robert (2020) Cálculo De Varias Variables Con Trascendentes Tempranas,México: McGraw-Hill Education.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-212" tabindex="-1" aria-labelledby="modalLabel-IMA-212" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Álgebra II</p>
+                        <p><strong>Código:</strong> IMA-212</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-122)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Lay, D. and Mcdonald, J. (2017) Linear Algebra and Its Applications, Harlow: Pearson Education, Inc.</li><li>Schneider, H. and Barker, J. (2012) Matrices and Linear Algebra. Courier Corporation.</li><li>Strang, G., & Villagómez, H. (2007) Algebra lineal y sus aplicaciones, México: Thomson.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-213" tabindex="-1" aria-labelledby="modalLabel-IMA-213" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Física II</p>
+                        <p><strong>Código:</strong> IMA-213</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-123)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Serway, R. A., and Jewett, J. W. (2015) Física para ciencias e ingeniería, volumen II, 9a ed, Colombia: Cengage Learning.</li><li>Resnick R., and Halliday D. (2013) Fundamentals of Physics 10a ed,, EE.UU: John Wiley & Sons Inc.</li><li>Tipler, M. (2010) Física para la ciencia y la tecnología volumen II, 6a ed., México: Editorial Reverté.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-214" tabindex="-1" aria-labelledby="modalLabel-IMA-214" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Fundamentos de la Economía II</p>
+                        <p><strong>Código:</strong> IMA-214</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-124)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>De Gregorio, J. (2007) Macroeconomía: teoría y políticas, México: Pearson educación.</li><li>García de Paso J. (1999) Macroeconomía superior, Madrid: Ediciones Pirámide.</li><li>Barro, R. J., Sala-i-Martin, X., Pérez, A. G., Robinson, R. A., and Espínola, J. R. (2018) Crecimiento económico., Barcelona: Reverté.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-215" tabindex="-1" aria-labelledby="modalLabel-IMA-215" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Computación II</p>
+                        <p><strong>Código:</strong> IMA-215</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-125)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Joyanes, L. (2017) Fundamentos de Programación. Algoritmos, estructura de datos y objetos. Cuarta edición, Madrid: McGraw Hill.</li><li>Kong, Q. Siauw, T. Bayen, A. (2020) Python Programming And Numerical Methods: A Guide For Engineers And Scientists, México: Academic Press.</li><li>Chazallet, S. (2016) Python 3 - Los fundamentos del lenguaje, Barcelona: Ediciones ENI.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IFG-300" tabindex="-1" aria-labelledby="modalLabel-IFG-300" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Inglés III</p>
+                        <p><strong>Código:</strong> IFG-300</p>
+                        <p><strong>Créditos:</strong> 3 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IFG-200)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-221" tabindex="-1" aria-labelledby="modalLabel-IMA-221" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Ecuaciones Diferenciales Ordinarias (HITO I)</p>
+                        <p><strong>Código:</strong> IMA-221</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Aprobada toda actividad del III semestre
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Zill, D. G., El-Iraki, A., Cullen, M. R., and García, H. A. E. (2018) Ecuaciones diferenciales con problemas de valores en la frontera, México: Cengage.</li><li>Nagle, R. K., Saff, E. B., & Snider, A. D. (2014). Ecuaciones diferenciales y problemas con valores en la frontera, S.l.: Pearson.</li><li>Zill, D. G., El-Iraki, A., García, H. A. E., and Filio, L. E. (2018) Ecuaciones diferenciales con aplicaciones de modelado, Ciudad de México: CENGAGE Learning.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-222" tabindex="-1" aria-labelledby="modalLabel-IMA-222" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Álgebra III</p>
+                        <p><strong>Código:</strong> IMA-222</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-212)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Hungerford, T. (2013) Abstract Algebra. An Introduction. 3rd ed. Cengage Learning.</li><li>Dummit, D. and Foote, R. (2003) Abstract Algebra, 3rd Edition. Wiley.</li><li>Fraleigh, J. (2003) A First Course in Abstract Algebra. 7th ed. Pearson, Upper Saddle River.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-223" tabindex="-1" aria-labelledby="modalLabel-IMA-223" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Física III</p>
+                        <p><strong>Código:</strong> IMA-223</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-213)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Serway, R. A., and Jewett, J. W. (2015) Física para ciencias e ingeniería, volumen II, 9a ed, Colombia: Cengage Learning.</li><li>Resnick R., and Halliday D. (2013) Fundamentals of Physics 10a ed,, EE.UU: John Wiley & Sons Inc.</li><li>Tipler, M. (2010) Física para la ciencia y la tecnología volumen II, 6a ed., México: Editorial Reverté.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-224" tabindex="-1" aria-labelledby="modalLabel-IMA-224" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Química</p>
+                        <p><strong>Código:</strong> IMA-224</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Brown, T. et al. (2013) Química, la Ciencia Central. México: Pearson.</li><li>Chang, R. and Goldsby, K. (2017) Química, México: Mc Graw-Hill.</li><li>Petrucci, R. et al. (2017) Química General, Madrid: Pearson Educación.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-225" tabindex="-1" aria-labelledby="modalLabel-IMA-225" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Computación III</p>
+                        <p><strong>Código:</strong> IMA-225</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-215)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Connolly, T. M. and Begg, C. E (2005) Sistemas de bases de datos: Un Enfoque Práctico para Diseño, Implementación y Gestión, 4a Edición, Madrid: Editorial Pearson Education.</li><li>Silberschatz, A., Korth, H.F and Sudarshan, S. (2006) Fundamentos de Bases de Datos, 5a Edición, Madrid: Editorial McGraw-Hill.</li><li>Ramakrishnan, R. and Gehrke, J. (2007) Sistemas de Gestión de Bases de Datos, 3a Edición, Madrid: Editorial McGraw-Hill. Madrid.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IFG-400" tabindex="-1" aria-labelledby="modalLabel-IFG-400" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Inglés IV</p>
+                        <p><strong>Código:</strong> IFG-400</p>
+                        <p><strong>Créditos:</strong> 3 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IFG-300)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-311" tabindex="-1" aria-labelledby="modalLabel-IMA-311" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Análisis Matemático</p>
+                        <p><strong>Código:</strong> IMA-311</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-221)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Lima, E. L., e Instituto de Matemática Pura e Aplicada. (2013) Curso de analise, Volume 1, Rio de Janeiro: IMPA.</li><li>Honig, C. S. (2011) Aplicaciones a la topología y analisis, Sao Paulo: Livraria da Fisica.</li><li>Zorich, V. A. (2016) Mathematical Analysis I, Heidelberg: Springer.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-312" tabindex="-1" aria-labelledby="modalLabel-IMA-312" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Matemáticas Discretas y Combinatoria</p>
+                        <p><strong>Código:</strong> IMA-312</p>
+                        <p><strong>Créditos:</strong> 4 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Grimaldi, R., P. (1998) Matemáticas discreta y combinatoria: una introducción con aplicaciones, México: Addison Wesley Longman.</li><li>Johnsonbaugh, R. (2019) Discrete mathematics, New York: NY Pearson.</li><li>Koshy, T. (2008) Discrete mathematics with applications, Amsterdam: Elsevier Academic Press.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-313" tabindex="-1" aria-labelledby="modalLabel-IMA-313" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Termodinámica</p>
+                        <p><strong>Código:</strong> IMA-313</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-211)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Reif, F. (2010) Fundamentals of Statistical and Thermal Physics, Calcuta: Levant.</li><li>Levenspiee, O., and Magnani, J. L. S. W. M. (2000) Termodinâmica amistosa para engenheiro, São Paulo: Edgard Blucher.</li><li>Çengel, Y. A., Boles, M. A., and Kanoglu, M. (2011) Thermodynamics: An engineering approach, Singapore: McGraw-Hill.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-314" tabindex="-1" aria-labelledby="modalLabel-IMA-314" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Probabilidades y Estadística</p>
+                        <p><strong>Código:</strong> IMA-314</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-211)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Montgomery D., Runger G. (2006) Probabilidad y estadística aplicadas a la ingeniería, México D.F: McGraw-Hill.</li><li>Wackerly D.D., Mendenhall W., Scheaffer R. (2010) Estadística matemática con aplicaciones séptima edición, México</li><li>Cengage Learning.</li><li>Murray, S., Schiller J., Srinivasan R. (2014) Probabilidad y estadística, cuarta edición, México: McGraw-Hill.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-315" tabindex="-1" aria-labelledby="modalLabel-IMA-315" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Cálculo Numérico</p>
+                        <p><strong>Código:</strong> IMA-315</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-221)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Ramin S.E. (2017) Numerical Methods for Engineers and Scientists Using Matlab, Segunda edición, Boca Ratón: CRC Press Taylor & Francis Group.</li><li>Burden R.L. (2017) Análisis Numérico, décima edición, Distrito Federal: Cengage Learning.</li><li>Mathews J.H., Fink K.D. (2011) Métodos numéricos con MATLAB, tercera edición, Madrid: Pearson Prentice Hall.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-MFG-114" tabindex="-1" aria-labelledby="modalLabel-MFG-114" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Introducción a la Fe</p>
+                        <p><strong>Código:</strong> MFG-114</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-321" tabindex="-1" aria-labelledby="modalLabel-IMA-321" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Topología</p>
+                        <p><strong>Código:</strong> IMA-321</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-311)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Munkres, J. (2018) Topology, New York: Pearson.</li><li>Willard, S. (2016) General Topology. New York: Courier Dover Publications.</li><li>Kelley, J. (2017) General Topology. New York: Courier Dover Publications.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-322" tabindex="-1" aria-labelledby="modalLabel-IMA-322" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Estadística Inferencial</p>
+                        <p><strong>Código:</strong> IMA-322</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-314)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Montgomery D., Runger G. (2006) Probabilidad y estadística aplicadas a la ingenieria, México D.F: McGraw-Hill.</li><li>Wackerly D.D., Mendenhall W., Scheaffer R. (2010) Estadística matemática con aplicaciones séptima edición, México: Cengage Learning.</li><li>Murray, S., Schiller J., Srinivasan R. (2014) Probabilidad y estadística, cuarta edición, México: McGraw-Hill.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-323" tabindex="-1" aria-labelledby="modalLabel-IMA-323" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Gestión Estratégica</p>
+                        <p><strong>Código:</strong> IMA-323</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-314)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Dixit, A. K., Varela, A., and Valls, A. (2011) Pensar estratégicamente: Un arma decisiva en los negocios, la política y la vida diaria, Barcelona: Antoni Bosch editor.</li><li>R. Gibbons. (2011) Un primer curso de teoría de juegos, Barcelona: Antoni Bosch editor.</li><li>Dutta, P. K. (2001) Strategies and games: Theory and practice, Cambridge, Mass: MIT Press.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-324" tabindex="-1" aria-labelledby="modalLabel-IMA-324" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Modelos Matemáticos Computacionales</p>
+                        <p><strong>Código:</strong> IMA-324</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-315)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Klee, H. (2019). Simulation of Dynamic Systems with Matlab and Simulink. London: Chapman and Hall/CRC.</li><li>Velten, K. (2009) Mathematical Modelling and simulation. Primera edición. Wienheim: WILEY-VCH.</li><li>Mityushev V., Rylko N., Nawalaniec W., (2021) Introduction to mathematical modeling and computer simulations, Boca Raton: Chapman & Hall/CRC.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-MFG-216" tabindex="-1" aria-labelledby="modalLabel-MFG-216" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Ética Cristiana</p>
+                        <p><strong>Código:</strong> MFG-216</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin Requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-411" tabindex="-1" aria-labelledby="modalLabel-IMA-411" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Análisis Funcional</p>
+                        <p><strong>Código:</strong> IMA-411</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-321)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Brezis, H. (2010) Functional Analysis, Sobolev Spaces and Partial Differential Equations, New York: Springer.</li><li>Conway, J. B. (2010) A course in Functional Analysis, New York: Springer.</li><li>Lax, P. (2002) Functional Analysis, New Jersey: Wiley interscience.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-412" tabindex="-1" aria-labelledby="modalLabel-IMA-412" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Teoría de la Medida</p>
+                        <p><strong>Código:</strong> IMA-412</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Royden, H. L. Y Fitzpatrick, P. (2018) Real Analysis, Boston: Pearson Publisher.</li><li>Bartle, R. G., (2014) The elements of integration and Lebesgue measure, New York: John Wiley and Sons.</li><li>Fernandez, P. J. (2007) Medida e Integracao, Projeto Euclides, Río de Janerio: IMPA.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-413" tabindex="-1" aria-labelledby="modalLabel-IMA-413" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Ciencia de Datos</p>
+                        <p><strong>Código:</strong> IMA-413</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-322)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Hernández, J., Ferri, C., Ramirez, M. J. (2010) Introducción a la Minería de Datos, Madrid: Pearson Prentice Hall.</li><li>Miller, J. (2017) Statitistics for Data Science. Packt Publishing.</li><li>Kelleher, J. D., and Tierney, B. (2018) Data science, Cambridge, Massachusetts, London, England: The MIT Press.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-414" tabindex="-1" aria-labelledby="modalLabel-IMA-414" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Marketing e Inteligencia de Negocios</p>
+                        <p><strong>Código:</strong> IMA-414</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Kotler, P., Keller, K. L., and Chernev, A. (2022) Marketing management. Hoboken, NJ: Pearson Education.</li><li>Best, R. J. (2013) Market-based management: Strategies for growing customer value and profitability, Boston: Pearson.</li><li>Gupta, S., and Lehmann, D. R. (March 07, 2004). Customers as assets. Journal of Interactive Marketing, 17, 1, 9-24.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-415" tabindex="-1" aria-labelledby="modalLabel-IMA-415" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Pre-Práctica</p>
+                        <p><strong>Código:</strong> IMA-415</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-323, IMA-324)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Yerena, F., and Pérez, A. C. (2016) Comunicación oral y escrita, Naucalpan de Juárez: Pearson Educación.</li><li>Martín, A. D. (2006) Introducción al liderazgo organizacional: Teoría y metodología, Madrid: Librería Editorial Dykinson.</li><li>Ferreiro, G. R., and Espino, C. M. (2009) El ABC del aprendizaje cooperativo: Trabajo en equipo para aprender y enseñar, México: Trillas.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-CFG" tabindex="-1" aria-labelledby="modalLabel-CFG" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Certificación I</p>
+                        <p><strong>Código:</strong> CFG</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-421" tabindex="-1" aria-labelledby="modalLabel-IMA-421" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Ecuaciones en Derivadas Parciales</p>
+                        <p><strong>Código:</strong> IMA-421</p>
+                        <p><strong>Créditos:</strong> 6 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-411)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Iorio, V. M., and Instituto de Matemática Pura e Aplicada (Brazil), (2012) EDP: Um curso de graduação, Rio de Janeiro: IMPA.</li><li>Evans, L. C. (2010) Partial differential equations, Providence, R.I: American Mathematical Society.</li><li>Li, J., and Chen, Y.-T. (2020) Computational partial differential equations using MATLAB®., Boca Raton: London New York CRC Press, Taylor & Francis Group</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-422" tabindex="-1" aria-labelledby="modalLabel-IMA-422" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Análisis Numérico</p>
+                        <p><strong>Código:</strong> IMA-422</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-411)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Kress, R. (2003) Numerical analysis, Beijing: World Publishing Corporation.</li><li>Kincaid, D., and Cheney, W. (2009) Numerical analysis: Mathematics of scientific computing, Providence: American Mathematical Society.</li><li>Gerald, C. F., Wheatley, P. O., Villagómez, V. H., & Valle, S. J. C. (2000) Análisis numérico con aplicaciones, México: Pearson Educación.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-423" tabindex="-1" aria-labelledby="modalLabel-IMA-423" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Optimización Lineal (Hito II)</p>
+                        <p><strong>Código:</strong> IMA-423</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Aprobadas todas las Actividades curriculares del VII semestre
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Hamdy, T. (2017) Operations Reseach: An Introducction, Upper Saddle River: Pearson Education Limited.</li><li>Luenberger, D. G., and Ye, Y. (2016) Linear and nonlinear programming, Cham: Springer.</li><li>Thie, P.R. and Keough, G. E. (2008) An Introducction to Linear Programming and Game Theory, New York, N.Y: Wiley-Blackwell.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-424" tabindex="-1" aria-labelledby="modalLabel-IMA-424" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Procesos Estocásticos</p>
+                        <p><strong>Código:</strong> IMA-424</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-412)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Barbosa R., and Llinás H. (2016) Procesos estocásticos con aplicaciones, Barranquilla Colombia: Universidad del Norte.</li><li>Ross S., (2016) Stochastic processes, segunda edición, New Delhi: Wiley India.</li><li>Bass R. (2013) Stochastic processes, primera edición, Cambrige: Cambrige University Press.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-CFG" tabindex="-1" aria-labelledby="modalLabel-CFG" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Certificación II</p>
+                        <p><strong>Código:</strong> CFG</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-511" tabindex="-1" aria-labelledby="modalLabel-IMA-511" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Optativo de Profundización I</p>
+                        <p><strong>Código:</strong> IMA-511</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-512" tabindex="-1" aria-labelledby="modalLabel-IMA-512" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Laboratorio de Modelación I</p>
+                        <p><strong>Código:</strong> IMA-512</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-421, IMA-422)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Barnes, B. and Fulford, G. (2014) Mathematical Modelling with Case Studies: Using Maple and MATLAB, Boca Raton: CRC Press.</li><li>Vande Wouwer A., Saucez Ph., Vilas Fernández C. (2014) Simulation of ODE/PDE Models with MATLAB, OCTAVE and SCILAB: Scientific and Engineering Applications, Cham: Springer International Publishing.</li><li>Ramos-Jiliberto, R. (2020) Deja a la estructura hablar. Modelización y análisis de sistemas naturales, sociales y socio-ecológicos, Santiago: Ediciones Universidad Mayor.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-513" tabindex="-1" aria-labelledby="modalLabel-IMA-513" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Optimización no Lineal</p>
+                        <p><strong>Código:</strong> IMA-513</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-423, IMA-422)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Luenberger, D. G., and Ye, Y. (2016) Linear and nonlinear programming, Cham: Springer.</li><li>Bazaraa, M. S., Jarvis, J. J., and Sherali, H. D. (2013) Linear Programming and Network Flows, New York, NY John Wiley & Sons.</li><li>Birge, J. R., and Louveaux, F. (2011) Introduction to stochastic programming, New York: Springer.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-514" tabindex="-1" aria-labelledby="modalLabel-IMA-514" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Gestión Financiera</p>
+                        <p><strong>Código:</strong> IMA-514</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-424)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Ross, S. A., Westerfield, R., Jaffe, J. F., Jordan, B. D., Gómez, M. A. J., Nagore, G., and Enríquez, G. G. (2018) Finanzas corporativas, Ciudad de México: McGraw-Hill.</li><li>Dixit, R. K., Pindyck, R. S. (2012) Investment under uncertainty, Princeton: Princeton university press.</li><li>Hull, John (2021) Options, futures, and other derivatives, global edition. S.L.: Pearson education limited.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-515" tabindex="-1" aria-labelledby="modalLabel-IMA-515" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Metodología de la Investigación</p>
+                        <p><strong>Código:</strong> IMA-515</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Sampieri, C., Fernández, C., Baptista, P. (2010). Metodología de la Investigación. México: McGrawHill.</li><li>Paz, G. (2014). Metodología de la investigación, Ciudad de México: Editorial Patria.</li><li>Quezada, L. N. (2021) Metodología de la investigación, Madrid: Marcombo.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-CFG" tabindex="-1" aria-labelledby="modalLabel-CFG" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Certificación III</p>
+                        <p><strong>Código:</strong> CFG</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-521" tabindex="-1" aria-labelledby="modalLabel-IMA-521" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Optativo de Profundización II</p>
+                        <p><strong>Código:</strong> IMA-521</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-522" tabindex="-1" aria-labelledby="modalLabel-IMA-522" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Laboratorio de Modelación II</p>
+                        <p><strong>Código:</strong> IMA-522</p>
+                        <p><strong>Créditos:</strong> 8 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-512)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Maher, R. A. (2018) Optimal Control Engineering with MATLAB, Hauppauge: Nova Science Publishers, Inc.</li><li>Vande Wouwer A., Saucez Ph., Vilas Fernández C. (2014) Simulation of ODE/PDE Models with MATLAB, OCTAVE and SCILAB: Scientific and Engineering Applications, Cham: Springer International Publishing.</li><li>Venkataraman, P. (2009) Applied optimization with MATLAB programming, Hoboken, N.J: John Wiley & Sons.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-523" tabindex="-1" aria-labelledby="modalLabel-IMA-523" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Evaluación de Proyectos</p>
+                        <p><strong>Código:</strong> IMA-523</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-514)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Vidal K., and González, J. (2015) Proyectos: Evaluación y formulación, Barcelona: Marombo.</li><li>Fontaine, E. (2015) Evaluación social de proyectos, Santiago: Alfaomega.</li><li>Lara, A. (2018) La evaluación del impacto ambiental. Herramienta fundamental del desarrollo sustentable, Santiago: Alfaomega.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-524" tabindex="-1" aria-labelledby="modalLabel-IMA-524" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Seminario de Título I</p>
+                        <p><strong>Código:</strong> IMA-524</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-514, IMA-515)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Hernández, S. R., Fernández, C. C., Baptista, L. P., García, E. M. I., & Limón, C. S. (2010) Fundamentos de metodología de la investigación, Madrid: McGraw-Hill.</li><li>Baena, P. G. (2016) Metodología de la investigación, México: Grupo Editorial Patria.</li><li>Quezada L. N. (2021). Metodología de la investigación, Madrid: Marcombo.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-525" tabindex="-1" aria-labelledby="modalLabel-IMA-525" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Práctica Profesional I</p>
+                        <p><strong>Código:</strong> IMA-525</p>
+                        <p><strong>Créditos:</strong> 7 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-513)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Martín, A. D. (2010) Introducción al liderazgo organizacional: Teoría y metodología (Vol. 46). Librería Editorial Dykinson.</li><li>Yerena, F., Pérez, A. C. (2016) Comunicación oral y escrita, Naucalpan de Juárez: Pearson Educación.</li><li>Ferreiro, G. R., and Espino, C. M. (2011) El ABC del aprendizaje cooperativo: Trabajo en equipo para aprender y enseñar, México, Distrito Federal: Trillas.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+
+    
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-611" tabindex="-1" aria-labelledby="modalLabel-IMA-611" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Optativo de Profundización III</p>
+                        <p><strong>Código:</strong> IMA-611</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Sin requisito
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>No se dispone de bibliografía.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-612" tabindex="-1" aria-labelledby="modalLabel-IMA-612" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Seminario de Título II</p>
+                        <p><strong>Código:</strong> IMA-612</p>
+                        <p><strong>Créditos:</strong> 5 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Requisito
+                             (IMA-524)
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Hernández, S. R., Fernández, C. C., Baptista, L. P., García, E. M. I., and Limón, C. S. (2010) Fundamentos de metodología de la investigación, Madrid: McGraw-Hill.</li><li>Baena, P. G. (2016) Metodología de la investigación, México: Grupo Editorial Patria.</li><li>Quezada L. N. (2021) Metodología de la investigación, Madrid: Marcombo.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal único para cada asignatura -->
+        <div class="modal fade" id="modal-IMA-613" tabindex="-1" aria-labelledby="modalLabel-IMA-613" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="text-center mb-3">
+                        <img src="/static/images/logo_IMA_circ.png" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="subjectModalLabel">Información de la actividad curricular (AC):</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Nombre AC:</strong> Práctica Profesional II (Hito III)</p>
+                        <p><strong>Código:</strong> IMA-613</p>
+                        <p><strong>Créditos:</strong> 20 SCT</p>
+                        <p><strong>Requisitos:</strong> 
+                            Todas actividades curriculares aprobadas hasta el X semestre.
+                            
+                        </p>                        
+                        <p><strong>Bibliografía:</strong></p>
+                        <ul class='text-justify'><li>Yerena, F., and Pérez, A. C. (2016) Comunicación oral y escrita, Naucalpan de Juárez: Pearson Educación.</li><li>Martín, A. D. (2010) Introducción al liderazgo organizacional: Teoría y metodología, Madrid: Librería Editorial Dykinson.</li><li>Ferreiro, G. R., and Espino, C. M. (2009) El ABC del aprendizaje cooperativo: Trabajo en equipo para aprender y enseñar, México: Trillas.</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+
+
+
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

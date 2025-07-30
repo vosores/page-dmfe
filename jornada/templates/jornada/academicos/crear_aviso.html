@@ -1,0 +1,116 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Nuevo Aviso – {{ academico.nombre }}{% endblock %}
+
+{% block content %}
+<section id="nuevo-aviso" class="py-5">
+  <div class="container">
+    
+    <!-- Encabezado con saludo -->
+    <div class="card-header text-center">
+      <h2 class="mb-0">
+        Nuevo aviso a Dirección de Departamento de 
+        <span class="btn btn-warning text-uppercase">{{ academico.nombre }}</span>
+      </h2>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-16 col-md-14 col-lg-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+
+              <!-- DESTINO -->
+              <div class="mb-3 row">
+                <label for="{{ form.destino.id_for_label }}" class="col-sm-2 col-form-label">
+                  Destino:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.destino }}
+                  {% for error in form.destino.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- TIPO DE ACTIVIDAD -->
+              <div class="mb-3 row">
+                <label for="{{ form.tipo_actividad.id_for_label }}" class="col-sm-2 col-form-label">
+                  Tipo de Actividad:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.tipo_actividad }}
+                  {% for error in form.tipo_actividad.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- FECHA SALIDA -->
+              <div class="mb-3 row">
+                <label for="{{ form.fecha_salida.id_for_label }}" class="col-sm-2 col-form-label">
+                  Fecha y hora de salida:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.fecha_salida }}
+                  {% for error in form.fecha_salida.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- FECHA REGRESO -->
+              <div class="mb-3 row">
+                <label for="{{ form.fecha_regreso.id_for_label }}" class="col-sm-2 col-form-label">
+                  Fecha y hora de regreso:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.fecha_regreso }}
+                  {% for error in form.fecha_regreso.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- TELÉFONO EMERGENCIA -->
+              <div class="mb-3 row">
+                <label for="{{ form.telefono_emergencia.id_for_label }}" class="col-sm-2 col-form-label">
+                  Teléfono de Emergencia:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.telefono_emergencia }}
+                  {% for error in form.telefono_emergencia.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- DETALLE ACTIVIDAD -->
+              <div class="mb-3 row">
+                <label for="{{ form.detalle_actividad.id_for_label }}" class="col-sm-2 col-form-label">
+                  Detalle de la Actividad:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.detalle_actividad }}
+                  {% for error in form.detalle_actividad.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- BOTONES -->
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                <button type="submit" class="btn btn-success">Enviar Aviso</button>
+                <a href="{% url 'detalle_academico' academico.slug %}" class="btn btn-secondary">Cancelar</a>
+              </div>
+
+            </form>
+          </div><!-- card-body -->
+        </div><!-- card -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+{% endblock %}

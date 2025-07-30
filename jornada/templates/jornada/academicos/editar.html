@@ -1,0 +1,413 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+{% load text_extras %}
+
+{% block content %}
+<section id="editar-perfil" class="py-5">
+  <div class="container">
+    <!-- Encabezado con saludo -->
+    <div class="card-header">
+    <h2 class="mb-0 text-center">
+        Hola 
+        <span class="btn btn-warning text-uppercase">
+        {{ academico.nombre }}
+        </span>, a continuación podrás editar tu perfil.
+    </h2>
+    </div>
+    <div class="row justify-content-center">
+      <!-- Elige un ancho mayor en pantallas medianas y grandes -->
+      <div class="col-16 col-md-14 col-lg-12">
+        <div class="card shadow-sm">
+
+          
+          <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <!-- HONORÍFICO -->
+                <div class="mb-3 row">
+                <label for="{{ form.honorifico.id_for_label }}" class="col-sm-3 col-form-label">
+                    Prefijo / Título:
+                </label>
+                <div class="col-sm-9">
+                    {{ form.honorifico }}
+                    {% if form.honorifico.help_text %}
+                    <small class="text-muted d-block">{{ form.honorifico.help_text }}</small>
+                    {% endif %}
+                    {% for error in form.honorifico.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                </div>
+              
+              <!-- NOMBRE -->
+              <div class="mb-3 row">
+                <label for="{{ form.nombre.id_for_label }}" class="col-sm-3 col-form-label">
+                  Nombre:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.nombre }}
+                  {% if form.nombre.help_text %}
+                    <small class="text-muted d-block">{{ form.nombre.help_text }}</small>
+                  {% endif %}
+                  {% for error in form.nombre.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- FOTO -->
+              <div class="mb-3 row">
+                <label for="{{ form.foto.id_for_label }}" class="col-sm-3 col-form-label">
+                  Foto:
+                  {% if academico.foto %}
+                    (Actualmente: <a href="{{ academico.foto.url }}" target="_blank">Ver imagen</a>)
+                  {% endif %}
+                </label>
+                <div class="col-sm-9">
+                  {{ form.foto }}
+                  {% if form.foto.help_text %}
+                    <small class="text-muted d-block">{{ form.foto.help_text }}</small>
+                  {% endif %}
+                  {% for error in form.foto.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- TÍTULOS Y GRADOS -->
+              <div class="mb-3 row">
+                <label for="{{ form.titulo_grado.id_for_label }}" class="col-sm-3 col-form-label">
+                  Títulos y Grados:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.titulo_grado }}
+                  {% if form.titulo_grado.help_text %}
+                    <small class="text-muted d-block">{{ form.titulo_grado.help_text }}</small>
+                  {% endif %}
+                  {% for error in form.titulo_grado.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- ESPECIALIDAD -->
+              <div class="mb-3 row">
+                <label for="{{ form.especialidad.id_for_label }}" class="col-sm-3 col-form-label">
+                  Especialidad:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.especialidad }}
+                  {% for error in form.especialidad.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- BIOGRAFÍA -->
+              <div class="mb-3 row">
+                <label for="{{ form.biografia.id_for_label }}" class="col-sm-3 col-form-label">
+                  Biografía:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.biografia }}
+                  {% for error in form.biografia.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+                <!-- DEPARTAMENTO -->
+                <div class="mb-3 row">
+                    <label for="id_departamento" class="col-sm-3 col-form-label">Departamento:</label>
+                    <div class="col-sm-9">
+                        {{ form.departamento }}
+                        {% for error in form.departamento.errors %}
+                        <small class="text-danger d-block">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- CARGOS -->
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Cargos:</label>
+                    <div class="col-sm-9">
+
+                        <h6 class="mt-2 text-primary">Cargos Directivos</h6>
+                        {% for checkbox in form.cargos %}
+                            {% if checkbox.choice_label|is_directivo %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        <h6 class="mt-3 text-primary">Cargos</h6>
+                        {% for checkbox in form.cargos %}
+                            {% if checkbox.choice_label|is_otro %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        <h6 class="mt-3 text-primary">Cargos de Apoyo Académico</h6>
+                        {% for checkbox in form.cargos %}
+                            {% if checkbox.choice_label|is_apoyo %}
+                                <div class="form-check">
+                                    {{ checkbox.tag }} {{ checkbox.choice_label }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for error in form.cargos.errors %}
+                            <small class="text-danger d-block">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+
+              <!-- CARGO -->
+              <!-- <div class="mb-3 row">
+                <label for="{{ form.cargo.id_for_label }}" class="col-sm-3 col-form-label">
+                  Cargo:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.cargo }}
+                  {% for error in form.cargo.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div> -->
+
+                <!-- ESCUELAS -->
+                <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Escuelas:</label>
+                <div class="col-sm-9">
+                    {% for checkbox in form.escuelas %}
+                    <div class="form-check">
+                        {{ checkbox.tag }} {{ checkbox.choice_label }}
+                    </div>
+                    {% endfor %}
+                    {% for error in form.escuelas.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                </div>
+
+
+                <!-- PROGRAMAS DE POSTGRADO -->
+                <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Programas de Postgrado:</label>
+                <div class="col-sm-9">
+
+                    <h6 class="mt-2 text-primary">Doctorados</h6>
+                    {% for checkbox in form.programas_postgrado %}
+                    {% if "Doctorado" in checkbox.choice_label %}
+                        <div class="form-check">
+                        {{ checkbox.tag }} {{ checkbox.choice_label }}
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <h6 class="mt-3 text-primary">Magísteres</h6>
+                    {% for checkbox in form.programas_postgrado %}
+                    {% if "Magíster" in checkbox.choice_label %}
+                        <div class="form-check">
+                        {{ checkbox.tag }} {{ checkbox.choice_label }}
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% for error in form.programas_postgrado.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                </div>
+
+
+              <!-- LÍNEAS DE INVESTIGACIÓN -->
+              <div class="mb-3 row">
+                <label for="{{ form.lineas_investigacion.id_for_label }}" class="col-sm-3 col-form-label">
+                  Líneas de Investigación:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.lineas_investigacion }}
+                  {% if form.lineas_investigacion.help_text %}
+                    <small class="text-muted d-block">{{ form.lineas_investigacion.help_text }}</small>
+                  {% endif %}
+                  {% for error in form.lineas_investigacion.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- PUBLICACIONES -->
+              <!-- <div class="mb-3 row">
+                <label for="{{ form.papers_cientificos.id_for_label }}" class="col-sm-3 col-form-label">
+                  Publicaciones:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.papers_cientificos }}
+                  {% for error in form.papers_cientificos.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div> -->
+
+              <!-- EN PROCESO -->
+              <!-- <div class="mb-3 row">
+                <label for="{{ form.papers_proceso.id_for_label }}" class="col-sm-3 col-form-label">
+                  En proceso:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.papers_proceso }}
+                  {% for error in form.papers_proceso.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div> -->
+
+              <!-- SOMETIDOS -->
+              <!-- <div class="mb-3 row">
+                <label for="{{ form.papers_sometidos.id_for_label }}" class="col-sm-3 col-form-label">
+                  Sometidos:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.papers_sometidos }}
+                  {% for error in form.papers_sometidos.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div> -->
+
+              <!-- ACTIVIDADES CURRICULARES -->
+              <div class="mb-3 row">
+                <label for="{{ form.actividades_curriculares.id_for_label }}" class="col-sm-3 col-form-label">
+                  Actividades Curriculares:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.actividades_curriculares }}
+                  {% for error in form.actividades_curriculares.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- OTROS DE INTERÉS -->
+              <div class="mb-3 row">
+                <label for="{{ form.otros_interes.id_for_label }}" class="col-sm-3 col-form-label">
+                  Otros de Interés:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.otros_interes }}
+                  {% for error in form.otros_interes.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- CORREO ELECTRÓNICO -->
+              <div class="mb-3 row">
+                <label for="{{ form.email.id_for_label }}" class="col-sm-3 col-form-label">
+                  Correo Electrónico:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.email }}
+                  {% for error in form.email.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- PÁGINA WEB -->
+              <div class="mb-3 row">
+                <label for="{{ form.sitio_web.id_for_label }}" class="col-sm-3 col-form-label">
+                  Página Web:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.sitio_web }}
+                  {% for error in form.sitio_web.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- ResearchGate-->
+              <div class="mb-3 row">
+                <label for="{{ form.researchgate.id_for_label }}" class="col-sm-3 col-form-label">
+                  ResearchGate:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.researchgate }}
+                  {% for error in form.researchgate.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- ORCID-->
+              <div class="mb-3 row">
+                <label for="{{ form.orcid.id_for_label }}" class="col-sm-3 col-form-label">
+                  ORCID:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.orcid }}
+                  {% for error in form.orcid.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- WOS-->
+              <div class="mb-3 row">
+                <label for="{{ form.wos.id_for_label }}" class="col-sm-3 col-form-label">
+                  WOS:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.wos }}
+                  {% for error in form.wos.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- PROYECTOS DE INVESTIGACIÓN ACTUALES -->
+              <div class="mb-3 row">
+                <label for="{{ form.proyectos_investigacion_actuales.id_for_label }}" class="col-sm-3 col-form-label">
+                  Proyectos de Investigación Actuales:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.proyectos_investigacion_actuales }}
+                  {% for error in form.proyectos_investigacion_actuales.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- PROYECTOS DE INVESTIGACIÓN PASADOS -->
+              <div class="mb-3 row">
+                <label for="{{ form.proyectos_investigacion_pasados.id_for_label }}" class="col-sm-3 col-form-label">
+                  Proyectos de Investigación Pasados:
+                </label>
+                <div class="col-sm-9">
+                  {{ form.proyectos_investigacion_pasados }}
+                  {% for error in form.proyectos_investigacion_pasados.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- BOTÓN GUARDAR -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+              </div>
+            </form>
+          </div><!-- card-body -->
+        </div><!-- card -->
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- container -->
+</section>
+{% endblock %}

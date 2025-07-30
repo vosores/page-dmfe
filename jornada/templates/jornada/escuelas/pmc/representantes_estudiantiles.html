@@ -1,0 +1,58 @@
+{% extends 'jornada/escuelas/ima/base_ima.html' %}
+{% load static %}
+
+{% block title %}Representantes Estudiantiles - {{ escuela.nombre }}{% endblock %}
+
+{% block content %}
+
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Representantes Estudiantiles de {{ escuela.nombre }}</h2>
+                <p class="lead">
+                    Conoce a los integrantes del Comité de Carrera y del Consejo de Carrera.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="comite-carrera" class="py-5">
+    <h3 class="text-secondary mb-3"><i class="bi bi-mortarboard-fill text-primary"></i> Comité de Carrera</h3>
+    <p>
+        El Comité de Carrera de la Escuela de {{ escuela.nombre }} está compuesto por:
+    </p>
+    <div class="container">
+        <!-- Comité de Carrera -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                {% include "jornada/escuelas/"|add:escuela.slug|add:"/comite-carrera.html" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="consejo-carrera" class="py-5">
+    <h3 class="text-secondary mb-3"><i class="bi bi-people-fill text-primary"></i> Consejo de Carrera</h3>
+    <p>
+        El Consejo de Carrera de la Escuela de {{ escuela.nombre }} está compuesto por los siguientes representantes estudiantiles:
+    </p>
+    <!-- <div class="container">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                
+            </div>
+        </div>
+    </div> -->
+</section>
+<div class="alert alert-warning" role="alert">
+    <strong>Presidente:</strong> Representante principal del comité, encargado de liderar reuniones y representar a los estudiantes ante la dirección de la carrera.<br>
+    <strong>Vicepresidente:</strong> Apoya al presidente y lo reemplaza en su ausencia.<br>
+    <strong>Secretario/a:</strong> Se encarga de registrar actas de reuniones y gestionar documentación.<br>
+    <strong>Tesorero/a:</strong> Administra fondos y recursos del comité (si aplica).<br>
+    <strong>Delegados/as de Curso:</strong> Representan a los distintos niveles de la carrera y canalizan inquietudes de los estudiantes.
+</div>
+
+{% endblock %}

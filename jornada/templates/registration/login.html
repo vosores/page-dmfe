@@ -1,0 +1,55 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+<section id="login-ima" class="py-0">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow" style="max-width: 350px; width: 100%;">
+            <div class="card-body">
+                <!-- Logo sobre el título -->
+                <div class="text-center mb-3">
+                    <img src="{% static 'images/logo_IMA_circ.png' %}" alt="Logo IMA" class="img-fluid mx-auto d-block" style="max-width: 100px;">
+                </div>
+                <!-- Logo o título estilo Instagram -->
+                <h1 class="text-center mb-4" style="font-family: 'Helvetica', sans-serif; font-size: 2rem;">
+                    Ingeniería Matemática
+                </h1>
+                
+                <!-- Formulario de autenticación -->
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    <!-- Si usas el CustomAuthForm, se mostrarán los placeholders definidos -->
+                    {{ form.non_field_errors }}
+                    
+                    <div class="mb-3">
+                        {{ form.username.errors }}
+                        {{ form.username }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.password.errors }}
+                        {{ form.password }}
+                    </div>
+
+                    <!-- Checkbox de 'Guardar sesión' -->
+                    <div class="form-check text-start mb-3">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                        <label class="form-check-label" for="rememberMe">
+                            Guardar información de inicio de sesión
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                </form>
+                
+                <!-- Enlaces estilo Instagram -->
+                <div class="text-center mt-3">
+                    <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

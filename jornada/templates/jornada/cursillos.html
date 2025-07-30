@@ -1,0 +1,213 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Cursillos - XXXVII Jornada de Matemática{% endblock %}
+
+{% block content %}
+
+<section id="cursillos" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row mb-4">
+            <div class="col-md-12 text-center">
+                <h2>Cursillos</h2>
+                <p class="lead">
+                    Participa en los talleres dirigidos por expertos en distintas áreas de la matemática. 
+                    Conoce más detalles sobre los temas y horarios de cada cursillo.
+                </p>
+            </div>
+        </div>
+
+        <!-- Lista de Cursillos -->
+        <div class="row">
+            <!-- Cursillo 1 -->
+            <div class="col-md-4 text-center">
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalCursillo1">
+                    <div class="card shadow-sm">
+                        <img src="{% static 'images/dmaldonado.jpeg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Diego Maldonado" style="width: 220px; height: 220px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Diego Maldonado Montiel</h5>
+                            <p class="card-text">Universidad Católica del Maule</p>
+                            <p><strong>Cursillo 1:</strong> Autómatas celulares: Aspectos teóricos y prácticos.</p>
+                            <p>23, 24 y 25 de abril - HH:MM-HH:MM hrs.<br>Auditorio XX<br>Edificio XX</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalCursillo1" tabindex="-1" aria-labelledby="modalCursillo1Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Título del Cursillo -->
+                            <h3 class="text-center">Autómatas celulares: Aspectos teóricos y prácticos</h3>
+                            <p class="text-center text-muted">Dr. Diego Maldonado Montiel</p>
+                            <p class="text-center text-muted">Departamento de Matemática, Física y Estadística, <br> Universidad Católica del Maule</p>
+
+                            <!-- Resumen -->
+                            <h5 class="mt-4">Resumen</h5>
+                            <p style="text-align: justify;">
+                                La información completa estará disponible próximamente.
+                            </p>
+
+                            <!-- Referencias -->
+                            <h5 class="mt-4">Referencias</h5>
+                            <ol>
+                                <li>Autores, <em>Título</em>. Otros.</li>
+                                <li></li>
+                                <li></li>
+                                <!-- <li>U. Ayachit, <em>The ParaView Guide: A Parallel Visualization Application</em>. Kitware, 2015.</li>
+                                <li>F. Hecht, <em>New Development in FreeFem++</em>. J. Numer. Math. 20 (2012), 251–265.</li>
+                                <li>F. Hecht, <em>FreeFem++</em>. Third Edition. Versión 3.58-1. Laboratoire Jacques-Louis Lions, Université Pierre et Marie Curie, 2018.</li> -->
+                            </ol>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Cursillo 2 -->
+            <div class="col-md-4 text-center">
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalCursillo2">
+                    <div class="card shadow-sm">
+                        <img src="{% static 'images/arojas.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Alejandro Rojas" style="width: 220px; height: 220px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Alejandro Rojas Palma</h5>
+                            <p class="card-text">Universidad Católica del Maule</p>
+                            <p><strong>Cursillo 2:</strong> Elementos de modelización de sistemas biológicos</p>
+                            <p>23, 24 y 25 de abril - HH:MM-HH:MM hrs.<br>Auditorio XX<br>Edificio XX</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalCursillo2" tabindex="-1" aria-labelledby="modalCursillo1Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Título del Cursillo -->
+                            <h3 class="text-center">Elementos de modelización de sistemas biológicos</h3>
+                            <p class="text-center text-muted">Dr. Alejandro Rojas Palma</p>
+                            <p class="text-center text-muted">Departamento de Matemática, Física y Estadística, <br> Universidad Católica del Maule</p>
+
+                            <!-- Resumen -->
+                            <h5 class="mt-4">Resumen</h5>
+                            <p style="text-align: justify;">
+                                La información completa estará disponible próximamente. 
+                            </p>
+
+                            <h5 class="mt-4">Referencias</h5>
+                            <div class="references">
+                                <ol class="custom-list">
+                                    <li>Bazykin, A. D. (1998). <em>Nonlinear dynamics of interacting populations</em>. World Scientific.</li>
+  <li>Kot, M. (2003). <em>Elements of Mathematical Ecology</em>. Cambridge University Press.</li>
+  <li>Thieme, H. R. (2003). <em>Mathematics in Population Biology</em>. Theoretical and Computational Biology. Princeton Series.</li>
+  <li>González-Olivares, E., Valenzuela-Figueroa, S., & Rojas-Palma, A. (2019). A simple Gause type predator-prey model considering social predation. <em>Mathematical Methods in the Applied Sciences, 42</em>, 5668–5686.</li>
+  <li>Rojas-Palma, A., & González-Olivares, E. (2023). Influence of the collaboration among predators and the weak Allee effect on prey in a modified Leslie-Gower predation model. In <em>Springer Proceedings in Mathematics & Statistics</em> (Vol. 414).</li>
+                                </ol>
+                            </div>                             
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cursillo 3 -->
+            <div class="col-md-4 text-center">
+                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalCursillo3">
+                    <div class="card shadow-sm">
+                        <img src="{% static 'images/avergara.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" alt="Andrea Vergara" style="width: 220px; height: 220px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Dra. Andrea Vergara Gómez</h5>
+                            <p class="card-text">Universidad Católica del Maule</p>
+                            <p><strong>Cursillo 3:</strong> Toma de decisiones en contexto de riesgo e incertidumbre.</p>
+                            <p>23, 24 y 25 de abril - HH:MM-HH:MM hrs.<br>Auditorio XX<br>Edificio XX</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalCursillo3" tabindex="-1" aria-labelledby="modalCursillo1Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="modalCursillo1Label">
+                                <img src="{% static 'images/UCM.png' %}" alt="Logo UCM" style="height: 60px;">
+                                XXXVII Jornada de Matemática de la Zona Sur <img src="{% static 'images/logojmzs.png' %}" alt="Logo JMZS" style="height: 60px;"><br>
+                                <span class="fs-6 text-muted">Universidad Católica del Maule</span> <br>
+                                <span class="fs-6 text-muted">23, 24 y 25 de abril de 2025, Talca, Chile</span>
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Título del Cursillo -->
+                            <h3 class="text-center">Toma de decisiones en contexto de riesgo e incertidumbre: cómo desarrollar habilidades del siglo XXI en clases de matemáticas</h3>
+                            <p class="text-center text-muted">Dra. Andrea Vergara Gómez</p>
+                            <p class="text-center text-muted">Departamento de Matemática, Física y Estadística, <br> Universidad Católica del Maule</p>
+
+                            <!-- Resumen -->
+                            <h5 class="mt-4">Resumen</h5>
+                            <p style="text-align: justify;">
+                                Una de las principales razones que motiva la enseñanza de la Matemática y la Estadística en los distintos niveles educativos es promover el desarrollo de habilidades que favorezcan la comprensión del complejo mundo que nos rodea y la toma de decisiones bien informadas [1, 2]. Sin embargo, la toma de decisiones por sí misma no suele ser considerada un objeto de enseñanza explícito [3]. Si bien se ha demostrado que los procesos de toma de decisiones que involucran incertidumbre, riesgo o ambigüedad conforman una línea de investigación amplia e interdisciplinaria [4], cuyo dominio estocástico se puede estudiar y modelar matemáticamente [5], este ámbito aún no ha sido suficientemente explorado en procesos de enseñanza y aprendizaje.
+                            </p>
+                            <p style="text-align: justify;">
+                                Los procesos de toma de decisiones bajo incertidumbre y la necesidad de su análisis atraviesan problemáticas y fenómenos diversos, como desastres naturales, crisis energética, cambio climático, seguridad alimentaria, defensa militar, comercio y negocios, gestión de calidad, inversión financiera, terrorismo, desarrollo sostenible, seguros, medicina experimental, investigación psicológica y muchas más. Esta amplitud multi e interdisciplinaria provee contextos propicios para el desarrollo de habilidades transversales del siglo XXI, en el sentido que declaran [6]. Además, los procesos de toma de decisiones en condiciones de riesgo e incertidumbre permiten escenarios favorables para el estudio del aprendizaje de las relaciones y heurísticas riesgo-recompensa [7], que influyen significativamente en las preferencias y los cambios en las decisiones.
+                            </p>
+                            <p style="text-align: justify;">
+                                Con el propósito de discutir cómo incluir prácticas de referencia que enfaticen el valor del uso y la dimensión cultural del conocimiento matemático [8], este cursillo presenta estrategias y ejemplos de situaciones didácticas que involucran auténticamente a los estudiantes en la toma de decisiones bajo riesgo e incertidumbre, considerando contextos y casos reales. En una
+
+primera sesión se abordan algunas distinciones epistemológicas clave (incertidumbre y riesgo, aleatoriedad y azar) y cómo estas influyen en la selección, adaptación o diseño de situaciones de aprendizaje. En una segunda sesión se propone el estudio de seis prácticas de referencia, que resultan propicias para problematizar la toma de decisiones en contextos de incertidumbre con estudiantes de secundaria y educación superior. Cada práctica se operativiza en una situación que fomenta la experiencia de las 4C (Critical Thinking (C1), Creativity (C2), Collaboration (C3), and Communication (C4)) como habilidades transversales del siglo XXI [9, 10].
+                            </p>
+
+                            <!-- Referencias -->
+                            <h5 class="mt-4">Referencias</h5>
+                            <div class="references">
+                                <ol class="custom-list">
+                                    <li>Batanero, C. (2020). Probability teaching and learning. In: Lerman S. (eds.) <em>Encyclopedia of Mathematics Education</em> (pp. 682-686). Springer.</li>
+                                    <li>OECD (2019). <em>Assessment and Analytical Framework PISA 2018, PISA.</em> OECD Publishing. <a href="https://doi.org/10.1787/b25efab8-en" target="_blank">https://doi.org/10.1787/b25efab8-en</a></li>
+                                    <li>Vergara-Gómez, A. (2024). Decision-making in situations of uncertainty as school mathematical knowledge. <em>Acta Scientiae</em>, <strong>26</strong>(1), 125-156.</li>
+                                    <li>Levy, H. (2015). <em>Stochastic dominance: Investment decision making under uncertainty.</em> Springer.</li>
+                                    <li>Gupta, N., Ahirwal, M. K., & Atulkar, M. (2022). Human decision making modelling for gambling task under uncertainty and risk. <em>International Journal of Information and Decision Sciences</em>, <strong>14</strong>(1), 15. <a href="https://doi.org/10.1504/ijids.2022.122723" target="_blank">https://doi.org/10.1504/ijids.2022.122723</a></li>
+                                    <li>Tang, K., & Williams, P. J. (2018). STEM literacy or literacies? Examining the empirical basis of these constructs. <em>Review of Education</em>, <strong>7</strong>(3), 675–697. <a href="https://doi.org/10.1002/rev3.3162" target="_blank">https://doi.org/10.1002/rev3.3162</a></li>
+                                    <li>Leuker, C., Pachur, T., Hertwig, R., & Pleskac, T. J. (2018). Exploiting risk–reward structures in decision making under uncertainty. <em>Cognition</em>, <strong>175</strong>, 186–200. <a href="https://doi.org/10.1016/j.cognition.2018.02.019" target="_blank">https://doi.org/10.1016/j.cognition.2018.02.019</a></li>
+                                    <li>Cantoral R. (2019). Socioepistemology in Mathematics Education. In: Lerman S. (eds.) <em>Encyclopedia of Mathematics Education</em> (pp. 790-797). Springer. <a href="https://doi.org/10.1007/978-3-319-77487-9_100041-1" target="_blank">https://doi.org/10.1007/978-3-319-77487-9_100041-1</a></li>
+                                    <li>Khoiri, A., Evalina, Komariah, N., Utami, R. T., Paramarta, V., Siswandi, Janudin, & Sunarsi, D. (2021). 4Cs Analysis of 21st Century Skills-Based School Areas. <em>Journal of Physics: Conference Series</em>, <strong>1764</strong>(1), 012142. <a href="https://doi.org/10.1088/1742-6596/1764/1/012142" target="_blank">https://doi.org/10.1088/1742-6596/1764/1/012142</a></li>
+                                    <li>Mulford, B. (2008). The leadership challenge: improving learning in schools. In <em>Australian Education Review.</em> ACER Press.</li>
+                                </ol>
+                            </div>                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,946 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+{% load text_extras %}
+{% block title %}{{ academico.nombre }} - Perfil Académico{% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-1">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="{{ academico.foto.url }}" alt="{{ academico.nombre }}" class="img-fluid rounded mb-3 card-img-top">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ academico.honorifico }} {{ academico.nombre }}</h1>
+                <h4 class="text-muted">{{ academico.especialidad }}</h4>
+
+                <p style="text-align: justify;">{{ academico.biografia }}</p>
+            
+                {% if academico.email or academico.sitio_web %}
+                <p>
+                    {% if academico.email %}
+                    <strong>Email:</strong>
+                    <a href="mailto:{{ academico.email }}">{{ academico.email }}</a><br>
+                    {% endif %}
+                    {% if academico.sitio_web %}
+                    <strong>Sitio web:</strong>
+                    <a href="{{ academico.sitio_web }}" target="_blank">{{ academico.sitio_web }}</a>
+                    {% endif %}
+                </p>
+                {% endif %}
+
+
+                <div class="mt-3">
+                    {% if academico.researchgate %}
+                        <a href="{{ academico.researchgate }}" target="_blank" class="btn btn-outline-dark btn-sm me-2">
+                        <i class="bi bi-box-arrow-up-right"></i> ResearchGate
+                        </a>
+                    {% endif %}
+                    {% if academico.googlescholar %}
+                        <a href="{{ academico.googlescholar }}" target="_blank" class="btn btn-outline-primary btn-sm me-2">
+                        <i class="bi bi-google"></i> Google Scholar
+                        </a>
+                    {% endif %}
+                    {% if academico.orcid %}
+                        <a href="{{ academico.orcid }}" target="_blank" class="btn btn-outline-success btn-sm me-2">
+                        <i class="bi bi-person-badge"></i> ORCID
+                        </a>
+                    {% endif %}
+                    {% if academico.wos %}
+                        <a href="{{ academico.wos }}" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                        <i class="bi bi-journal"></i> WOS
+                        </a>
+                    {% endif %}
+                    {% if user.is_authenticated and user == academico.user %}
+                    <button
+                        type="button"
+                        class="btn btn-outline-info btn-sm me-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#shareModal"
+                    >
+                        <i class="bi bi-share-fill"></i> Compartir
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- {% if user.is_authenticated and user == academico.user %}
+    <div class="card border-info mt-4">
+        <div class="card-header bg-info text-white">
+        Código para incrustar tu perfil
+        </div>
+        <div class="card-body">
+        <p>Copia este fragmento y pégalo en tu sitio o blog:</p>
+        {% comment %}
+            Usamos directamente la ruta named 'perfil_academico_embed'
+        {% endcomment %}
+        {% url 'perfil_academico_embed' academico.slug as embed_url %}
+        <textarea readonly rows="3" class="form-control">
+    <iframe
+        src="{{ embed_url }}"
+        width="100%"
+        height="400"
+        frameborder="0"
+        style="border:1px solid #ccc; border-radius:4px;"
+    >
+    Tu navegador no soporta iframes.
+    </iframe>
+        </textarea>
+        </div>
+    </div>
+    {% endif %} -->
+</section>
+
+<!-- {% if user.is_authenticated and user == academico.user %}
+  {% url 'perfil_academico_embed' academico.slug as embed_path %}
+  <div class="card border-info mt-4">
+    <div class="card-header bg-info text-white">
+      Código para incrustar tu perfil
+    </div>
+    <div class="card-body">
+      <p>Copia este fragmento y pégalo en tu sitio o blog:</p>
+      <textarea readonly rows="3" class="form-control"><iframe
+    src="{{ request.scheme }}://{{ request.get_host }}{{ embed_path }}"
+    width="100%"
+    height="1000"
+    frameborder="0"
+    style="border:1px solid #ccc; border-radius:4px;"
+>Tu navegador no soporta iframes.</iframe></textarea>
+    </div>
+  </div>
+{% endif %} -->
+
+
+<section id="detalle_academico" class="py-1">
+<div class="container">
+    <ul class="nav nav-tabs nav-justified mt-4" id="profileTab" role="tablist">
+        <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="lineas-tab" data-bs-toggle="tab" data-bs-target="#lineas" type="button" role="tab" aria-controls="lineas" aria-selected="true">
+            Líneas de Investigación
+        </button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="papers-tab" data-bs-toggle="tab" data-bs-target="#papers" type="button" role="tab" aria-controls="papers" aria-selected="false">
+            Publicaciones
+        </button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="proyectos-tab" data-bs-toggle="tab" data-bs-target="#proyectos" type="button" role="tab" aria-controls="proyectos" aria-selected="false">
+            Proyectos de Investigación
+        </button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="actividades-tab" data-bs-toggle="tab" data-bs-target="#actividades" type="button" role="tab" aria-controls="actividades" aria-selected="false">
+            Actividades Curriculares
+        </button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="otros-tab" data-bs-toggle="tab" data-bs-target="#otros" type="button" role="tab" aria-controls="otros" aria-selected="false">
+            Otros de Interés
+        </button>
+        </li>
+        {% if user.is_authenticated %}
+        {% if user == academico.user or user.academico|tiene_cargo:"Director(a) de Departamento" %}
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="avisos-tab" data-bs-toggle="tab" data-bs-target="#avisos"
+                    type="button" role="tab" aria-controls="avisos" aria-selected="false">
+                Avisos a Dirección
+            </button>
+            </li>
+        {% endif %}
+        {% endif %}
+        {% if user.is_authenticated %}
+        {% if user == academico.user %}
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="cv-tab" data-bs-toggle="tab" data-bs-target="#cv"
+                    type="button" role="tab" aria-controls="cv" aria-selected="false">
+                Currículum Vitae
+            </button>
+            </li>
+        {% endif %}
+        {% endif %}
+    </ul>  
+    
+    <div class="tab-content" id="profileTabContent">
+        <!-- Cada pestaña tiene un estilo en línea para justificar el texto -->
+        <div class="tab-pane fade show active p-0" id="lineas" role="tabpanel" aria-labelledby="lineas-tab">
+            <div class="card mb-4">
+            <div class="card-header text-white" style="background-color: #00a0dd;">
+                <strong>Líneas de Investigación</strong>
+            </div>
+            <div class="card-body" style="text-align: justify;">
+                {{ academico.lineas_investigacion|ulify|safe }}
+            </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade p-0" id="papers" role="tabpanel" aria-labelledby="papers-tab">
+            <!-- Publicaciones en revistas indexadas -->            
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                    <strong>📚 Trabajos publicados en revistas indexadas</strong>
+                </div>
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                        {% if user == academico.user %}
+                            <a href="{% url 'agregar_publicacion_doi' academico.slug %}" class="btn btn-sm btn-outline-primary mb-2">
+                                ➕ Agregar publicación desde DOI
+                            </a>
+                            <a href="{% url 'agregar_publicacion_manual' academico.slug %}" class="btn btn-sm btn-outline-secondary mb-2">✍️ Agregar publicación manualmente</a>
+                        {% endif %}
+                    {% endif %}
+                    {% for pub in publicaciones_publicadas %}
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong style="font-size: 1.1rem;">
+                                        {{ pub.titulo }}
+                                    </strong>
+                                    <span class="badge bg-secondary ms-2">{{ pub.get_tipo_display }}</span>
+                                    {% if not pub.visible %}
+                                        <span class="badge bg-warning text-dark">🔒 Privado</span>
+                                    {% endif %}
+                                    <br>
+
+                                    <small><em>
+                                        {% with academico.nombre as nombre_actual %}
+                                            {% for autor in pub.autores|split:"," %}
+                                                {% if nombre_actual in autor %}
+                                                <strong>{{ autor|strip }}</strong>
+                                                {% else %}
+                                                {{ autor|strip }}
+                                                {% endif %}
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </em></small><br>
+
+                                    {% if pub.revista %}
+                                        <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span><br>
+                                    {% else %}
+                                        <span class="text-muted">{{ pub.anio }}</span><br>
+                                    {% endif %}
+
+                                    {% if pub.doi %}
+                                        🔗 <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI: {{ pub.doi }}</a><br>
+                                    {% endif %}
+
+                                    {% if pub.pdf %}
+                                        📄 <a href="{{ pub.pdf.url }}" target="_blank">Ver PDF</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if user.is_authenticated and user == academico.user %}
+                            <div class="d-flex justify-content-end gap-2 mt-2">
+                                <a href="{% url 'editar_publicacion' pub.id %}" class="btn btn-outline-primary btn-sm">
+                                ✏️ Editar
+                                </a>
+                                <a href="{% url 'confirmar_eliminar_publicacion' pub.id %}" class="btn btn-outline-danger btn-sm">
+                                🗑️ Eliminar
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No hay publicaciones registradas.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Publicaciones aceptadas -->
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #198754;">
+                    <strong>✅ Trabajos aceptados</strong>
+                </div>
+                <div class="card-body">
+                    {% for pub in publicaciones_aceptadas %}
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong style="font-size: 1.1rem;">{{ pub.titulo }}</strong>
+                                    <span class="badge bg-secondary ms-2">{{ pub.get_tipo_display }}</span>
+                                    {% if not pub.visible %}
+                                        <span class="badge bg-warning text-dark">🔒 Privado</span>
+                                    {% endif %}
+                                    <br>
+
+                                    <small><em>
+                                        {% with academico.nombre as nombre_actual %}
+                                            {% for autor in pub.autores|split:"," %}
+                                                {% if nombre_actual in autor %}
+                                                    <strong>{{ autor|strip }}</strong>
+                                                {% else %}
+                                                    {{ autor|strip }}
+                                                {% endif %}
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </em></small><br>
+
+                                    {% if pub.revista %}
+                                        <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span><br>
+                                    {% else %}
+                                        <span class="text-muted">{{ pub.anio }}</span><br>
+                                    {% endif %}
+
+                                    {% if pub.doi %}
+                                        🔗 <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI: {{ pub.doi }}</a><br>
+                                    {% endif %}
+
+                                    {% if pub.pdf %}
+                                        📄 <a href="{{ pub.pdf.url }}" target="_blank">Ver PDF</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {% if user.is_authenticated and user == academico.user %}
+                                <div class="d-flex justify-content-end gap-2 mt-2">
+                                    <a href="{% url 'editar_publicacion' pub.id %}" class="btn btn-outline-primary btn-sm">✏️ Editar</a>
+                                    <a href="{% url 'confirmar_eliminar_publicacion' pub.id %}" class="btn btn-outline-danger btn-sm">🗑️ Eliminar</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No hay publicaciones aceptadas.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+            <!-- Publicaciones sometidas -->
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #0dcaf0;">
+                    <strong>📨 Trabajos sometidos</strong>
+                </div>
+                <div class="card-body">
+                    {% for pub in publicaciones_sometidas %}
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong style="font-size: 1.1rem;">{{ pub.titulo }}</strong>
+                                    <span class="badge bg-secondary ms-2">{{ pub.get_tipo_display }}</span>
+                                    {% if not pub.visible %}
+                                        <span class="badge bg-warning text-dark">🔒 Privado</span>
+                                    {% endif %}
+                                    <br>
+
+                                    <small><em>
+                                        {% with academico.nombre as nombre_actual %}
+                                            {% for autor in pub.autores|split:"," %}
+                                                {% if nombre_actual in autor %}
+                                                    <strong>{{ autor|strip }}</strong>
+                                                {% else %}
+                                                    {{ autor|strip }}
+                                                {% endif %}
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </em></small><br>
+
+                                    {% if pub.revista %}
+                                        <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span><br>
+                                    {% else %}
+                                        <span class="text-muted">{{ pub.anio }}</span><br>
+                                    {% endif %}
+
+                                    {% if pub.doi %}
+                                        🔗 <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI: {{ pub.doi }}</a><br>
+                                    {% endif %}
+
+                                    {% if pub.pdf %}
+                                        📄 <a href="{{ pub.pdf.url }}" target="_blank">Ver PDF</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {% if user.is_authenticated and user == academico.user %}
+                                <div class="d-flex justify-content-end gap-2 mt-2">
+                                    <a href="{% url 'editar_publicacion' pub.id %}" class="btn btn-outline-primary btn-sm">✏️ Editar</a>
+                                    <a href="{% url 'confirmar_eliminar_publicacion' pub.id %}" class="btn btn-outline-danger btn-sm">🗑️ Eliminar</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No hay publicaciones sometidas.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Publicaciones en preparación -->
+
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #6c757d;">
+                    <strong>✏️ Trabajos en preparación</strong>
+                </div>
+                <div class="card-body">
+                    {% for pub in publicaciones_en_preparacion %}
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong style="font-size: 1.1rem;">{{ pub.titulo }}</strong>
+                                    <span class="badge bg-secondary ms-2">{{ pub.get_tipo_display }}</span>
+                                    {% if not pub.visible %}
+                                        <span class="badge bg-warning text-dark">🔒 Privado</span>
+                                    {% endif %}
+                                    <br>
+
+                                    <small><em>
+                                        {% with academico.nombre as nombre_actual %}
+                                            {% for autor in pub.autores|split:"," %}
+                                                {% if nombre_actual in autor %}
+                                                    <strong>{{ autor|strip }}</strong>
+                                                {% else %}
+                                                    {{ autor|strip }}
+                                                {% endif %}
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </em></small><br>
+
+                                    {% if pub.revista %}
+                                        <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span><br>
+                                    {% else %}
+                                        <span class="text-muted">{{ pub.anio }}</span><br>
+                                    {% endif %}
+
+                                    {% if pub.doi %}
+                                        🔗 <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI: {{ pub.doi }}</a><br>
+                                    {% endif %}
+
+                                    {% if pub.pdf %}
+                                        📄 <a href="{{ pub.pdf.url }}" target="_blank">Ver PDF</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {% if user.is_authenticated and user == academico.user %}
+                                <div class="d-flex justify-content-end gap-2 mt-2">
+                                    <a href="{% url 'editar_publicacion' pub.id %}" class="btn btn-outline-primary btn-sm">✏️ Editar</a>
+                                    <a href="{% url 'confirmar_eliminar_publicacion' pub.id %}" class="btn btn-outline-danger btn-sm">🗑️ Eliminar</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No hay publicaciones en preparación.</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Publicaciones rechazadas -->
+
+            <!-- <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #dc3545;">
+                    <strong>❌ Publicaciones rechazadas</strong>
+                </div>
+                <div class="card-body">
+                    {% for pub in publicaciones_rechazadas %}
+                        <div class="mb-4 p-3 border rounded bg-light">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong style="font-size: 1.1rem;">{{ pub.titulo }}</strong>
+                                    <span class="badge bg-secondary ms-2">{{ pub.get_tipo_display }}</span>
+                                    {% if not pub.visible %}
+                                        <span class="badge bg-warning text-dark">🔒 Privado</span>
+                                    {% endif %}
+                                    <br>
+
+                                    <small><em>
+                                        {% with academico.nombre as nombre_actual %}
+                                            {% for autor in pub.autores|split:"," %}
+                                                {% if nombre_actual in autor %}
+                                                    <strong>{{ autor|strip }}</strong>
+                                                {% else %}
+                                                    {{ autor|strip }}
+                                                {% endif %}
+                                                {% if not forloop.last %}, {% endif %}
+                                            {% endfor %}
+                                        {% endwith %}
+                                    </em></small><br>
+
+                                    {% if pub.revista %}
+                                        <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span><br>
+                                    {% else %}
+                                        <span class="text-muted">{{ pub.anio }}</span><br>
+                                    {% endif %}
+
+                                    {% if pub.doi %}
+                                        🔗 <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI: {{ pub.doi }}</a><br>
+                                    {% endif %}
+
+                                    {% if pub.pdf %}
+                                        📄 <a href="{{ pub.pdf.url }}" target="_blank">Ver PDF</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {% if user.is_authenticated and user == academico.user %}
+                                <div class="d-flex justify-content-end gap-2 mt-2">
+                                    <a href="{% url 'editar_publicacion' pub.id %}" class="btn btn-outline-primary btn-sm">✏️ Editar</a>
+                                    <a href="{% url 'confirmar_eliminar_publicacion' pub.id %}" class="btn btn-outline-danger btn-sm">🗑️ Eliminar</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No hay publicaciones rechazadas.</p>
+                    {% endfor %}
+                </div>
+            </div> -->
+
+
+
+            <p>Publicaciones: {{ academico.publicaciones.count }}</p>
+
+        </div>
+        
+        <div class="tab-pane fade p-0" id="proyectos" role="tabpanel" aria-labelledby="proyectos-tab">
+            {% if academico.proyectos_investigacion_actuales %}
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                <strong>Proyectos de investigación actuales</strong>
+                </div>
+                <div class="card-body" style="text-align: justify;">
+                {{ academico.proyectos_investigacion_actuales|olify_reversed|safe }}
+                </div>
+            </div>
+            {% endif %}
+            {% if academico.proyectos_investigacion_pasados %}
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                <strong>Proyectos de investigación pasados</strong>
+                </div>
+                <div class="card-body" style="text-align: justify;">
+                {{ academico.proyectos_investigacion_pasados|olify_reversed|safe }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+
+        <div class="tab-pane fade p-0" id="actividades" role="tabpanel" aria-labelledby="actividades-tab">
+            {% if academico.actividades_curriculares %}
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                <strong>Actividades Curriculares</strong>
+                </div>
+                <div class="card-body">
+                <p class="mb-3" style="text-align: justify;">
+                    He dictado cátedra de las siguientes actividades curriculares:
+                </p>
+                <div style="text-align: justify;">
+                    {{ academico.actividades_curriculares|ulify|safe }}
+                </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>      
+
+        <div class="tab-pane fade p-0" id="otros" role="tabpanel" aria-labelledby="otros-tab">
+            <div class="card mb-4">
+            <div class="card-header text-white" style="background-color: #00a0dd;">
+                <strong>Otros de Interés</strong>
+            </div>
+            <div class="card-body" style="text-align: justify;">
+                {{ academico.otros_interes|safe }}
+            </div>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        {% if user == academico.user or user.academico|tiene_cargo:"Director(a) de Departamento" %}
+            <div class="tab-pane fade p-0" id="avisos" role="tabpanel" aria-labelledby="avisos-tab">
+            <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                <strong>Avisos a Dirección</strong>
+                </div>
+                <div class="card-body">
+                <a href="{% url 'crear_aviso' academico.slug %}" class="btn btn-warning mb-3">Nuevo Aviso</a>
+                <ul class="list-group">
+                {% for aviso in avisos %}
+                    <li class="list-group-item">
+                        <strong>Académico:</strong> {{ aviso.academico.nombre }}<br>
+                        <strong>Destino:</strong> {{ aviso.destino }}<br>
+                        <strong>Actividad:</strong> {{ aviso.tipo_actividad }}<br>
+                        <strong>Salida:</strong> {{ aviso.fecha_salida }}<br>
+                        <strong>Regreso:</strong> {{ aviso.fecha_regreso }}<br>
+                        <strong>Teléfono de emergencia:</strong> {{ aviso.telefono_emergencia }}<br>
+                        <strong>Detalle:</strong> {{ aviso.detalle_actividad|default:"(Sin detalle)" }}
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-muted">No hay avisos registrados.</li>
+                {% endfor %}
+
+                </ul>
+                </div>
+            </div>
+            </div>
+        {% endif %}
+        {% endif %}
+<div class="tab-pane fade p-0" id="cv" role="tabpanel" aria-labelledby="cv-tab">
+  <div class="card mb-4">
+    <div class="card-header text-white" style="background-color: #00a0dd;">
+      <strong>Currículum Vitae de {{ academico.nombre }}</strong>
+    </div>
+    
+    <div class="card-body" style="text-align: justify;">
+      <h3 class="text-primary text-center">Currículum Vitae</h3>
+      <h5 class="text-primary">Información Personal</h5>
+      <ul class="list-unstyled mb-4">
+        <li><strong>Nombre:</strong> {{ academico.nombre }}</li>
+        <li><strong>Especialidad:</strong> {{ academico.especialidad }}</li>
+        {% if academico.email %}
+          <li><strong>Email:</strong> <a href="mailto:{{ academico.email }}">{{ academico.email }}</a></li>
+        {% endif %}
+        {% if academico.sitio_web %}
+          <li><strong>Sitio web:</strong> <a href="{{ academico.sitio_web }}" target="_blank">{{ academico.sitio_web }}</a></li>
+        {% endif %}
+      </ul>
+
+      {% if academico.biografia %}
+      <h5 class="text-primary">Biografía</h5>
+      <p class="mb-4">{{ academico.biografia }}</p>
+      {% endif %}
+
+      {% if academico.lineas_investigacion %}
+      <h5 class="text-primary">Líneas de Investigación</h5>
+      <div class="mb-4">
+        {{ academico.lineas_investigacion|ulify|safe }}
+      </div>
+      {% endif %}
+    <h5 class="text-primary">Trabajos científicos</h5>
+    <div class="ms-3">
+    {% if publicaciones_publicadas %}
+    <h5 class="text-primary">Trabajos publicados en revistas indexadas</h5>
+    <ul class="mb-4">
+    {% for pub in publicaciones_publicadas %}
+        <li>
+        <strong>{{ pub.titulo }}</strong>
+        <br>
+        <small><em>
+            {% with academico.nombre as nombre_actual %}
+            {% for autor in pub.autores|split:"," %}
+                {% if nombre_actual in autor %}
+                <strong>{{ autor|strip }}</strong>
+                {% else %}
+                {{ autor|strip }}
+                {% endif %}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </em></small><br>
+        {% if pub.revista %}
+            <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span>
+        {% else %}
+            <span class="text-muted">{{ pub.anio }}</span>
+        {% endif %}
+        {% if pub.doi %}
+            – <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI</a>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if publicaciones_aceptadas %}
+    <h5 class="text-primary">Trabajos aceptados</h5>
+    <ul class="mb-4">
+    {% for pub in publicaciones_aceptadas %}
+        <li>
+        <strong>{{ pub.titulo }}</strong>
+        <br>
+        <small><em>
+            {% with academico.nombre as nombre_actual %}
+            {% for autor in pub.autores|split:"," %}
+                {% if nombre_actual in autor %}
+                <strong>{{ autor|strip }}</strong>
+                {% else %}
+                {{ autor|strip }}
+                {% endif %}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </em></small><br>
+        {% if pub.revista %}
+            <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span>
+        {% else %}
+            <span class="text-muted">{{ pub.anio }}</span>
+        {% endif %}
+        {% if pub.doi %}
+            – <a href="https://doi.org/{{ pub.doi }}" target="_blank">DOI</a>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if publicaciones_sometidas %}
+    <h5 class="text-primary">Trabajos sometidos</h5>
+    <ul class="mb-4">
+    {% for pub in publicaciones_sometidas %}
+        <li>
+        <strong>{{ pub.titulo }}</strong>
+        <br>
+        <small><em>
+            {% with academico.nombre as nombre_actual %}
+            {% for autor in pub.autores|split:"," %}
+                {% if nombre_actual in autor %}
+                <strong>{{ autor|strip }}</strong>
+                {% else %}
+                {{ autor|strip }}
+                {% endif %}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </em></small><br>
+        {% if pub.revista %}
+            <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span>
+        {% else %}
+            <span class="text-muted">{{ pub.anio }}</span>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if publicaciones_en_preparacion %}
+    <h5 class="text-primary">Trabajos en preparación</h5>
+    <ul class="mb-4">
+    {% for pub in publicaciones_en_preparacion %}
+        <li>
+        <strong>{{ pub.titulo }}</strong>
+        <br>
+        <small><em>
+            {% with academico.nombre as nombre_actual %}
+            {% for autor in pub.autores|split:"," %}
+                {% if nombre_actual in autor %}
+                <strong>{{ autor|strip }}</strong>
+                {% else %}
+                {{ autor|strip }}
+                {% endif %}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </em></small><br>
+        {% if pub.revista %}
+            <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span>
+        {% else %}
+            <span class="text-muted">{{ pub.anio }}</span>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if publicaciones_rechazadas %}
+    <h5 class="text-primary">Publicaciones rechazadas</h5>
+    <ul class="mb-4">
+    {% for pub in publicaciones_rechazadas %}
+        <li>
+        <strong>{{ pub.titulo }}</strong>
+        <br>
+        <small><em>
+            {% with academico.nombre as nombre_actual %}
+            {% for autor in pub.autores|split:"," %}
+                {% if nombre_actual in autor %}
+                <strong>{{ autor|strip }}</strong>
+                {% else %}
+                {{ autor|strip }}
+                {% endif %}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            {% endwith %}
+        </em></small><br>
+        {% if pub.revista %}
+            <span class="text-muted">{{ pub.revista }}, {{ pub.anio }}</span>
+        {% else %}
+            <span class="text-muted">{{ pub.anio }}</span>
+        {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+
+
+      {% if academico.proyectos_investigacion_actuales or academico.proyectos_investigacion_pasados %}
+      <h5 class="text-primary">Proyectos de Investigación</h5>
+      {% if academico.proyectos_investigacion_actuales %}
+        <h6 class="text-muted">Actuales</h6>
+        {{ academico.proyectos_investigacion_actuales|olify_reversed|safe }}
+      {% endif %}
+      {% if academico.proyectos_investigacion_pasados %}
+        <h6 class="text-muted mt-3">Pasados</h6>
+        {{ academico.proyectos_investigacion_pasados|olify_reversed|safe }}
+      {% endif %}
+      {% endif %}
+
+      {% if academico.actividades_curriculares %}
+      <h5 class="text-primary">Actividades Curriculares</h5>
+      <p>Ha dictado cátedra de las siguientes actividades:</p>
+      <div class="mb-4">
+        {{ academico.actividades_curriculares|ulify|safe }}
+      </div>
+      {% endif %}
+
+      {% if academico.otros_interes %}
+      <h5 class="text-primary">Otros de Interés</h5>
+      <div class="mb-4">
+        {{ academico.otros_interes|safe }}
+      </div>
+      {% endif %}
+
+      {% if user.is_authenticated %}
+      <div class="text-end">
+        <a href="{% url 'exportar_cv_pdf' academico.slug %}" class="btn btn-outline-secondary btn-sm">🔽 Descargar versión PDF</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+    </div>
+</div>
+</section>
+
+<!-- Modal Compartir Perfil -->
+<div
+  class="modal fade"
+  id="shareModal"
+  tabindex="-1"
+  aria-labelledby="shareModalLabel"
+  aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h6 class="modal-title" id="shareModalLabel">Compartir perfil</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center align-items-start">
+            <div class="row justify-content-center gx-2 gy-3">
+                <!-- Insertar -->
+                <div class="col-auto text-center align-self-start">
+                <button
+                    type="button"
+                    class="btn btn-outline-secondary fs-3"
+                    id="copyEmbedBtn"
+                    title="Insertar en tu sitio"
+                    data-embed="<iframe src='{{ absolute_embed_url }}' width='100%' height='400' frameborder='0' style='border:1px solid #ccc; border-radius:4px;' allowfullscreen></iframe>"
+                >
+                    <i class="bi bi-code"></i>
+                </button>
+                <div class="small text-secondary mt-1">Insertar</div>
+                </div>
+
+                <!-- Perfil -->
+                <div class="col-auto text-center align-self-start">
+                <button
+                    type="button"
+                    class="btn btn-outline-primary fs-3"
+                    id="copyLinkBtn"
+                    title="Copiar enlace perfil"
+                >
+                    <i class="bi bi-link-45deg"></i>
+                </button>
+                <div class="small text-primary mt-1">Perfil</div>
+                </div>
+
+                <!-- ResearchGate -->
+                {% if academico.researchgate %}
+                <div class="col-auto text-center align-self-start">
+                <button
+                    type="button"
+                    class="btn btn-outline-info fs-3"
+                    id="copyRGBtn"
+                    title="Copiar enlace ResearchGate"
+                    data-url="{{ academico.researchgate }}"
+                >
+                    <i class="bi bi-box-arrow-up-right"></i>
+                </button>
+                <div class="small text-info mt-1">ResearchGate</div>
+                </div>
+                {% endif %}
+
+                <!-- WOS -->
+                {% if academico.wos %}
+                <div class="col-auto text-center align-self-start">
+                <button
+                    type="button"
+                    class="btn btn-outline-warning fs-3"
+                    id="copyWOSBtn"
+                    title="Copiar enlace WOS"
+                    data-url="{{ academico.wos }}"
+                >
+                    <i class="bi bi-journal"></i>
+                </button>
+                <div class="small text-warning mt-1">WOS</div>
+                </div>
+                {% endif %}
+
+                <!-- ORCID -->
+                {% if academico.orcid %}
+                <div class="col-auto text-center align-self-start">
+                <button
+                    type="button"
+                    class="btn btn-outline-success fs-3"
+                    id="copyORCIDBtn"
+                    title="Copiar enlace ORCID"
+                    data-url="{{ academico.orcid }}"
+                >
+                    <i class="bi bi-person-badge"></i>
+                </button>
+                <div class="small text-success mt-1">ORCID</div>
+                </div>
+                {% endif %}
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Toast de feedback -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11;">
+  <div id="copyToast" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body">Copiado al portapapeles</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts al final del body -->
+<script>
+  const showToast = () => {
+    const toastEl = document.getElementById('copyToast');
+    new bootstrap.Toast(toastEl).show();
+  };
+
+  // Copiar código embed
+  document.getElementById('copyEmbedBtn').addEventListener('click', function() {
+    const code = this.dataset.embed;
+    navigator.clipboard.writeText(code).then(showToast);
+  });
+
+  // Copiar enlace embed
+  document.getElementById('copyLinkBtn').addEventListener('click', () => {
+    navigator.clipboard.writeText('{{ absolute_embed_url }}').then(showToast);
+  });
+
+  // Función genérica para copiar data-url
+  function attachCopyBtn(id) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(btn.dataset.url).then(showToast);
+    });
+  }
+
+  // Asocia botones de ResearchGate, WOS y ORCID
+  attachCopyBtn('copyRGBtn');
+  attachCopyBtn('copyWOSBtn');
+  attachCopyBtn('copyORCIDBtn');
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,247 @@
+{% extends 'jornada/escuelas/ima/base_ima.html' %}
+{% load static %}
+
+{% block title %}Ingeniería Matemática - Información para Estudiantes{% endblock %}
+
+{% block content %}
+
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Información para Estudiantes de Ingeniería Matemática</h2>
+                <p class="lead">
+                    Encuentra información relevante sobre la carrera, reglamentos, malla curricular y recursos de apoyo.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="detalle_academico" class="py-1">
+    <div class="container">
+        <ul class="nav nav-tabs nav-justified mt-4" id="profileTab" role="tablist">
+            <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="lineas-tab" data-bs-toggle="tab" data-bs-target="#lineas" type="button" role="tab" aria-controls="lineas" aria-selected="true">
+                Descripción de la Carrera
+            </button>
+            </li>
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="papers-tab" data-bs-toggle="tab" data-bs-target="#papers" type="button" role="tab" aria-controls="papers" aria-selected="false">
+                Perfil de Egreso
+            </button>
+            </li>
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="proyectos-tab" data-bs-toggle="tab" data-bs-target="#proyectos" type="button" role="tab" aria-controls="proyectos" aria-selected="false">
+                Reglamentos
+            </button>
+            </li>
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="actividades-tab" data-bs-toggle="tab" data-bs-target="#actividades" type="button" role="tab" aria-controls="actividades" aria-selected="false">
+                Egresados
+            </button>
+            </li>
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="otros-tab" data-bs-toggle="tab" data-bs-target="#otros" type="button" role="tab" aria-controls="otros" aria-selected="false">
+                Otros
+            </button>
+            </li>
+        </ul>  
+        
+        <div class="tab-content" id="profileTabContent">
+            <!-- Cada pestaña tiene un estilo en línea para justificar el texto -->
+            <div class="tab-pane fade show active p-0" id="lineas" role="tabpanel" aria-labelledby="lineas-tab">
+                <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                    <strong>Descripción de la Carrera</strong>
+                </div>
+                <div class="card-body" style="text-align: justify;">
+                    <!-- <section id="descripcion-carrera" class="py-5"> -->
+                        <h3 class="text-secondary mb-3"><i class="bi bi-book-fill text-primary" style="font-size: 0.9em;"></i> Descripción de la Carrera</h3>
+                        <p>
+                            El ingeniero matemático es un profesional que cumple labores habituales en el modelado matemático de procesos industriales 
+                            (optimiza y automatiza procesos: fases de diseño experimental, obtención y tratamiento de datos, modelamiento y selección de modelos, 
+                            despliegue y entrega de resultados con presentaciones ejecutivas con insights, o alimentando sistemas ya existentes). Consecuencia de lo anterior, 
+                            se desempeña en sectores productivos, tales como: Industrial, Mineros, Bancarios, Consultorías, Empresas de análisis cuantitativos y Servicios, 
+                            teniendo un campo ocupacional basado en Procesos productivos, Análisis de datos, Machine learning e Investigación aplicada.
+                        </p>
+
+                        <h3 class="text-secondary mb-3"><i class="bi bi-lightbulb-fill text-primary" style="font-size: 0.9em;"></i> ¿Por qué Ingeniería Matemática en la UCM?</h3>
+                        <ul>
+                            <li><strong>Pensamiento y metodología:</strong> Te capacitarás para resolver problemas del ámbito de la matemática aplicada en diversas áreas.</li>
+                            <li><strong>Una mirada integral:</strong> Serás un profesional integral capaz de analizar, implementar, comunicar y fundamentar sus soluciones creativas.</li>
+                            <li><strong>Desarrollo profesional:</strong> Te formarás con un plan de estudio con una visión a futuro estratégica de país y territorio.</li>
+                        </ul>
+
+                        <h3 class="text-secondary mb-3"><i class="bi bi-award-fill text-primary" style="font-size: 0.9em;"></i> Competencias que desarrollarás</h3>
+                        <ul>
+                            <li><strong>Resolución matemática:</strong> Serás capaz de resolver problemas que pueden ser tratados matemáticamente considerando la aplicabilidad y limitaciones de los modelos matemáticos.</li>
+                            <li><strong>Estudio y amplitud:</strong> Tendrás la capacidad de desarrollar estrategias de gestión en emprendimientos y organizaciones públicas o privadas acordes con la demanda nacional.</li>
+                            <li><strong>Diseño y software:</strong> Podrás diseñar soluciones numéricas mediante el uso del lenguaje de programación de software en el análisis y tratamiento de problemas de la ingeniería matemática.</li>
+                            <li><strong>Investigación y pluralismo:</strong> Te encontrarás capacitado para realizar investigaciones que contribuyan a la comunidad universitaria y al desarrollo del conocimiento.</li>
+                        </ul>
+                    <!-- </section> -->
+                </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade p-0" id="papers" role="tabpanel" aria-labelledby="papers-tab">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header text-white" style="background-color: #00a0dd;">
+                        <strong>Perfil de Egreso</strong>
+                    </div>
+                    <!-- <section id="perfil-egreso" class="py-5"> -->
+                        <!-- <div class="container"> -->
+                            <!-- <div class="card mb-4 shadow-sm"> -->
+                                <div class="card-body" style="text-align: justify;">
+                                    <p>
+                                        El/la egresado/a de la carrera de Ingeniería Matemática de la Universidad Católica del Maule, es un/a profesional que resuelve problemas complejos del ámbito de la matemática aplicada en áreas o sectores diversos (agrícola, salud, ciencia, ingeniería, social, empresarial, etc.) por medio del modelamiento matemático y es capaz de analizar, implementar, comunicar y fundamentar sus soluciones creativas, eficientes e innovadoras desde un enfoque colaborativo de trabajo con otras disciplinas. Su actuar es respaldado en la sólida formación matemática y de ciencias básicas que en contacto con las ciencias de la ingeniería le permiten adquirir una amplia gama de herramientas matemáticas, computacionales y estadísticas para desempeñarse en empresas e instituciones del sector público o privado.
+                                    </p>
+                                    <p>
+                                        Se espera que este profesional sea un referente metodológico en la resolución de problemas del sector productivo o de servicios, liderando y apoyando equipos de trabajo interdisciplinarios que contribuyan a la investigación, el desarrollo e innovación (I+D+I) regional, nacional o internacional. También está capacitado/a para continuar estudios de postgrado con el fin de profundizar en la disciplina o en áreas afines y contribuir a la valoración de la Matemática en la sociedad, atendiendo a las necesidades de la región del Maule y del país. Se aspira a que demuestre proactividad, capacidad de autoaprendizaje y adaptabilidad al cambio, gestionando organizaciones y emprendimientos públicos o privados, con innovación, sentido de responsabilidad social, ética y compromiso con el medio ambiente.
+                                    </p>
+                                    <p><strong>Ámbitos de Dominio:</strong></p>
+                                    <ul>
+                                        <li><strong>Fundamentos de la Matemática:</strong> Formación en bases teóricas y aplicación de modelos matemáticos y estadísticos.</li>
+                                        <li><strong>Ciencias Básicas e Ingeniería:</strong> Integración de conocimientos científicos y de ingeniería para el modelamiento matemático interdisciplinario.</li>
+                                        <li><strong>Computación Científica:</strong> Uso de programación y simulaciones numéricas para resolver problemas matemáticos.</li>
+                                        <li><strong>Gestión y Emprendimiento:</strong> Aplicación de conocimientos en economía, gestión y emprendimiento para generar soluciones innovadoras.</li>
+                                    </ul>
+                                    <p><strong>Competencias:</strong></p>
+                                    <ul>
+                                        <li>Resolver problemas matemáticos aplicados considerando la aplicabilidad y limitaciones de los modelos.</li>
+                                        <li>Integrar modelos y técnicas de ciencias básicas e ingeniería en la resolución de problemas interdisciplinarios.</li>
+                                        <li>Diseñar soluciones numéricas mediante programación y análisis computacional.</li>
+                                        <li>Gestionar emprendimientos y organizaciones en sectores públicos o privados.</li>
+                                        <li>Demostrar ética y responsabilidad social en el ejercicio profesional.</li>
+                                        <li>Desarrollar la identidad regional e integración con la comunidad.</li>
+                                        <li>Realizar investigaciones que contribuyan al conocimiento científico-aplicado.</li>
+                                        <li>Comunicar ideas en español e inglés, utilizando tecnologías de la información.</li>
+                                    </ul>
+                                </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    <!-- </section> -->
+                    <p>
+                        <a href="https://prenovato.ucm.cl/wp-content/uploads/2022/07/Ingenieria-en-Matematica.pdf" 
+                           target="_blank" 
+                           class="btn text-white"
+                           style="background-color: #00a0dd;">
+                           <i class="bi bi-file-earmark-pdf" style="font-size: 0.9em;"></i> Descargar perfil de egreso de Ingeniería Matemática
+                        </a>
+                    </p>                    
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade p-0" id="proyectos" role="tabpanel" aria-labelledby="proyectos-tab">
+                
+                <div class="card mb-4">
+                    <div class="card-header text-white" style="background-color: #00a0dd;">
+                    <strong>Reglamentos</strong>
+                    </div>
+                    <div class="card-body" style="text-align: justify;">
+                        <p>
+                            Es importante conocer las normativas académicas y administrativas que regulan la carrera:
+                        </p>
+
+                        <div class="card-body">
+                            <p>
+                                <a href="{% static 'docs/Reglamento_IMA.pdf' %}"
+                                    target="_blank" 
+                                    class="btn text-white"
+                                    style="background-color: #00a0dd;">
+                                    <i class="bi bi-file earmark-pdf" style="font-size: 0.9em;"></i> Reglamento de Ingeniería Matemática
+                                </a>
+                            </p>
+                            <p>
+                                <a href="https://portal.ucm.cl//content/uploads/2019/03/Decreto_Rectoria_N9-2019_2.pdf" 
+                                    target="_blank" 
+                                    class="btn text-white"
+                                    style="background-color: #00a0dd;">
+                                    <i class="bi bi-file earmark-pdf" style="font-size: 0.9em;"></i> Reglamento de Estudios de Pregrado UCM
+                                </a>
+                            </p>
+
+                            <p>
+                                <a href="http://portal.ucm.cl//content/uploads/2016/12/Decreto_de_Rectoria_185-2022.pdf" 
+                                    target="_blank" 
+                                    class="btn text-white"
+                                    style="background-color: #00a0dd;">
+                                    <i class="bi bi-file earmark-pdf" style="font-size: 0.9em;"></i> Reglamento de Investigación y Sanción del Acoso Sexual, la Discriminación de Género y la Violencia de Género
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    
+            <div class="tab-pane fade p-0" id="actividades" role="tabpanel" aria-labelledby="actividades-tab">
+              
+                <div class="card mb-4">
+                    <div class="card-header text-white" style="background-color: #00a0dd;">
+                    <strong>Egresados</strong>
+                    </div>
+                    <div class="card-body">
+                    <p class="mb-3" style="text-align: justify;">
+                        Proximamente encontrarás información sobre egresados de la carrera.
+                    </p>
+                    <div style="text-align: justify;">
+                        
+                    </div>
+                    </div>
+                </div>
+
+            </div>      
+    
+            <div class="tab-pane fade p-0" id="otros" role="tabpanel" aria-labelledby="otros-tab">
+                <div class="card mb-4">
+                <div class="card-header text-white" style="background-color: #00a0dd;">
+                    <strong>Otros</strong>
+                </div>
+                <div class="card-body" style="text-align: justify;">
+                    
+                </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- <section id="reglamentos" class="py-5">
+    <h3 class="text-secondary mb-3"><i class="bi bi-file-earmark-text-fill text-primary"></i> Reglamentos Académicos</h3>
+    <p>
+        Es importante conocer las normativas académicas y administrativas que regulan la carrera:
+    </p>
+    <div class="container">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- <section id="recursos" class="py-5">
+    <h3 class="text-secondary mb-3"><i class="bi bi-boxes text-primary"></i> Recursos y Apoyo</h3>
+    <p>
+        Encuentra información sobre bibliografía, software y tutorías disponibles para estudiantes de la carrera:
+    </p>
+    <div class="container">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+               
+            </div>
+        </div>
+    </div>
+</section> -->
+
+{% endblock %}

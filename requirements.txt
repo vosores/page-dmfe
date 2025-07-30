@@ -1,0 +1,21 @@
+# Django framework
+Django
+
+# WeasyPrint y sus dependencias
+WeasyPrint
+
+# Dependencias comunes de HTML rendering (opcional pero útil)
+jinja2
+cairocffi
+tinycss2
+cssselect2
+Pyphen
+
+# Soporte para fuentes (opcional)
+fonttools
+
+# Herramientas adicionales útiles
+requests
+
+Pillow  # para imágenes raster
+cairosvg  # para SVG a PNG/PDF si no viene con WeasyPrint

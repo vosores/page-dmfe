@@ -1,0 +1,197 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+{% block title %}Portada{% endblock %}
+
+{% block content %}
+
+<section id="event-highlights" class="py-2">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Imagen -->
+            <div class="col-md-6 p-2">
+                <img src="{% static 'images/FCB4.png' %}" alt="Universidad Católica del Maule" class="img-fluid rounded-start">
+            </div>
+            <!-- Texto -->
+            <div class="col-md-6 p-2 text-justify">
+                <p class="mb-4">
+                    El ingeniero matemático es un profesional que cumple labores habituales en el modelado matemático de procesos industriales 
+                    (optimiza y automatiza procesos: fases de diseño experimental, obtención y tratamiento de datos, modelamiento y selección 
+                    de modelos, despliegue y entrega de resultados con presentaciones ejecutivas con insights, o alimentando sistemas ya existentes). 
+                    Consecuencia de lo anterior, se desempeña en sectores productivos, tales como: Industrial, Mineros, Bancarios, Consultorías, 
+                    Empresas de análisis cuantitativos y Servicios, teniendo un campo ocupacional basado en Procesos productivos, Análisis de datos, 
+                    Machine learning e Investigación aplicada.
+                  </p>
+                  <p class="mb-4">
+                    <strong>Nota Importante:</strong> La información oficial de carreras, códigos, ponderaciones, vacantes, puntajes y requisitos de admisión 
+                    las entrega el DEMRE a través de su sitio web 
+                    <a href="http://www.demre.cl" target="_blank">www.demre.cl</a>. Por lo tanto, la información aquí expuesta es solo referencial para el proceso 
+                    de admisión 2025 y en ningún caso es información oficial para ser utilizada en el momento de postular a esta universidad.
+                  </p>
+                <p class="mt-4">
+                    <strong>Comité Curricular Ingeniería Matemática</strong><br>
+                    Universidad Católica del Maule
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="destacados">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Charlas Plenarias -->
+            <div class="col-md-4">
+                <a href="{% url 'lista_academicos' %}" class="text-decoration-none">
+                    <div class="highlight-card text-center shadow-lg p-4 rounded border border-primary">
+                        <div class="highlight-icon bg-primary text-white mb-3">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4 class="text-primary">Académicos IMA</h4>
+                        <p class="text-muted">Conoce a los académicos que imparten docencia en Ingeniería Matemática (IMA), sus principales lineas de investigación y proyectos.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Sesiones Temáticas -->
+            <div class="col-md-4">
+                <a href="#" class="text-decoration-none">
+                    <div class="highlight-card text-center shadow-lg p-4 rounded border border-successinst">
+                        <div class="highlight-icon bg-institucional text-white mb-3">
+                            <i class="bi bi-grid-fill"></i>
+                        </div>
+                        <h4 class="text-successinst">Matriz curricular</h4>
+                        <p class="text-muted">Explora la malla curricular de IMA. Integra las actividades curriculares, hitos evaluativos, certificaciones y optativos de profundización.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Material y apuntes -->
+            <div class="col-md-4">
+                <a href="{% url 'material' %}"  class="text-decoration-none">
+                    <div class="highlight-card text-center shadow-lg p-4 rounded border border-warning">
+                        <div class="highlight-icon bg-warning text-white mb-3">
+                            <i class="bi bi-pencil-fill"></i>
+                        </div>
+                        <h4 class="text-warning">Material y apuntes</h4>
+                        <p class="text-muted">
+                            Encuentra material de apoyo a la docencia, apuntes y recursos actualizados sobre las actividades curriculares de Ingeniería Matemática.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-4">
+            <!-- Fechas Importantes -->
+            <div class="col-md-4">
+                <a href="https://ucmcomunica.ucm.cl/cal_acad/" target="_blank" class="text-decoration-none">
+                    <div class="highlight-card text-center shadow-lg p-4 rounded border border-danger">
+                        <div class="highlight-icon bg-danger text-white mb-3">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <h4 class="text-danger">Fechas Importantes</h4>
+                        <p class="text-muted">¡Mantente al día con las fechas clave y los plazos importantes!</p>
+                    </div>
+                </a>
+            </div>            
+            <!-- Formato Resúmenes -->
+            <div class="col-md-4">
+                <a href="https://refninja.org/" target="_blank" class="text-decoration-none">
+                    <div class="highlight-card text-center shadow-lg p-4 rounded border border-info">
+                        <div class="highlight-icon bg-info text-white mb-3">
+                            <i class="bi bi-file-text"></i>
+                        </div>
+                        <h4 class="text-info">RefNinja</h4>
+                        <p class="text-muted">
+                          Utiliza la aplicación RefNinja para gestionar y obtener citas de forma rápida y precisa.
+                        </p>                        
+                    </div>
+                </a>
+            </div>                                 
+            <!-- Inscripciones Abiertas -->
+            <div class="col-md-4">
+                <a href="{% url 'portada' %}#destacados" class="text-decoration-none">
+                    <div class="highlight-card text-center shadow-lg p-4 rounded border border-success">
+                        <div class="highlight-icon bg-success text-white mb-3">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <h4 class="text-success">Inscripciones</h4>
+                        <p class="text-muted">
+                          Cuando se requiera inscripción, esta sección se actualizará para que puedas registrarte.
+                        </p>                        
+                        <!-- <h4 class="text-success">Inscripciones Abiertas</h4> -->
+                        <!-- <p class="text-muted">¡Regístrate ahora y asegura tu participación en la JMZS 2025!</p> -->
+                    </div>
+                </a>
+            </div>            
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="ubicacion" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Ubicación y contacto</h2>
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                <div class="map-container shadow-sm rounded">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18176.57941054465!2d-71.62329080883976!3d-35.44727423330105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9665c420693aed83%3A0x381b7049e64bf2a!2sUCM!5e1!3m2!1ses-419!2scl!4v1735948157420!5m2!1ses-419!2scl" 
+                        width="100%" 
+                        height="350" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>            
+
+            <div class="col-md-6">
+                <div class="contact-container bg-light shadow-sm rounded p-4">
+                  <p class="mb-4">
+                    Para obtener más información acerca de la carrera Ingeniería Matemática o realizar consultas, comunícate con nosotros a través de los siguientes medios:
+                  </p>
+                  <ul class="list-unstyled mt-4">
+                    <li class="mb-3">
+                      <i class="bi bi-building text-primary me-2"></i>
+                      <strong>Universidad:</strong> Universidad Católica del Maule
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-mortarboard text-primary me-2"></i>
+                      <strong>Facultad:</strong> Facultad de Ciencias Básicas
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-people-fill text-primary me-2"></i>
+                    <strong>Departamento:</strong> Departamento de Matemática, Física y Estadística
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                      <strong>Dirección:</strong> Avenida San Miguel 3605, Talca, Chile
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-envelope-fill text-primary me-2"></i>
+                      <strong>Email:</strong> <a href="mailto:ingenieria.matematica@ucm.cl">ingenieria.matematica@ucm.cl</a>
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-telephone-fill text-primary me-2"></i>
+                      <strong>Teléfono:</strong> +56 71 2986330
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-globe text-primary me-2"></i>
+                      <strong>Sitio web:</strong> <a href="https://prenovato.ucm.cl/carreras/ingenieria-matematica/" target="_blank">https://prenovato.ucm.cl/carreras/ingenieria-matematica/</a>
+                    </li>
+                  </ul>              
+                  <a href="https://www.google.com/maps" target="_blank" class="btn btn-primary">
+                    Ver en Google Maps
+                  </a>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+</section>
+
+{% endblock %}

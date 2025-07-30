@@ -1,0 +1,71 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+{% block title %}Listado de Avisos a Dirección{% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Avisos a Dirección de Departamento</h2>
+                <p class="lead">A continuación se listan los avisos enviados por los académicos al Director de Departamento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-2">
+  <div class="container">
+    <form method="get" class="row mb-4">
+    <div class="col-md-3">
+        <label for="semana" class="form-label">Semana:</label>
+        <input type="number" name="semana" id="semana" class="form-control" min="1" max="53" value="{{ semana }}">
+    </div>
+    <div class="col-md-3">
+        <label for="mes" class="form-label">Mes:</label>
+        <select name="mes" id="mes" class="form-select">
+        <option value="">Todos</option>
+        {% for numero, nombre in meses %}
+            <option value="{{ numero }}" {% if mes == numero|stringformat:"s" %}selected{% endif %}>{{ nombre }}</option>
+        {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="anio" class="form-label">Año:</label>
+        <input type="number" name="anio" id="anio" class="form-control" value="{{ anio }}">
+    </div>
+    <div class="col-md-3 d-flex align-items-end gap-2">
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <a href="{% url 'lista_avisos' %}" class="btn btn-secondary">Limpiar</a>
+    </div>
+    </form>
+
+    <div class="row">
+      {% for aviso in avisos %}
+        <div class="col-md-6 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-header bg-success text-white">
+            <strong>{{ aviso.academico.nombre }}</strong><br>
+            <span class="fw-light">📅 Salida: {{ aviso.fecha_salida|date:"d/m/Y H:i" }} | Regreso: {{ aviso.fecha_regreso|date:"d/m/Y H:i" }}</span>
+            </div>
+            <div class="card-body">
+            <p><strong>Destino:</strong> {{ aviso.destino }}</p>
+            <p><strong>Tipo de Actividad:</strong> {{ aviso.tipo_actividad }}</p>
+            <p><strong>Teléfono de Emergencia:</strong> 
+                <a href="tel:{{ aviso.telefono_emergencia }}">{{ aviso.telefono_emergencia }}</a>
+            </p>
+            <p><strong>Detalle:</strong> {{ aviso.detalle_actividad|default:"(Sin detalle)" }}</p>
+            </div>
+        </div>
+        </div>
+      {% empty %}
+      <div class="col-md-12">
+        <div class="alert alert-info text-center" role="alert">
+          No hay avisos registrados.
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

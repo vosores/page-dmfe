@@ -1,0 +1,71 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Material y apuntes (IMA){% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Material y apuntes (IMA)</h2>
+                <p class="lead">En este apartado encontrarás material disponible para cada actividad curricular.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="inscripciones" class="py-2">
+    <div class="container">
+        <div class="row">
+            {% for asignatura in asignaturas %}
+                {% if asignatura.archivos_publicados.all %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-success text-white">
+                                <strong>{{ asignatura.nombre }}</strong>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {% for archivo in asignatura.archivos_publicados.all %}
+                                        {% if archivo.seccion %}
+                                            <li class="list-group-item bg-light">
+                                                <h5 class="text-primary">{{ archivo.seccion }}</h5>
+                                            </li>
+                                        {% endif %}
+                                        <li class="list-group-item">
+                                            <div class="d-flex flex-column">
+                                                <div>
+                                                    {% if archivo.archivo %}
+                                                        <a href="{{ archivo.archivo.url }}" target="_blank" class="fw-bold text-dark">
+                                                            📄 {{ archivo.titulo }}
+                                                        </a>
+                                                    {% elif archivo.link %}
+                                                        <a href="{{ archivo.link }}" target="_blank" class="fw-bold text-primary">
+                                                            🔗 {{ archivo.titulo }}
+                                                        </a>
+                                                    {% endif %}
+                                                    <small class="text-muted d-block">
+                                                        📅 {{ archivo.fecha_subida|date:"d M Y, H:i" }} | 📖 Publicado por: <strong>{{ archivo.academico.nombre }}</strong>
+                                                    </small>
+                                                </div>
+                                                {% if archivo.descripcion %}
+                                                    <p class="mt-1 text-muted text-justify"><em>{{ archivo.descripcion }}</em></p>
+                                                {% endif %}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>                        
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:2 %}
+                        </div><div class="row">  <!-- Cierra y abre una nueva fila cada 2 AC -->
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

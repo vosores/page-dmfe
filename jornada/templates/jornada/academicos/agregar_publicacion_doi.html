@@ -1,0 +1,73 @@
+{% extends 'jornada/base.html' %}
+{% load static %}
+
+{% block title %}Agregar Publicación{% endblock %}
+
+{% block content %}
+<section class="py-5">
+
+  <div class="container">
+
+    <div class="card-header text-center">
+      <h2 class="mb-0">
+        <span class="btn btn-warning text-uppercase">{{ academico.nombre }}</span> agrega tus publicación mediante DOI ➕
+      </h2>
+    </div>
+    <div class="card shadow-sm">
+
+      <div class="card-body">
+        {% if not form %}
+          <!-- Paso 1: Ingreso de DOI -->
+          <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3 row">
+              <label for="doi" class="col-sm-2 col-form-label">
+                DOI:
+              </label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="doi" name="doi"
+                       placeholder="10.xxxx/xxxxx" required>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+              <button type="submit" name="doi_submit" class="btn btn-primary">Obtener desde DOI</button>
+              <a href="{% url 'detalle_academico' academico.slug %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+          </form>
+
+        {% else %}
+          <!-- Paso 2: Edición y confirmación -->
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for field in form %}
+              <div class="mb-3 row">
+                <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label">
+                  {{ field.label }}:
+                </label>
+                <div class="col-sm-9">
+                  {{ field }}
+                  {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                  {% endif %}
+                  {% for error in field.errors %}
+                    <small class="text-danger d-block">{{ error }}</small>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+              <button type="submit" class="btn btn-success">Guardar publicación</button>
+              <a href="{% url 'detalle_academico' academico.slug %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+    
+  </div>
+</section>
+{% endblock %}

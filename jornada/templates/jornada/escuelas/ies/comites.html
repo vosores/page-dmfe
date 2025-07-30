@@ -1,0 +1,53 @@
+{% extends 'jornada/escuelas/ima/base_ima.html' %}
+{% load static %}
+
+{% block title %}Comités - {{ escuela.nombre }}{% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Comités de la Escuela de {{ escuela.nombre }}</h2>
+                <p class="lead">
+                    Conoce a los integrantes del Comité Curricular y del Comité de Calidad de la escuela.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="comite-cientifico" class="py-5">
+    <h3 class="text-secondary mb-3"><i class="bi bi-mortarboard-fill text-primary"></i> Comité Curricular</h3>
+    <p>
+        El Comité Curricular de la Escuela de {{ escuela.nombre }} está compuesto por:
+    </p>
+    <div class="container">
+        <!-- Comité Científico -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                {% include "jornada/escuelas/"|add:escuela.slug|add:"/comite-curricular.html" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="comite-organizador" class="py-5">
+    <h3 class="text-secondary mb-3"><i class="bi bi-people-fill text-primary"></i> Comité de Calidad</h3>
+    <p>
+        El Comité de Calidad de la Escuela de {{ escuela.nombre }} está compuesto por los siguientes académicos:
+    </p>
+    <div class="container">
+        <!-- Comité Organizador -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                {% include "jornada/escuelas/"|add:escuela.slug|add:"/comite-calidad.html" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+{% endblock %}
+

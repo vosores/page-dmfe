@@ -1,0 +1,97 @@
+{% extends 'jornada/base_ima.html' %}
+{% load static %}
+{% load text_extras %}
+{% block title %}Académicos - Ingeniería Matemática{% endblock %}
+
+{% block content %}
+<section id="titulos_ac" class="py-5">
+    <div class="container">
+        <!-- Título -->
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Académicos escuela Ingeniería Matemática</h2>
+                <p class="lead">
+                    Conoce a los académicos que imparten docencia en IMA, sus principales lineas de investigación y proyectos.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="academicos" class="py-2">
+    <div class="container">
+        <div class="row">
+            {% for academico in academicos %}
+            <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ academico.foto.url }}" class="card-img-top" alt="{{ academico.nombre }}">
+                <div class="card-body">
+                <h5 class="card-title">{{ academico.nombre }}</h5>
+                <p class="card-text">
+                    {% if academico.titulo_grado %}
+                        {{ academico.titulo_grado|ulify|safe }}
+                    {% endif %}
+                </p>
+                <!-- <p class="card-text">
+                    <small>
+                        <strong>Cargo:</strong>
+                        {{ academico.cargo }}
+                    </small> -->
+                <p class="card-text">
+                    <small>
+                        <strong>Cargos:</strong>
+                        {{ academico.cargos.all|join:", " }}
+                    </small>
+                <br>
+                {% if academico.email %}
+                    <small>
+                    <strong>Email:</strong>
+                    <a href="mailto:{{ academico.email }}">{{ academico.email }}</a>
+                    </small>
+                <br>
+                {% endif %}
+                {% if academico.sitio_web %}
+                    <small>
+                    <strong>Sitio web:</strong>
+                    <a href="{{ academico.sitio_web }}" target="_blank">{{ academico.sitio_web }}</a>
+                    </small>
+                </p>
+                {% endif %}
+
+            <div class="mt-3">
+            {% if academico.researchgate %}
+                <a href="{{ academico.researchgate }}" target="_blank" class="btn btn-outline-dark btn-sm me-2">
+                <i class="bi bi-box-arrow-up-right fs-6"></i> ResearchGate
+                </a>
+            {% endif %}
+            {% if academico.googlescholar %}
+                <a href="{{ academico.googlescholar }}" target="_blank" class="btn btn-outline-primary btn-sm me-2">
+                <i class="bi bi-google fs-6"></i> Google Scholar
+                </a>
+            {% endif %}
+            {% if academico.orcid %}
+                <a href="{{ academico.orcid }}" target="_blank" class="btn btn-outline-success btn-sm me-2">
+                <i class="bi bi-person-badge fs-6"></i> ORCID
+                </a>
+            {% endif %}
+            {% if academico.wos %}
+                <a href="{{ academico.wos }}" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+                <i class="bi bi-journal fs-6"></i> WOS
+                </a>
+            {% endif %}
+            </div>
+
+                </div>
+                <div class="card-footer">
+                <a href="{% url 'detalle_academico' academico.slug %}" class="btn btn-primary">Ver perfil</a>
+                </div>
+            </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No se han registrado académicos aún.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+  
+{% endblock %}
