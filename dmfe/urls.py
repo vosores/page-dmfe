@@ -12,7 +12,6 @@ from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 from jornada.views import filtroposgrado_por_departamento
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', login_view, name='login'),
