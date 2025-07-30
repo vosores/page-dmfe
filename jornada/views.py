@@ -1029,3 +1029,12 @@ def perfil_academico_embed(request, slug):
         'otros': otros,
         'absolute_embed_url': absolute_embed_url,
     })
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.views.decorators.http import require_GET
+
+@require_GET
+def logout_and_redirect(request):
+    logout(request)
+    return redirect('portada')

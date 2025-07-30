@@ -16,7 +16,7 @@ from jornada.views import filtroposgrado_por_departamento
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', login_view, name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', views.logout_and_redirect, name='logout'),
     path('academicos/', include('jornada.urls')),
     path('', views.portada, name='portada'),
     path('malla_im/', views.malla_im, name='malla_im'),
